@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "sass": "^1.71.0",
+    "sass-loader": "^14.1.0",
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
