@@ -1,9 +1,7 @@
 <script setup>
 
-
 import { ref } from 'vue'
-import { onMounted } from "vue";
-
+import HeaderComponent from '@/components/HeaderComponent.vue'
 
 const week = ref(true)
 const month = ref(true)
@@ -20,20 +18,11 @@ const toggleLikeActive = (selection) => {
 };
 
 
-const info = ref([])
-onMounted(async () => {
-  await axios
-      .get('http://192.168.0.10/post/main')
-      .then(response => {
-        this.info = response.data
-      })
-})
-
 </script>
 
 
 <template>
-
+    <HeaderComponent/>
     <div style="width: 1920px; height: 1080px; position: relative; background: white">
     <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute">
         <div style="width: 1210px; height: 968px; left: 354px; top: 30px; position: absolute; background: white">
@@ -137,7 +126,7 @@ onMounted(async () => {
                 </div>
 
                 <div style="width: 24px; height: 24px; left: 44px; top: 44px; position: absolute">
-                    <img src="../assets/vue.svg"/>
+                    <img src="../assets/Hamburger_LG.png"/>
                 </div>
 
 
@@ -152,7 +141,7 @@ onMounted(async () => {
             <div style="width: 180px; height: 28px; left: 74px; top: 41px; position: absolute; color: #555555; font-size: 15px; font-family: Inter; font-weight: 600; line-height: 28px; word-wrap: break-word">좋아요를 가장 많이 받은 글</div>
             
             <div style="width: 19.65px; height: 18.74px; left: 37.17px; top: 42.69px; position: absolute;">
-                <img src="../assets/vue.svg"/>
+                <img src="../assets/Hamburger_LG.png"/>
             </div>
             
 
