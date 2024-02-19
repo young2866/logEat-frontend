@@ -20,6 +20,7 @@
         <button class="login-button" @click="openLoginModal">로그인</button>
           <ModalComponent ref="modalContainer"></ModalComponent>
         <button style="margin-left: 30px" class="signup-button" @click="openSignupModal">회원가입</button>
+          <ModalComponent ref="modalContainer"></ModalComponent>
       </div>
 
   

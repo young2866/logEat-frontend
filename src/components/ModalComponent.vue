@@ -1,7 +1,7 @@
 <!-- ModalComponent.vue -->
 <template>
-  <div v-if="isModalOpen" class="modal-container">
-    <div class="modal-content">
+  <div v-if="isModalOpen" class="modal-container" ref="modalContainer" @click="handleModalClick">
+    <div class="modal-content" @click.stop>
       <div class="modal-inner">
         <component :is="currentModalComponent" @closeModal="closeModal" />
       </div>
@@ -33,6 +33,12 @@ export default {
     closeModal() {
       this.isModalOpen = false;
       this.currentModalComponent = null;
+    },
+    handleModalClick(event) {
+      // 모달 배경 클릭 시 모달 닫기
+      if (event.target === this.$refs.modalContainer) {
+        this.closeModal();
+      }
     },
   },
 };

@@ -1,7 +1,8 @@
+<!-- SignupComponent.vue -->
 <template>
-  <div class="modal-container">
+  <div class="modal-container" @click="handleModalClick">
     <div class="modal-content">
-      <div class="back-button" @click="goBack">
+      <div class="back-button" @click="$emit('closeModal')">
         <button class="back-button-content">
           ⬅︎ BACK
         </button>
@@ -35,13 +36,19 @@ export default {
     };
   },
   methods: {
-    goBack() {
-      // 모달 닫기 로직을 여기에 추가
-      console.log('뒤로 가기 클릭');
-    },
     submitForm() {
-      // 회원 가입 양식 제출 로직을 여기에 추가
       console.log('회원 가입 양식 제출');
+      try {
+        this.$emit('closeModal');
+      } catch (error) {
+        console.error('submitForm error:', error);
+      }
+    },
+    handleModalClick(event) {
+      // 모달 배경 클릭 시 모달 닫기
+      if (event.target === this.$el) {
+        this.$emit('closeModal');
+      }
     },
   },
 };
@@ -56,6 +63,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
+  cursor: pointer; /* 추가된 부분 */
 }
 
 .modal-content {
