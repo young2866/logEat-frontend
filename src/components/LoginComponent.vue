@@ -10,13 +10,13 @@
         <div class="title">로그인</div>
         <div class="form-field">
           <label for="email">이메일</label>
-          <input type="email" name="email" placeholder="이메일을 입력해주세요." />
+          <input type="email" v-model="email" placeholder="이메일을 입력해주세요." />
         </div>
         <div class="form-field">
           <label for="password">비밀번호</label>
-          <input type="password" name="password" placeholder="비밀번호를 입력해주세요." />
+          <input type="password" v-model="password" placeholder="비밀번호를 입력해주세요." />
         </div>
-        <button class="login-button2" @click="submitForm">로그인</button>
+        <button class="login-button2" @click="doLogin">로그인</button>
         <button class="kakao-login-button">카카오 로그인</button>
         <div class="non-author">
           <span style="color: #696F79; font-size: small;">아직 회원이 아니신가요?</span>
@@ -31,23 +31,35 @@
 </template>
 
 <script>
-//import ModalComponent from '@/components/ModalComponent.vue';
-
-//import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
-
+import axios from 'axios';
 export default {
-  components: {
-    //ModalComponent,
-    // ModalSignupComponent,
-  },
+  name: 'LoginComponent',
   data() {
     return {
-
+      email: "",
+      password: "",
+      loginError: false, // 로그인 실패 시 에러 표시를 위한 데이터
+      isLogin: false, // 로그인 상태 추가
     };
   },
   methods: {
-    submitForm() {
-      console.log('회원 가입 양식 제출');
+    async doLogin() {
+      try {
+
+        const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/doLogin`,{
+          email : this.email,
+          password:this.password
+        }, );
+        // 로그인 성공 시 로직
+        localStorage.setItem("access_token", response.data.result.access_token);
+        localStorage.setItem("refresh_token", response.data.result.refresh_token);
+        this.isLogin = true; // 로그인 상태를 true로 변경
+        window.location.href =  "/";
+      } catch (error) {
+        this.loginError = true;
+        console.log(error);
+        alert("Login failed");
+      }
     },
     closeModal() {
       this.$emit('closeModal');
