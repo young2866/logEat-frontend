@@ -54,7 +54,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+ import axios from 'axios'; 
+
 
 export default {
   data() {
@@ -277,8 +278,8 @@ export default {
 }
 
 .modal-content {
-  width: 30%;
-  height: 70%;
+  width: 35%;
+  height: auto;
   background: white;
   padding: 20px;
   border-radius: 8px;
@@ -363,6 +364,7 @@ input {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: 9%;
   margin-right: 9%;
   text-align: center;

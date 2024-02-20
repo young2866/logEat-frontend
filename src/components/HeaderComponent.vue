@@ -51,33 +51,14 @@ export default {
   },
   methods: {
     openSignupModal() {
-
-      // this.$router.push("/modalsignup");
-      // "this.$refs.modalContainer"가 정의되어 있는지 확인
       this.isModalSignupOpen = !this.isModalSignupOpen;
-      
-      // if (this.$refs.modalContainer) {
-      //   this.$refs.modalContainer.openSignupModal();
-      // } else {
-      //   console.error("ModalContainer is not defined in $refs.");
-      // }
     },
     openLoginModal() {
-      
       this.isModalLoginOpen = !this.isModalLoginOpen;
-      // "this.$refs.modalContainer"가 정의되어 있는지 확인
-      // if (this.$refs.modalContainer) {
-      //   this.$refs.modalContainer.openLoginModal();
-      // } else {
-      //   console.error("ModalContainer is not defined in $refs.");
-      // }
     },
     logoutFunction() {
       localStorage.clear();
       window.location.reload();
-    },
-    goBack() {
-      // 뒤로 가는 로직
     },
     submitForm() {
       // 폼 제출 로직
@@ -87,10 +68,8 @@ export default {
       this.isModalLoginOpen = issignupclosed;
     },
     toggleDropdown() {
-      // 드롭다운 열기/닫기 토글 메서드
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    // 다른 메서드들...
   },
 };
 </script>

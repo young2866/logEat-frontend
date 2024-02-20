@@ -1,8 +1,8 @@
 <template>
-  <div class="modal-container" @click="handleModalClick">
+  <div class="modal-container">
     <div class="modal-content">
       <div class="back-button" @click="$emit('closeModal')">
-        <button class="back-button-content" @click="$emit('closeModal')">
+        <button class="back-button-content" @click="closeModal">
           ⬅︎ BACK
         </button>
       </div>
@@ -20,7 +20,7 @@
         <button class="kakao-login-button">카카오 로그인</button>
         <div class="non-author">
           <span style="color: #696F79; font-size: small;">아직 회원이 아니신가요?</span>
-          <button class="signup-text" @click="$emit('closeModal');">회원 가입</button>
+          <button class="signup-text" @click="$emit('closeSignupModal');">회원 가입</button>
             
             <!-- <ModalComponent ref="modalContainer"></ModalComponent> -->
 
@@ -49,10 +49,8 @@ export default {
     submitForm() {
       console.log('회원 가입 양식 제출');
     },
-    opensSignupModal() {
-      
-        
-      
+    closeModal() {
+      this.$emit('closeModal');
     },
     handleModalClick(event) {
       // 모달 배경 클릭 시 모달 닫기

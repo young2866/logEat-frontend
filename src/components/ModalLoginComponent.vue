@@ -3,11 +3,9 @@
   <div v-if="isModalOpen" class="modal-container" ref="modalContainer" @click="handleModalClick">
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <LoginComponent @closeModal="closeModal"/>
-        
+        <LoginComponent @closeModal="closeModal" @closeSignupModal="closeSignupModal"/>
         <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
       </div>
-      <button @click="closeModal">Close</button>
     </div>
   </div>
 
@@ -28,6 +26,7 @@ import SignupComponent from './SignupComponent.vue';
 
 
 export default {
+  props:['isModalSignupOpen'],
   data() {
     return {
       isModalOpen: true,
@@ -37,9 +36,6 @@ export default {
   },
   methods: {
     openSignupModal() {
-      // this.currentModalComponent = SignupComponent;
-      // this.isModalOpen = true;
-      
     },
     openLoginModal() {
       this.isModalOpen = true;
@@ -47,11 +43,10 @@ export default {
     },
     closeModal() {
       this.isModalOpen = false;
-      this.isSignModalOpen = true;
     },
     closeSignupModal() {
-      console.log("closeSignupModal() 실행");
-      this.isSignModalOpen = false;
+      this.isModalOpen = false;
+      this.isSignModalOpen = true;
     },
     handleModalClick(event) {
       // 모달 배경 클릭 시 모달 닫기
