@@ -63,9 +63,11 @@ export default {
       this.$router.push('/login');
     },
     openSignupModal() {
+      console.log("헤더컴포넌트 openSignupModal() 실행111")
       this.isModalSignupOpen = !this.isModalSignupOpen;
     },
     openLoginModal() {
+      console.log("헤더컴포넌트 openLoginModal() 실행111")
       this.isModalLoginOpen = !this.isModalLoginOpen;
     },
     setsignupclosed(issignupclosed) {

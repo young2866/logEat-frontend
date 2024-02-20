@@ -3,7 +3,7 @@
   <div v-if="isModalOpen" class="modal-container" ref="modalContainer" @click="handleModalClick">
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <SignupComponent @closeModal="closeModal"/>
+        <SignupComponent @openSignupModal="openSignupModal" @closeSignupModal="closeSignupModal"/>
         <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
       </div>
     </div>
@@ -24,18 +24,21 @@ export default {
     },
     methods: {
         openSignupModal() {
-            this.isModalOpen = false;
+            console.log("모달회원가입컴포넌트 openSignupModal() 실행 111")
+            this.isModalOpen = true;
             this.currentModalComponent = SignupComponent;
         },
         // openLoginModal() {
         //   this.isModalOpen = true;
         //   this.currentModalComponent = LoginComponent;
         // },
-        closeModal() {
+        closeSignupModal() {
+            console.log("모달회원가입컴포넌트 closeModal() 실행111");
             this.isModalOpen = false;
             this.currentModalComponent = null;
+            console.log("모달회원가입컴포넌트 closeModal() 실행222");
             //this.isClosed = false;
-            this.$emit("setsignupclosed", this.issignupclosed);
+            // this.$emit("setsignupclosed", this.issignupclosed);
         },
         handleModalClick(event) {
             // 모달 배경 클릭 시 모달 닫기
