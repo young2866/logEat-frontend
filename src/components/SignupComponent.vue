@@ -3,7 +3,7 @@
   <div class="modal-container">
     <div class="modal-content">
       <div class="back-button">
-        <button class="back-button-content" @click="$emit('closeModal')">
+        <button class="back-button-content" @click="$emit('closeSignupModal')">
           ⬅︎ BACK
         </button>
       </div>

@@ -1,20 +1,20 @@
 <!-- ModalComponent.vue -->
 <template>
-  <div v-if="isModalOpen" class="modal-container" ref="modalContainer" @click="handleModalClick">
+  <div v-if="isModalOpen" class="modal-container" @click="handleModalClick">
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <LoginComponent @closeModal="closeModal" @closeSignupModal="closeSignupModal"/>
+        <LoginComponent @openSignupModal="openSignupModal" @closeSignupModal="closeSignupModal" @closeModal="closeModal"/>
         <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
       </div>
-      <button @click="closeModal">Close</button>
+      <!-- <button @click="closeModal">Close</button> -->
     </div>
   </div>
 
   <div v-if="isSignModalOpen" class="modal-container">
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <SignupComponent @closeModal="closeModal" />
-        
+        <SignupComponent @closeSignupModal="closeSignupModal"/>
+        <!-- <SignupComponent @openSignupModal="openSignupModal" @closeModal="closeSignupModal"/>         -->
       </div>
     </div>
   </div>
@@ -37,19 +37,21 @@ export default {
   },
   methods: {
     openSignupModal() {
+      console.log("모달로그인컴포넌트 openSignupModal() 실행 111")
+      this.isSignModalOpen = true;
     },
     openLoginModal() {
+      console.log("모달로그인컴포넌트 openLoginModal() 실행");
       this.isModalOpen = true;
       this.currentModalComponent = LoginComponent;
-      console.log("openLoginModal() 실행");
     },
     closeModal() {
+      console.log("모달로그인컴포넌트 closeModal() 실행 111")
       this.isModalOpen = false;
-      this.isSignModalOpen = true;
     },
     closeSignupModal() {
-      this.isModalOpen = false;
-      this.isSignModalOpen = true;
+      console.log("모달로그인컴포넌트 closeSignupModal() 실행 111")
+      this.isSignModalOpen = false;
     },
     handleModalClick(event) {
       // 모달 배경 클릭 시 모달 닫기
