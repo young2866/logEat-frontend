@@ -1,9 +1,9 @@
 <!-- SignupComponent.vue -->
 <template>
-  <div class="modal-container" @click="handleModalClick">
+  <div class="modal-container">
     <div class="modal-content">
-      <div class="back-button" @click="$emit('closeModal')">
-        <button class="back-button-content">
+      <div class="back-button">
+        <button class="back-button-content" @click="$emit('closeModal')">
           ⬅︎ BACK
         </button>
       </div>

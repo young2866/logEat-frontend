@@ -18,9 +18,10 @@
       </div>
       <div> <!-- 로그인 -->
         <button class="login-button" @click="openLoginModal">로그인</button>
-          <ModalComponent ref="modalContainer"></ModalComponent>
+          <ModalLoginComponent v-if="isModalLoginOpen"/>
+          <!-- <router-link class="signup-button" to="/modalsignup">회원가입</router-link> -->
         <button style="margin-left: 30px" class="signup-button" @click="openSignupModal">회원가입</button>
-          <ModalComponent ref="modalContainer"></ModalComponent>
+          <ModalSignupComponent v-if="isModalSignupOpen"/>
       </div>
 
   
@@ -28,36 +29,48 @@
 </template>
 
 <script>
-import ModalComponent from '@/components/ModalComponent.vue';
+//import ModalComponent from '@/components/ModalComponent.vue';
+import ModalLoginComponent from '@/components/ModalLoginComponent.vue';
+import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
 
 export default {
   components: {
-    ModalComponent,
+    //ModalComponent,
+    ModalLoginComponent,
+    ModalSignupComponent
   },
   data() {
     return {
       isDropdownOpen: false,
       isLogin: false,
       userRole: null,
-      isModalOpen: false, // 모달 상태 변수 추가
+      // isModalOpen: false, // 모달 상태 변수 추가
+      isModalSignupOpen : false,
+      isModalLoginOpen : false,
     };
   },
   methods: {
     openSignupModal() {
+
+      // this.$router.push("/modalsignup");
       // "this.$refs.modalContainer"가 정의되어 있는지 확인
-      if (this.$refs.modalContainer) {
-        this.$refs.modalContainer.openSignupModal();
-      } else {
-        console.error("ModalContainer is not defined in $refs.");
-      }
+      this.isModalSignupOpen = !this.isModalSignupOpen;
+      
+      // if (this.$refs.modalContainer) {
+      //   this.$refs.modalContainer.openSignupModal();
+      // } else {
+      //   console.error("ModalContainer is not defined in $refs.");
+      // }
     },
     openLoginModal() {
+      
+      this.isModalLoginOpen = !this.isModalLoginOpen;
       // "this.$refs.modalContainer"가 정의되어 있는지 확인
-      if (this.$refs.modalContainer) {
-        this.$refs.modalContainer.openLoginModal();
-      } else {
-        console.error("ModalContainer is not defined in $refs.");
-      }
+      // if (this.$refs.modalContainer) {
+      //   this.$refs.modalContainer.openLoginModal();
+      // } else {
+      //   console.error("ModalContainer is not defined in $refs.");
+      // }
     },
     logoutFunction() {
       localStorage.clear();
@@ -68,6 +81,10 @@ export default {
     },
     submitForm() {
       // 폼 제출 로직
+    },
+    setsignupclosed(issignupclosed) {
+      console.log("자식 컴포넌트 전달받음: ", issignupclosed);
+      this.isModalLoginOpen = issignupclosed;
     },
     toggleDropdown() {
       // 드롭다운 열기/닫기 토글 메서드

@@ -2,7 +2,7 @@
   <div class="modal-container" @click="handleModalClick">
     <div class="modal-content">
       <div class="back-button" @click="$emit('closeModal')">
-        <button class="back-button-content">
+        <button class="back-button-content" @click="$emit('closeModal')">
           ⬅︎ BACK
         </button>
       </div>
@@ -20,8 +20,10 @@
         <button class="kakao-login-button">카카오 로그인</button>
         <div class="non-author">
           <span style="color: #696F79; font-size: small;">아직 회원이 아니신가요?</span>
-          <button class="signup-text" @click="openSignupModal">회원 가입</button>
-            <ModalComponent ref="modalContainer"></ModalComponent>
+          <button class="signup-text" @click="$emit('closeModal');">회원 가입</button>
+            
+            <!-- <ModalComponent ref="modalContainer"></ModalComponent> -->
+
         </div>
       </div>
     </div>
@@ -29,22 +31,28 @@
 </template>
 
 <script>
-import ModalComponent from '@/components/ModalComponent.vue';
+//import ModalComponent from '@/components/ModalComponent.vue';
+
+//import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
 
 export default {
   components: {
-    ModalComponent,
+    //ModalComponent,
+    // ModalSignupComponent,
+  },
+  data() {
+    return {
+
+    };
   },
   methods: {
     submitForm() {
       console.log('회원 가입 양식 제출');
     },
-    openSignupModal() {
-      if (this.$refs.modalContainer) {
-        this.$refs.modalContainer.openSignupModal();
-      } else {
-        console.error("ModalContainer is not defined in $refs.");
-      }
+    opensSignupModal() {
+      
+        
+      
     },
     handleModalClick(event) {
       // 모달 배경 클릭 시 모달 닫기
