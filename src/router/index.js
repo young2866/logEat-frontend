@@ -11,14 +11,14 @@ import NotLoginMainComponent from '../components/NotLoginMainComponent'
 
 
 const routes = [
-    { path: '/', redirect: '/notlogin', },
+    { path: '/', redirect: '/main', },
     { path: '/header', component: HeaderComponent, },
     { path: '/login', component: LoginComponent, },
     { path: '/signup', component: SignupComponent, },
     { path: '/modallogin', component: ModalLoginComponent, },
     { path: '/modalsignup', component: ModalSignupComponent, },
     { path: '/modal', component: ModalComponent, },
-    { path: '/notlogin', component: NotLoginMainComponent, },
+    { path: '/main', component: NotLoginMainComponent, },
     
   ];
   
