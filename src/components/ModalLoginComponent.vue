@@ -6,13 +6,14 @@
         <LoginComponent @closeModal="closeModal" @closeSignupModal="closeSignupModal"/>
         <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
       </div>
+      <button @click="closeModal">Close</button>
     </div>
   </div>
 
-  <div v-if="isSignModalOpen" class="modal-container" ref="modalContainer" @click="handleModalClick">
+  <div v-if="isSignModalOpen" class="modal-container">
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <SignupComponent @closeModal="closeSignupModal" />
+        <SignupComponent @closeModal="closeModal" />
         
       </div>
     </div>
@@ -40,9 +41,11 @@ export default {
     openLoginModal() {
       this.isModalOpen = true;
       this.currentModalComponent = LoginComponent;
+      console.log("openLoginModal() 실행");
     },
     closeModal() {
       this.isModalOpen = false;
+      this.isSignModalOpen = true;
     },
     closeSignupModal() {
       this.isModalOpen = false;
