@@ -1,24 +1,4 @@
-<script setup>
 
-import { ref } from 'vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
-
-const week = ref(true)
-const month = ref(true)
-
-const isSearchActive = ref(null);
-const isLikeActive = ref(null);
-
-const toggleSearchActive = (selection) => {
-    isSearchActive.value = selection;
-};
-
-const toggleLikeActive = (selection) => {
-    isLikeActive.value = selection;
-};
-
-
-</script>
 
 
 <template>
@@ -183,11 +163,34 @@ const toggleLikeActive = (selection) => {
     </div>
     </div>
 
-
-
-
-
 </template>
+
+<script setup>
+    import { ref } from 'vue'
+    import axios from 'axios'
+    import HeaderComponent from '@/components/HeaderComponent.vue'
+
+    const week = ref(true)
+    const month = ref(true)
+
+    const isSearchActive = ref(null);
+    const isLikeActive = ref(null);
+
+    const toggleSearchActive = (selection) => {
+        isSearchActive.value = selection;
+    };
+
+    const toggleLikeActive = (selection) => {
+        isLikeActive.value = selection;
+    };
+
+
+    
+    
+
+</script>
+
+
   
   
 <style>
