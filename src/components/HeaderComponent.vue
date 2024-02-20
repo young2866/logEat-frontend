@@ -60,7 +60,7 @@ export default {
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token'); // 필요한 경우 refresh_token도 제거
       this.isLogin = false;
-      this.$router.push('/login');
+      window.location.href = '/';
     },
     openSignupModal() {
       console.log("헤더컴포넌트 openSignupModal() 실행111")
@@ -75,7 +75,7 @@ export default {
       this.isModalLoginOpen = issignupclosed;
     },
     toggleDropdown() {
-            this.isDropdownOpen = !this.isDropdownOpen;
+      this.isDropdownOpen = !this.isDropdownOpen;
     },
   },
 };

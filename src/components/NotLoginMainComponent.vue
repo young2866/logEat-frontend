@@ -94,10 +94,13 @@ const toggleLikeActive = (selection) => {
 
         <div style="width: 354px; height: 968px; left: 0px; top: 30px; position: absolute; background: white">
             <div style="width: 332px; height: 253px; left: 22px; top: 29px; position: absolute; background: white; border-radius: 16px; overflow: hidden; border: 1px #EAEBEC solid">
+                <div>
+                    <div style="width: 5px; height: 5px; left: 40px; top: 40px; position: absolute">
+                        <img src="../assets/Magnifier.png" width="30px" height="30px" >
+                    </div>
+                    <div style="width: 55.51px; height: 28px; left: 74px; top: 44.50px; position: absolute; color: #555555; font-size: 15px; font-family: Inter; font-weight: 600; line-height: 28px; word-wrap: break-word">검색하기</div>
+                </div>
                 
-                <div style="width: 55.51px; height: 28px; left: 74px; top: 44.50px; position: absolute; color: #555555; font-size: 15px; font-family: Inter; font-weight: 600; line-height: 28px; word-wrap: break-word">검색하기</div>
-                
-
                 <div>
                 <!-- <button @click="toggleSearchActive('user')" :class="{ 'active': isSearchActive === 'user' }" style="width: 76.33px; height: 14px; left: 57px; top: 110px; position: absolute; color: #666666; font-size: 13.12px; font-family: Inter; font-weight: 400; line-height: 14px; word-wrap: break-word">
                     유저 검색
@@ -110,25 +113,10 @@ const toggleLikeActive = (selection) => {
                 <button @click="toggleSearchActive('store')" :class="{ 'active': isSearchActive === 'store' }" style="width: 76.33px; height: 14px; left: 234px; top: 110px; position: absolute; color: #666666; font-size: 13.12px; font-family: Inter; font-weight: 400; line-height: 14px; word-wrap: break-word">
                     가게 검색
                 </button> -->
-                
-                    <button style="width: 76px; height: 34px; left: 37px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isSearchActive === 'user' }" @click="toggleSearchActive('user')" >
-                        <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">유저 검색</div>
-                    </button>
-
-                    <button style="width: 79px; height: 34px; left: 126px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isSearchActive === 'menu' }" @click="toggleSearchActive('menu')" >
-                        <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">메뉴 검색</div>
-                    </button>
-
-                    <button style="width: 79px; height: 34px; left: 214px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isSearchActive === 'store' }" @click="toggleSearchActive('store')" >
-                        <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">가게 검색</div>
-                    </button>
-
+                        <button style="margin-left:5%;" class="side_button" @click="toggleSearchActive('user')" :class="{ 'active': isSearchActive === 'user' }" >유저 검색</button>
+                        <button class="side_button" @click="toggleSearchActive('menu')" :class="{ 'active': isSearchActive === 'menu' }" >메뉴 검색</button>
+                        <button style="margin-right:5%;" class="side_button" @click="toggleSearchActive('store')" :class="{ 'active': isSearchActive === 'store' }" >가게 검색</button>
                 </div>
-
-                <div style="width: 24px; height: 24px; left: 44px; top: 44px; position: absolute">
-                    <img src="../assets/Hamburger_LG.png"/>
-                </div>
-
 
                 
                 <div style="width: 274px; height: 38px; left: 34px; top: 176px; position: absolute; background: #F1F3F5; border-radius: 12px">
@@ -138,13 +126,13 @@ const toggleLikeActive = (selection) => {
                 </div>
             </div>
         <div style="width: 332px; height: 640.50px; left: 22px; top: 320px; position: absolute; background: white; border-radius: 16px; overflow: hidden; border: 1px #EAEBEC solid">
-            <div style="width: 180px; height: 28px; left: 74px; top: 41px; position: absolute; color: #555555; font-size: 15px; font-family: Inter; font-weight: 600; line-height: 28px; word-wrap: break-word">좋아요를 가장 많이 받은 글</div>
-            
-            <div style="width: 19.65px; height: 18.74px; left: 37.17px; top: 42.69px; position: absolute;">
-                <img src="../assets/Hamburger_LG.png"/>
+            <div>
+                <div style="width: 19.65px; height: 18.74px; left: 40.17px; top: 37.69px; position: absolute;">
+                    <img src="../assets/star.png" width="30px" height="30px">
+                </div>
+                <div style="width: 180px; height: 28px; left: 74px; top: 41px; position: absolute; color: #555555; font-size: 15px; font-family: Inter; font-weight: 600; line-height: 28px; word-wrap: break-word">좋아요를 가장 많이 받은 글</div>
             </div>
             
-
             <div>
                 <button v-if="week" style="width: 79.56px; height: 34px; left: 29px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isLikeActive === 'week' }" @click="toggleLikeActive('week')" >
                     <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">
@@ -203,9 +191,27 @@ const toggleLikeActive = (selection) => {
   
   
 <style>
-    
+    .side_button{
+        background: white;
+
+        margin-top: 100px;
+        padding: 5px;
+        border-radius: 8px;
+        width: 95.92px; 
+        height: 34px; 
+        left: 37px; 
+        top: 93px; 
+
+        cursor: pointer;
+ 
+        font-family: Inter;
+        border: none;
+    }
+    .side_button:hover {
+        background-color: #EAEBEC;
+     }
     .active {
-        background-color: #FF8C00;
+        background-color: #FF4500;
         color: white
     }
     .login-button:hover {
