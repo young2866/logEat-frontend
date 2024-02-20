@@ -118,12 +118,12 @@ const toggleLikeActive = (selection) => {
                         <button style="margin-right:5%;" class="side_button" @click="toggleSearchActive('store')" :class="{ 'active': isSearchActive === 'store' }" >가게 검색</button>
                 </div>
 
-                
-                <div style="width: 274px; height: 38px; left: 34px; top: 176px; position: absolute; background: #F1F3F5; border-radius: 12px">
-                    <div style="width: 220px; height: 16px; left: 13px; top: 11px; position: absolute">
-                        <input style="width: 200px; height: 16px; left: 0px; top: 0px; position: absolute; background-color: #F1F3F5; font-size: 13.12px; font-family: Inter; font-weight: 400; word-wrap: break-word"/>
+                <div class="search-bar">
+                    <div class="input-container">
+                      <input type="text" placeholder="유저의 아이디를 입력해주세요" />
                     </div>
-                </div>
+                  </div>
+                  
             </div>
         <div style="width: 332px; height: 640.50px; left: 22px; top: 320px; position: absolute; background: white; border-radius: 16px; overflow: hidden; border: 1px #EAEBEC solid">
             <div>
@@ -134,16 +134,12 @@ const toggleLikeActive = (selection) => {
             </div>
             
             <div>
-                <button v-if="week" style="width: 79.56px; height: 34px; left: 29px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isLikeActive === 'week' }" @click="toggleLikeActive('week')" >
-                    <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">
-                        <p>지난 주간</p>
-                    </div>
+                <button style="margin-left:5%;" v-if="week" class="side_button" :class="{ 'active': isLikeActive === 'week' }" @click="toggleLikeActive('week')" >
+                    지난 주간
                 </button>
 
-                <button v-if="month" style="width: 79.56px; height: 34px; left: 116px; top: 93px; position: absolute;  border-radius: 12px" :class="{ 'active': isLikeActive === 'month' }" @click="toggleLikeActive('month')">
-                    <div style="width: 65px; height: 14px; left: 8px; top: 10px; position: absolute; font-size: 13.23px; font-family: Inter; font-weight: 500; line-height: 14px; word-wrap: break-word">
-                        <p>지난 한달</p>
-                    </div>
+                <button v-if="month" class="side_button"  :class="{ 'active': isLikeActive === 'month' }" @click="toggleLikeActive('month')">
+                    지난 한달
                 </button>
             </div>
             
@@ -191,6 +187,41 @@ const toggleLikeActive = (selection) => {
   
   
 <style>
+.search-bar {
+    width: 274px; 
+    height: 38px; 
+    left: 34px; 
+    top: 176px; 
+    position: absolute; 
+    background: #F1F3F5; 
+    border-radius: 12px
+    /* 추가 스타일 */
+  }
+  
+  .input-container {
+    width: 220px; 
+    height: 16px; 
+    left: 13px; 
+    top: 11px; 
+    position: absolute
+    /* 추가 스타일 */
+  }
+  
+  input {
+    width: 200px; 
+    height: 16px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background-color: #F1F3F5; 
+    font-size: 13.12px; 
+    font-family: Inter; 
+    font-weight: 400; 
+    word-wrap: break-word;
+    border: none;
+
+  }
+
     .side_button{
         background: white;
 
