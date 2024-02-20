@@ -1,6 +1,3 @@
-
-
-
 <template>
     <HeaderComponent/>
     <div style="width: 1920px; height: 1080px; position: relative; background: white">
