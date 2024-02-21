@@ -2,7 +2,7 @@
 
 // import { ref } from 'vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
-
+import LeftSectionComponent from './LeftSectionComponent.vue';
 // const week = ref(true)
 // const month = ref(true)
 
@@ -16,9 +16,34 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 // const toggleLikeActive = (selection) => {
 //     isLikeActive.value = selection;
 // };
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// library.add(faArrowRight)
+
+// export default {
+//   components: {
+//     FontAwesomeIcon
+//   }
+// }
 
 </script>
+    
+<script>
+    import { library } from '@fortawesome/fontawesome-svg-core'
+    import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+    library.add(faArrowRight)
+
+    export default {
+    components: {
+        FontAwesomeIcon
+    }
+    }
+</script>
+
 <template>
     <HeaderComponent />
     <div id="main-parent">
@@ -30,9 +55,9 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
             <div class="content-box">
                 <!-- 첫 번째 post -->
                 <div class="post">
-                    <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
+                    <img src="../assets/logeat-default.png" alt="Default" class="post-image" />
                     <div class="post-info">
-                        <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
+                        <img src="../assets/logeat-default.png" alt="Default" class="post-icon" />
                         <div class="post-author">장은지</div>
                     </div>
                     <div class="post-description">에너지 바 2개</div>
@@ -48,9 +73,9 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 
                 <!-- 두 번째 post -->
                 <div class="post">
-                    <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
+                    <img src="../assets/logeat-default.png" alt="Default" class="post-image" />
                     <div class="post-info">
-                        <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
+                        <img src="../assets/logeat-default.png" alt="Default" class="post-icon" />
                         <div class="post-author">장은지</div>
                     </div>
                     <div class="post-description">잘못산 양배추 사과 즙</div>
@@ -64,9 +89,9 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
                 </div>
                 <!-- 세 번째 post -->
                 <div class="post">
-                    <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
+                    <img src="../assets/logeat-default.png" alt="Default" class="post-image" />
                     <div class="post-info">
-                        <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
+                        <img src="../assets/logeat-default.png" alt="Default" class="post-icon" />
                         <div class="post-author">장은지</div>
                     </div>
                     <div class="post-description">아침 사과가 몸에 좋대요</div>
@@ -84,11 +109,20 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->
         <div id="right-parent">
             <div class="profile-updates-box">
-                <div class="updates-title">최근 업데이트 된 프로필</div>
-                <div class="switch-buttons">
-                    <div class="switch-left"></div>
-                    <div class="switch-right"></div>
+                <div class="updates-container">
+                    <div class="updates-title">최근 업데이트 된 프로필</div>
+                    <div class="switch-buttons">
+                        <div class="switch-left">
+                            <!-- <i class="fa-light fa-angle-left"></i> -->
+                            <font-awesome-icon icon="fa-light fa-angle-left" />
+                            <!-- <font-awesome-icon :icon="['fal', 'angle-left']" /> -->
+                        </div>
+                        <div class="switch-right">
+                            <font-awesome-icon :icon="['fal', 'angle-right']" />
+                        </div>
+                    </div>
                 </div>
+                
                 <!-- 추가적인 프로필 업데이트 내용 -->
             </div>
             <!-- right-parent 내에 추가적인 요소나 섹션이 필요할 경우 여기에 포함 -->

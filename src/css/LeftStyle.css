@@ -1,0 +1,89 @@
+.search-box, .likes-box {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #EAEBEC;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .search-box .magnifier-icon, .likes-box .star-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .search-box{
+      height: 200px;
+  }
+  .search-text, .likes-text {
+    display: inline-block;
+  }
+  .search-buttons, .likes-buttons {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+  
+  .search-bar {
+    margin-top: 10px; 
+  }
+  .likes-content {
+    display: flex;
+    align-items: center; 
+    margin-top: 10px;
+  }
+  .content-image {
+    flex-shrink: 0; 
+    margin-right: 10px;
+    width: 40px;
+  }
+  
+  .content-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  input {
+    width: calc(100% - 20px);
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #F1F3F5; 
+  }
+  
+  .side_button {
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Inter;
+    border: none;
+    margin-right: 7px;
+    width: 70px;
+  }
+  
+  .side_button:hover {
+    background-color: #EAEBEC;
+  }
+  .content-tag, .content-brand{
+      text-align: center; 
+      color: #888888; 
+      word-wrap: break-word;
+      margin-right: 5px;
+      border-radius: 8px;
+      font-family: Inter;
+      border: none;
+      font-size: 10.5px;
+      padding: 5px;
+  }
+  
+  .active {
+    background-color: #FF4500;
+    color: white;
+  }
