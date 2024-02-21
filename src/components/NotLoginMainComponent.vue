@@ -1,24 +1,3 @@
-<script setup>
-
-// import { ref } from 'vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
-
-// const week = ref(true)
-// const month = ref(true)
-
-// const isSearchActive = ref(null);
-// const isLikeActive = ref(null);
-
-// const toggleSearchActive = (selection) => {
-//     isSearchActive.value = selection;
-// };
-
-// const toggleLikeActive = (selection) => {
-//     isLikeActive.value = selection;
-// };
-
-
-</script>
 <template>
     <HeaderComponent />
     <div id="main-parent">
@@ -152,30 +131,27 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 </template>
 
 <script setup>
-    import { ref } from 'vue'
-    import axios from 'axios'
-    import HeaderComponent from '@/components/HeaderComponent.vue'
+    // import { ref } from 'vue'
+    // import axios from 'axios'
+    // import HeaderComponent from '@/components/HeaderComponent.vue'
 
-    const week = ref(true)
-    const month = ref(true)
+    // const week = ref(true)
+    // const month = ref(true)
 
-    const isSearchActive = ref(null);
-    const isLikeActive = ref(null);
+    // const isSearchActive = ref(null);
+    // const isLikeActive = ref(null);
 
-    const toggleSearchActive = (selection) => {
-        isSearchActive.value = selection;
-    };
+    // const toggleSearchActive = (selection) => {
+    //     isSearchActive.value = selection;
+    // };
 
-    const toggleLikeActive = (selection) => {
-        isLikeActive.value = selection;
-    };
+    // const toggleLikeActive = (selection) => {
+    //     isLikeActive.value = selection;
+    // };
 
 
     
-    
-
 </script>
-
 
   
   
