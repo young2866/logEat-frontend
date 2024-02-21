@@ -9,6 +9,7 @@ import NotLoginMainComponent from '../components/NotLoginMainComponent'
 import MypageComponent from '../components/MypageComponent.vue'
 import PostCreate from '../components/PostCreate'
 import LatestPostComponent from '../components/LatestPostComponent'
+import PostDetail from '../components/PostDetail'
 
 
 
@@ -24,6 +25,9 @@ const routes = [
     { path: '/mypage', component: MypageComponent },
     { path: '/post/create', component: PostCreate, },
     { path: '/post/following/latest-post', component: LatestPostComponent, },
+    { path: '/post/:id/detail', component: PostDetail,  props: true },
+
+    
   ];
   
   export default createRouter({
