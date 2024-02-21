@@ -2,7 +2,6 @@
 
 // import { ref } from 'vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
-import LeftSectionComponent from './LeftSectionComponent.vue';
 
 // const week = ref(true)
 // const month = ref(true)
@@ -96,7 +95,9 @@ import LeftSectionComponent from './LeftSectionComponent.vue';
         </div>
     </div>
 </template>
-  
+
+
+
 <style>
 @import "../css/style.css";
 </style>
