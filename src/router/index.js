@@ -7,6 +7,7 @@ import ModalSignupComponent from '../components/ModalSignupComponent'
 import ModalComponent from '../components/ModalComponent'
 import NotLoginMainComponent from '../components/NotLoginMainComponent'
 import MypageComponent from '../components/MypageComponent.vue'
+import PostCreate from '../components/PostCreate'
 
 
 
@@ -20,6 +21,7 @@ const routes = [
     { path: '/modal', component: ModalComponent, },
     { path: '/main', component: NotLoginMainComponent, },
     { path: '/mypage', component: MypageComponent },
+    { path: '/post/create', component: PostCreate, },
   ];
   
   export default createRouter({

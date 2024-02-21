@@ -6,7 +6,8 @@
       <a class="navbar-brand mx-auto" href="/">LogEat</a>
     </div>
     <div v-if="!isLogin"> <!-- 로그인 되고 나서-->
-      <button class="write-button">글쓰기</button>
+      <button class="write-button" @click="openPostCreateModal">글쓰기</button>
+      <ModalPostCreate v-if="isModalPostCreateOpen" ></ModalPostCreate>
       <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
@@ -36,6 +37,7 @@
 import ModalLoginComponent from '@/components/ModalLoginComponent.vue';
 import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
 import ModalMypageComponent from './ModalMypageComponent.vue';
+import ModalPostCreate from './ModalPostCreate.vue';
 
 export default {
   components: {
@@ -43,6 +45,7 @@ export default {
     ModalLoginComponent,
     ModalSignupComponent,
     ModalMypageComponent,
+    ModalPostCreate,
   },
   data() {
     return {
@@ -53,6 +56,7 @@ export default {
       isModalSignupOpen: false,
       isModalLoginOpen: false,
       isModalMypageOpen: false,
+      isModalPostCreateOpen: false,
     };
   },
   methods: {
@@ -87,6 +91,9 @@ export default {
     showMyProfile(){
       this.$router.push('/mypage');
     },
+    openPostCreateModal(){
+      this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
+    }
   },
 };
 </script>
