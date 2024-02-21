@@ -105,6 +105,12 @@ const toggleLikeActive = (selection) => {
     isLikeActive.value = selection;
 };
 
+
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
