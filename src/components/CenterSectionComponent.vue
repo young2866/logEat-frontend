@@ -16,8 +16,9 @@
                         {{post.likeCount}}
                     </div>
                 </div>
-
             </div>
+
+
         </div>
     </div>
 </template>
@@ -35,6 +36,9 @@ export default {
             searchValue: '',
             isLastPage: false,
             isLoading: false,
+            /* 검색관련 */
+            
+
         }
     },
     created() {
@@ -82,7 +86,16 @@ export default {
                 console.log(error)
             }
             this.isLoading = false;
-        }
+        },
+        async loadSearchUser() {
+
+        },
+        async loadSearchTitle() {
+
+        },
+        async loadSearchCategory() {
+
+        },
     }
 }
 </script>

@@ -1,18 +1,99 @@
 #main-parent{
     display: grid;
-    grid-template-columns: 1.3fr 3fr 1fr;
+    grid-template-columns: 1.2fr 3fr 1.2fr;
+    
 }
 #left-parent{
     position: relative;
 }
 #middle-parent {
     position: relative;
-    padding: 20px;
-    overflow: hidden;
 }
 #right-parent{
     position: relative;
 }
+
+/* middle-parent의 디자인 */
+.content-box {
+    width: auto; 
+    height: auto; 
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #EAEBEC;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    
+}
+
+.post {
+    width: calc(33.3% - 40px); 
+    height: auto;
+    position: relative;
+    background: #F1F3F5;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+.post-image {
+    width: 100%; /* post 컨테이너에 맞게 이미지 너비 조정 */
+    height: auto; /* 이미지의 비율을 유지하면서 높이 조정 */
+    top: 0;
+    left: 0; /* 이미지의 위치를 조정 */
+}
+.post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 아이콘과 텍스트 사이의 간격 */
+    margin-bottom: 10px; /* 다음 요소와의 간격 */
+}
+
+.post-icon {
+    width: 21px;
+    height: 21px;
+}
+
+.post-author {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.post-description {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 10px; /* 다음 요소와의 간격 */
+}
+
+.post-details {
+    display: flex;
+    justify-content: space-between; /* 요소들을 양 끝으로 분산 */
+    align-items: center;
+}
+
+.post-location {
+    color: #8A8A8A;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 22.75px;
+}
+
+.post-score {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24.50px;
+}
+
 #left-section {
   position: sticky;
   top: 0;
@@ -20,9 +101,10 @@
   z-index: 10;
 }
 
+
 /* right-parent 디자인 */
 .profile-updates-box {
-    width: 332px;
+    width: auto;
     height: 640.50px;
     background: white;
     border-radius: 16px;
@@ -31,50 +113,70 @@
     margin: 20px; /* 중앙 정렬 */
     position: relative; /* 자식 요소들의 위치 기준 */
 }
-
+.updates-container {
+    display: flex;
+    justify-content: space-between; /* 요소들을 양끝으로 정렬 */
+    align-items: center; /* 수직 방향 중앙 정렬 */
+    padding: 0 20px; /* 내부 여백 */
+}
+.updates-title, .switch-buttons {
+    /* flex: 1;  */
+    text-align: center;
+}
 .updates-title {
     color: #555555;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 28px;
-    position: absolute;
+    /* position: absolute;
     top: 41px;
-    left: 31px;
+    left: 31px; */
 }
 .switch-buttons {
+    
+    
+    border-radius: 17px; 
+    border: 1px solid #E1E2E4; 
+    /* justify-content: space-between; 
+    align-items: center;
+    
+    position: relative; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
+    display: flex;
+    align-items: center;
+    justify-content: space-around; */
+
+    display: flex;
+    justify-content: center; /* 버튼들을 중앙 정렬 */
+    align-items: center;
+    width: auto; /* 선과 버튼들을 포함할 수 있도록 너비 조정 */
+    padding: 0 10px;
+}
+/* .switch-buttons::after {
+    content: '';
     position: absolute;
-    top: 41px;
-    right: 31px; /* 위치 조정 */
-    display: flex;
-    align-items: center; /* 버튼을 수직 중앙 정렬 */
-}
+    height: 100%; 
+    width: 1px; 
+    background-color: #E1E2E4; 
+    left: 50%; 
+    transform: translateX(-50%);
+} */
 
-.switch-left, .switch-right {
-    width: 30px; /* 버튼의 너비 */
-    height: 26px; /* 버튼의 높이 */
-    border-radius: 6px; /* 버튼의 모서리를 둥글게 */
-    border: 1px solid #E1E2E4; /* 테두리 스타일 */
-    display: flex;
-    justify-content: center; /* 내부 요소를 중앙 정렬 */
-    align-items: center; /* 내부 요소를 중앙 정렬 */
-    cursor: pointer; /* 마우스 오버 시 커서 변경 */
-    margin-right: 5px; /* 오른쪽 버튼과의 간격 */
-}
+/* 버튼 내 이미지 아이콘에 대한 스타일 */
+/* .switch-left, .switch-right { */
+    /* background-color: transparent; 
+    width: 16px; 
+    height: 16px;
+    border: none;
+    font-size: 24px;
+    flex: none;  */
 
-.switch-left::before, .switch-right::before {
-    content: ''; /* 가상 요소로 스위치 표시 */
-    width: 16px; /* 스위치 아이콘의 너비 */
-    height: 16px; /* 스위치 아이콘의 높이 */
-    background-color: #989BA2; /* 스위치 아이콘의 배경 색상 */
-    border-radius: 50%; /* 원형 아이콘 */
-}
+    /* font-size: 24px;
+    margin: 0 5px; */
+/* } */
 
-/* 활성화 상태를 나타내는 스타일 */
-.switch-left.active::before, .switch-right.active::before {
-    background-color: #4CAF50; /* 활성화 상태일 때의 색상 변경 */
-}
 
-/* 마지막 버튼의 margin-right 제거 */
+
 .switch-right {
     margin-right: 0;
 }
@@ -83,7 +185,7 @@
 
 /* 원래 있던 디자인 */
 .active {
-    background-color: #FF8C00;
+    background-color: #FF4500;
     color: white
 }
 .login-button:hover {
