@@ -11,7 +11,8 @@
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
           style="z-index: 1000; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
-          <button class="dropdown-white" @click="showMyProfile">내 정보</button>
+          <button class="dropdown-white" @click="openMypageModal">내 정보</button>
+          <ModalMypageComponent v-if="isModalMypageOpen"></ModalMypageComponent>
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
         </div>
@@ -34,12 +35,14 @@
 //import ModalComponent from '@/components/ModalComponent.vue';
 import ModalLoginComponent from '@/components/ModalLoginComponent.vue';
 import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
+import ModalMypageComponent from './ModalMypageComponent.vue';
 
 export default {
   components: {
     //ModalComponent,
     ModalLoginComponent,
-    ModalSignupComponent
+    ModalSignupComponent,
+    ModalMypageComponent,
   },
   data() {
     return {
@@ -49,6 +52,7 @@ export default {
       // isModalOpen: false, // 모달 상태 변수 추가
       isModalSignupOpen: false,
       isModalLoginOpen: false,
+      isModalMypageOpen: false,
     };
   },
   methods: {
@@ -74,8 +78,14 @@ export default {
       console.log("자식 컴포넌트 전달받음: ", issignupclosed);
       this.isModalLoginOpen = issignupclosed;
     },
+    openMypageModal() {
+      this.isModalMypageOpen = !this.isModalMypageOpen;
+    },
     toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
+    },
+    showMyProfile(){
+      this.$router.push('/mypage');
     },
   },
 };
