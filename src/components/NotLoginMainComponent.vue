@@ -19,8 +19,6 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 
 
 </script>
-
-
 <template>
     <HeaderComponent />
     <div id="main-parent">
@@ -118,9 +116,7 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
                             12
                         </div>
                     </div>
-
                 </div>
-
                 <!-- 세 번째 post -->
                 <div class="post">
                     <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
@@ -140,9 +136,6 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
                 </div>
             </div>
         </div>
-
-
-
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->
         <div id="right-parent">
             <div class="profile-updates-box">
@@ -157,7 +150,6 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
         </div>
     </div>
 </template>
-  
   
 <style>
 @import "../css/style.css";
