@@ -159,24 +159,39 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
-    import axios from 'axios'
-    import HeaderComponent from '@/components/HeaderComponent.vue'
+import { ref } from 'vue'
+import axios from 'axios'
+import HeaderComponent from '@/components/HeaderComponent.vue'
 
-    const week = ref(true)
-    const month = ref(true)
+const week = ref(true)
+const month = ref(true)
 
-    const isSearchActive = ref(null);
-    const isLikeActive = ref(null);
+const isSearchActive = ref(null);
+const isLikeActive = ref(null);
 
-    const toggleSearchActive = (selection) => {
-        isSearchActive.value = selection;
-    };
+const toggleSearchActive = (selection) => {
+    isSearchActive.value = selection;
+};
 
-    const toggleLikeActive = (selection) => {
-        isLikeActive.value = selection;
-    };
+const toggleLikeActive = (selection) => {
+    isLikeActive.value = selection;
+};
 
+
+let data = ref(null);
+
+const fetchData = () => {
+    // Axios를 사용하여 GET 요청을 보냅니다.
+    axios.get('https://api.example.com/data')
+    .then(response => {
+    // 요청이 성공한 경우 데이터를 변수에 저장합니다.
+    data.value = response.data;
+    })
+    .catch(error => {
+    // 요청이 실패한 경우 에러를 처리합니다.
+    console.error('데이터를 가져오는 중 에러 발생:', error);
+    });
+};
 
     
     
