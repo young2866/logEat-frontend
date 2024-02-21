@@ -6,11 +6,12 @@
       <a class="navbar-brand mx-auto" href="/">LogEat</a>
     </div>
     <div v-if="!isLogin"> <!-- 로그인 되고 나서-->
-      <button class="write-button">글쓰기</button>
+      <button class="write-button" @click="openPostCreateModal">글쓰기</button>
+      <ModalPostCreate v-if="isModalPostCreateOpen" ></ModalPostCreate>
       <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
-          style="z-index: 1000; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
+          style="z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
           <button class="dropdown-white" @click="showMyProfile">내 정보</button>
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
@@ -19,10 +20,10 @@
     </div>
     <div v-if="isLogin"> <!-- 로그인 -->
       <button class="login-button" @click="openLoginModal">로그인</button>
-      <ModalLoginComponent v-if="isModalLoginOpen" />
+      <ModalLoginComponent v-if="isModalLoginOpen" @openLoginModal="openLoginModal" />
       <!-- <router-link class="signup-button" to="/modalsignup">회원가입</router-link> -->
       <button style="margin-left: 30px" class="signup-button" @click="openSignupModal">회원가입</button>
-      <ModalSignupComponent v-if="isModalSignupOpen" />
+      <ModalSignupComponent v-if="isModalSignupOpen" @openSignupModal="openSignupModal"/>
     </div>
 
 
@@ -34,12 +35,14 @@
 //import ModalComponent from '@/components/ModalComponent.vue';
 import ModalLoginComponent from '@/components/ModalLoginComponent.vue';
 import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
+import ModalPostCreate from './ModalPostCreate.vue';
 
 export default {
   components: {
     //ModalComponent,
     ModalLoginComponent,
-    ModalSignupComponent
+    ModalSignupComponent,
+    ModalPostCreate,
   },
   data() {
     return {
@@ -49,6 +52,7 @@ export default {
       // isModalOpen: false, // 모달 상태 변수 추가
       isModalSignupOpen: false,
       isModalLoginOpen: false,
+      isModalPostCreateOpen: false,
     };
   },
   methods: {
@@ -77,6 +81,9 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
+    openPostCreateModal(){
+      this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
+    }
   },
 };
 </script>

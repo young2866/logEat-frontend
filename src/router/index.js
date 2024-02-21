@@ -6,7 +6,7 @@ import ModalLoginComponent from '../components/ModalLoginComponent'
 import ModalSignupComponent from '../components/ModalSignupComponent'
 import ModalComponent from '../components/ModalComponent'
 import NotLoginMainComponent from '../components/NotLoginMainComponent'
-
+import PostCreate from '../components/PostCreate'
 
 
 
@@ -19,6 +19,7 @@ const routes = [
     { path: '/modalsignup', component: ModalSignupComponent, },
     { path: '/modal', component: ModalComponent, },
     { path: '/main', component: NotLoginMainComponent, },
+    { path: '/post/create', component: PostCreate, },
     
   ];
   

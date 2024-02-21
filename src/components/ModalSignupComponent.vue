@@ -36,7 +36,7 @@ export default {
             console.log("모달회원가입컴포넌트 closeModal() 실행111");
             this.isModalOpen = false;
             this.currentModalComponent = null;
-            console.log("모달회원가입컴포넌트 closeModal() 실행222");
+            this.$emit('openSignupModal');
             //this.isClosed = false;
             // this.$emit("setsignupclosed", this.issignupclosed);
         },

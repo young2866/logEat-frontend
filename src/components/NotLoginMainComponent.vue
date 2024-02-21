@@ -1,8 +1,7 @@
-<script setup>
+// <script setup>
 
-// import { ref } from 'vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import LeftSectionComponent from './LeftSectionComponent.vue';
+// import HeaderComponent from '@/components/HeaderComponent.vue'
+// import LeftSectionComponent from './LeftSectionComponent.vue';
 // const week = ref(true)
 // const month = ref(true)
 
@@ -28,7 +27,7 @@ import LeftSectionComponent from './LeftSectionComponent.vue';
 //   }
 // }
 
-</script>
+// </script>
     
 <script>
     import { library } from '@fortawesome/fontawesome-svg-core'
@@ -36,6 +35,11 @@ import LeftSectionComponent from './LeftSectionComponent.vue';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
     library.add(faArrowRight)
+    
+import HeaderComponent from '@/components/HeaderComponent.vue'
+import LeftSectionComponent from '@/components/LeftSectionComponent.vue'
+import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
+
 
     export default {
     components: {
@@ -49,7 +53,7 @@ import LeftSectionComponent from './LeftSectionComponent.vue';
     <div id="main-parent">
 
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
-        <LeftSectionComponent></LeftSectionComponent>
+        <LeftSectionComponent class="left-section"></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
         <div id="middle-parent">
             <div class="content-box">
@@ -104,6 +108,9 @@ import LeftSectionComponent from './LeftSectionComponent.vue';
                     </div>
 
                 </div>
+                
+                <CenterSectionComponent></CenterSectionComponent>
+
             </div>
         </div>
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->

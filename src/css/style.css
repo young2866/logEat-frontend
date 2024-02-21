@@ -93,6 +93,15 @@
     font-weight: 500;
     line-height: 24.50px;
 }
+
+#left-section {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+
 /* right-parent 디자인 */
 .profile-updates-box {
     width: auto;
