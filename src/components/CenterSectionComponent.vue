@@ -1,52 +1,22 @@
 <template>
-    <div
-        style="width: 1143px; height: 939px; left: 34px; top: 30px; position: absolute; background: white; border-radius: 16px; overflow: hidden; border: 1px #EAEBEC solid">
-        <div style="width: 1081px; height: 331px; left: 30px; top: 29px; position: absolute">
-
-            <!-- <div style="width: 309px; height: 331px; left: 0px; top: 0px; position: absolute">
-            <div style="padding-right: 216.25px; left: 0px; top: 230px; position: absolute; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-            <img style="width: 21px; height: 21px" src="https://via.placeholder.com/21x21" />
-            <div style="width: 39.11px; height: 18px; color: black; font-size: 14.06px; font-family: Inter; font-weight: 600; line-height: 22px; word-wrap: break-word">장은지</div>
-            <div style="padding-right: 7.08px"></div>
-            </div>
-            <div style="padding-right: 36.33px; left: 0px; top: 265.50px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="color: black; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 24px; word-wrap: break-word">에너지 바 2개</div>
-            </div>
-            <div style="width: 309.33px; height: 22.75px; left: 0px; top: 295.50px; position: absolute">
-            <div style="left: 0px; top: 0px; position: absolute"></div>
-            <div style="padding-right: 1.66px; left: 59.73px; top: 0px; position: absolute"></div>
-            <div style="left: 0px; top: -2.50px; position: absolute; color: #8A8A8A; font-size: 13px; font-family: Inter; font-weight: 500; line-height: 22.75px; word-wrap: break-word">플레이 데이타 동작점</div>
-            <div style="left: 265px; top: -1.50px; position: absolute; color: black; font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24.50px; word-wrap: break-word">99</div>
-            </div>
-            <img style="width: 247px; height: 225px; left: 29px; top: 0px; position: absolute" src="https://via.placeholder.com/247x225" />
-            <div style="width: 24px; height: 24px; left: 238px; top: 292px; position: absolute">
-                <img style="width: 24px; height: 22.5px; top: 1px; position: absolute; border: 2px" src="../assets/Heart.png">
-            </div>
-        </div> -->
-
-        <div style="width: 1143px; height: 939px; left: 34px; top: 30px; position: absolute; background: white; border-radius: 16px; overflow: hidden; border: 1px #EAEBEC solid">
-                <div v-for="post in postList.slice(currentPage * pageSize, (currentPage + 1) * pageSize)" :key="post.id">
-                    <div style="width: 309px; height: 331px; left: 0px; top: 0px; position: absolute">
-                        <div style="padding-right: 216.25px; left: 0px; top: 230px; position: absolute; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-                            <img style="width: 21px; height: 21px" src="https://via.placeholder.com/21x21" />
-                            <div style="width: 39.11px; height: 18px; color: black; font-size: 14.06px; font-family: Inter; font-weight: 600; line-height: 22px; word-wrap: break-word">{{ post.userNickname }}</div>
-                            <div style="padding-right: 7.08px"></div>
-                        </div>
-                        <div style="padding-right: 36.33px; left: 0px; top: 265.50px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                            <div style="color: black; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 24px; word-wrap: break-word">{{ post.title }}</div>
-                        </div>
-                        <div style="width: 309.33px; height: 22.75px; left: 0px; top: 295.50px; position: absolute">
-                            <div style="left: 0px; top: 0px; position: absolute"></div>
-                            <div style="padding-right: 1.66px; left: 59.73px; top: 0px; position: absolute"></div>
-                            <div style="left: 0px; top: -2.50px; position: absolute; color: #8A8A8A; font-size: 13px; font-family: Inter; font-weight: 500; line-height: 22.75px; word-wrap: break-word">플레이 데이타 동작점</div>
-                            <div style="left: 265px; top: -1.50px; position: absolute; color: black; font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24.50px; word-wrap: break-word">{{ post.likeCount }}</div>
-                        </div>
-                        <img style="width: 247px; height: 225px; left: 29px; top: 0px; position: absolute" :src="post.thumbnailPath" />
-                        <div style="width: 24px; height: 24px; left: 238px; top: 292px; position: absolute">
-                            <img style="width: 24px; height: 22.5px; top: 1px; position: absolute; border: 2px" src="../assets/Heart.png">
-                        </div>
+    <div id="middle-parent">
+        <div class="content-box">
+            <!-- 첫 번째 post -->
+            <div class="post" v-for="post in postList" :key="post.id">
+                <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
+                <div class="post-info">
+                    <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
+                    <div class="post-author">{{post.userNickname}}</div>
+                </div>
+                <div class="post-description">{{post.title}}</div>
+                <div class="post-details">
+                    <div class="post-location">플레이 데이타 동작점</div>
+                    <div class="post-score">
+                        <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
+                        {{post.likeCount}}
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -75,12 +45,12 @@ export default {
     },
     methods: {
         scrollPagination() {
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
-    if (nearBottom && !this.isLastPage && !this.isLoading) {
-        this.currentPage++;
-        this.loadPosts();
-    }
-},
+            const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
+            if (nearBottom && !this.isLastPage && !this.isLoading) {
+                this.currentPage++;
+                this.loadPosts();
+            }
+        },
         async loadPosts() {
             this.isLoading = true;
             try {
@@ -117,4 +87,94 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* middle-parent의 디자인 */
+.content-box {
+    width: 100%;
+    /* 부모 컨테이너인 #middle-parent에 맞게 너비 조정 */
+    height: auto;
+    /* 내용에 따라 높이 자동 조절 */
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #EAEBEC;
+    display: flex;
+    justify-content: space-around;
+    /* 내부 post들 사이의 간격 조정 */
+    flex-wrap: wrap;
+    /* 내용이 많아지면 다음 줄로 넘김 */
+    padding: 20px;
+    /* margin: 20px; */
+}
+
+.post {
+    width: calc(33.3% - 40px);
+    /* 3개의 포스트가 같은 줄에 들어갈 수 있도록 너비 조정, 여백 고려 */
+    margin: 20px;
+    /* 주변 여백 제공 */
+    height: auto;
+    /* 내용에 따라 높이 자동 조절 */
+    position: relative;
+    /* 내부 절대 위치 요소의 기준 */
+}
+
+.post-image {
+    width: 100%;
+    /* post 컨테이너에 맞게 이미지 너비 조정 */
+    height: auto;
+    /* 이미지의 비율을 유지하면서 높이 조정 */
+    top: 0;
+    left: 0;
+    /* 이미지의 위치를 조정 */
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 아이콘과 텍스트 사이의 간격 */
+    margin-bottom: 10px;
+    /* 다음 요소와의 간격 */
+}
+
+.post-icon {
+    width: 21px;
+    height: 21px;
+}
+
+.post-author {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.post-description {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 10px;
+    /* 다음 요소와의 간격 */
+}
+
+.post-details {
+    display: flex;
+    justify-content: space-between;
+    /* 요소들을 양 끝으로 분산 */
+    align-items: center;
+}
+
+.post-location {
+    color: #8A8A8A;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 22.75px;
+}
+
+.post-score {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24.50px;
+}</style>
