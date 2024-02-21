@@ -6,7 +6,9 @@ import ModalLoginComponent from '../components/ModalLoginComponent'
 import ModalSignupComponent from '../components/ModalSignupComponent'
 import ModalComponent from '../components/ModalComponent'
 import NotLoginMainComponent from '../components/NotLoginMainComponent'
+import MypageComponent from '../components/MypageComponent.vue'
 import PostCreate from '../components/PostCreate'
+import LatestPostComponent from '../components/LatestPostComponent'
 
 
 
@@ -19,8 +21,9 @@ const routes = [
     { path: '/modalsignup', component: ModalSignupComponent, },
     { path: '/modal', component: ModalComponent, },
     { path: '/main', component: NotLoginMainComponent, },
+    { path: '/mypage', component: MypageComponent },
     { path: '/post/create', component: PostCreate, },
-    
+    { path: '/post/following/latest-post', component: LatestPostComponent, },
   ];
   
   export default createRouter({
