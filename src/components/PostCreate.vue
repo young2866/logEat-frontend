@@ -14,7 +14,7 @@
         </div>
         <div id="app" style="width: 100%;">
             <label for="editor">내용</label>
-            <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+            <ckeditor :editor="editor" v-model="contents" :config="editorConfig"></ckeditor>
         </div>
         <div class="post-buttons">
             <button class="post-back-button" @click="$emit('closeModal')">뒤로 가기</button>
@@ -27,7 +27,7 @@
 <script>
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import Editor from 'ckeditor5-custom-build/build/ckeditor'
-import axios from 'axios'
+import axiosInstance from '../axios/index.js';
 export default {
     name: 'app',
     components: {
@@ -38,10 +38,11 @@ export default {
         return {
             title: "",
             category: "",
+            location: "",
             editor: Editor,
-            editorData: "",
+            contents: "",
             editorConfig: {
-                placeholder : "내용을 작성해 주세요!",
+                placeholder: "내용을 작성해 주세요!",
                 ckfinder: {
                     uploadUrl: "http://localhost:8080/post/image/upload",
                     withCredentials: true,
@@ -50,26 +51,36 @@ export default {
         };
     },
     methods: {
-        async CreatePost() {
-            await axios.post(
-                "http://localhost:8080/post/new/", {},
+        CreatePost() {
+            axiosInstance.post(
+                "/post/new",
                 {
-                    title : this.title,
-                    category : this.category,
-                    contents : this.contents,
+                    title: this.title,
+                    category: this.category,
+                    contents: this.contents,
+                    location: this.location,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }
-            );
+            ).then(response =>
+            console.log(response))
+
         },
+
     }
 }
 </script>
 <style>
 .ck-editor__editable {
     min-height: 300px;
-    max-height: 300px;
 }
-.ck-content {
+
+.ck-editor__main {
     font-size: 18px;
+    height: 100%;
 }
 </style>
 <style scoped>
@@ -77,13 +88,16 @@ export default {
     margin-top: 20px;
     margin-bottom: 15px;
 }
+
 .input-category {
     margin-bottom: 15px;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
 }
+
 input {
     width: 99%;
     height: 30px;
@@ -91,6 +105,7 @@ input {
     border-radius: 4px;
     margin-bottom: 10px;
 }
+
 .post-write-button {
     width: 126px;
     height: 48px;
@@ -102,6 +117,7 @@ input {
     font-family: Inter;
     cursor: pointer;
 }
+
 .post-back-button {
     width: 126px;
     height: 48px;
@@ -113,6 +129,7 @@ input {
     font-family: Inter;
     cursor: pointer;
 }
+
 .post-buttons {
     display: flex;
     align-items: center;
