@@ -9,6 +9,8 @@ import NotLoginMainComponent from '../components/NotLoginMainComponent'
 import MypageComponent from '../components/MypageComponent.vue'
 import PostCreate from '../components/PostCreate'
 import LatestPostComponent from '../components/LatestPostComponent'
+import WeeklyLikeComponent from '../components/WeeklyLikeComponent.vue'
+import MonthlylikeComponent from '../components/MonthlylikeComponent.vue'
 
 
 
@@ -24,6 +26,8 @@ const routes = [
     { path: '/mypage', component: MypageComponent },
     { path: '/post/create', component: PostCreate, },
     { path: '/post/following/latest-post', component: LatestPostComponent, },
+    { path: '/post/like/weeks', component: WeeklyLikeComponent, },
+    { path: '/post/like/month', component: MonthlylikeComponent, },
   ];
   
   export default createRouter({

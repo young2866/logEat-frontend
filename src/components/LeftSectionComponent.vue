@@ -64,14 +64,17 @@
                 <img src="../assets/star.png" alt="Likes" width="30" height="30">
             </div>
             <div class="likes-text">좋아요를 가장 많이 받은 글</div>
-
             <div class="likes-buttons">
-                <button style="margin-left:5%;" v-if="week" class="side_button" :class="{ 'active': isLikeActive === 'week' }" @click="toggleLikeActive('week')" >
-                    지난 주간
-                </button>
-                <button v-if="month" class="side_button"  :class="{ 'active': isLikeActive === 'month' }" @click="toggleLikeActive('month')">
-                    지난 한달
-                </button>
+              <button class="side_button" :class="{ 'active': isLikeActive === 'week' }" @click="setLikeActive('week')">
+                지난 주간
+              </button>
+              <button class="side_button" :class="{ 'active': isLikeActive === 'month' }" @click="setLikeActive('month')">
+                지난 한달
+              </button>
+            </div>
+            <div v-if="isLikeActive">
+              <WeeklyLikeComponent v-if="isLikeActive === 'week'"></WeeklyLikeComponent>
+              <MonthlylikeComponent v-if="isLikeActive === 'month'"></MonthlyLikeComponent> 
             </div>
 
             <div class="likes-content">
@@ -91,20 +94,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import WeeklyLikeComponent from './WeeklyLikeComponent.vue';
+import MonthlylikeComponent from './MonthlylikeComponent.vue';
 
-const week = ref(true); 
-const month = ref(true);
-const isSearchActive = ref(null);
-const isLikeActive = ref(null);
+const isLikeActive = ref(null); // 'week', 'month', 또는 null을 저장
 
-const toggleSearchActive = (selection) => {
-    isSearchActive.value = selection;
+const setLikeActive = (filterType) => {
+  isLikeActive.value = filterType;
 };
-
-const toggleLikeActive = (selection) => {
-    isLikeActive.value = selection;
-};
-
 </script>
 
 <style lang="scss" scoped>
