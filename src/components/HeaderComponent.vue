@@ -20,10 +20,10 @@
     </div>
     <div v-if="isLogin"> <!-- 로그인 -->
       <button class="login-button" @click="openLoginModal">로그인</button>
-      <ModalLoginComponent v-if="isModalLoginOpen" />
+      <ModalLoginComponent v-if="isModalLoginOpen" @openLoginModal="openLoginModal" />
       <!-- <router-link class="signup-button" to="/modalsignup">회원가입</router-link> -->
       <button style="margin-left: 30px" class="signup-button" @click="openSignupModal">회원가입</button>
-      <ModalSignupComponent v-if="isModalSignupOpen" />
+      <ModalSignupComponent v-if="isModalSignupOpen" @openSignupModal="openSignupModal"/>
     </div>
 
 
