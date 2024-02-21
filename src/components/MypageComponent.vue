@@ -1,8 +1,10 @@
-<template>  
-  <div class="mypage-container">
+<template>
+  <div>
+    <span class="close" @click="goToMainPage">&times;</span>
     <div class="profile-container">
-      <div class="profile-pic-container">
-        <img src="@/assets/test.jpeg" alt="Profile Picture" class="profile-pic">
+      <div class="profile-pic-container" @click="triggerFileInput">
+        <img :src="imagePreview || require('@/assets/test.jpeg')" alt="Profile Picture" class="profile-pic"/>
+        <input type="file" ref="fileInput" @change="handleFileChange" style="display: none;">
       </div>
       <div class="profile-info">
         <h2 class="nickname">{{ userProfile.nickname }}</h2>
@@ -13,7 +15,7 @@
 
     <!-- Modal for editing profile -->
     <div v-if="isModalVisible" class="modal">
-      <div class="modal-content">
+      <div class="edit-modal-content">
         <span class="close" @click="closeModal">&times;</span>
         <h2 style="text-align: center;">프로필 수정</h2>
         <form @submit.prevent="updateProfile">
@@ -22,7 +24,7 @@
             <input type="text" id="nickname" v-model="userProfile.nickname" @input="checkNicknameLength">
             <span v-if="nicknameTooLong" class="error-message">닉네임은 8글자로 제한됩니다.</span>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="padding-bottom: 10px">
             <label for="introduction">자기소개:</label>
             <textarea id="introduction" v-model="userProfile.introduce" @input="checkIntroductionLength"></textarea>
             <span v-if="introductionTooLong" class="error-message">자기소개는 31글자로 제한됩니다.</span>
@@ -34,7 +36,6 @@
   </div>
 </template>
 
-
 <script>
 import axios from 'axios';
 
@@ -42,20 +43,32 @@ export default {
   name: 'MyPage',
   data() {
     return {
-    userProfile: {
-      introduce:'',
-      nickname:'',
-    },
+      userProfile: {
+        introduce: '',
+        nickname: '',
+      },
       isModalVisible: false,
       nicknameTooLong: false,
       introductionTooLong: false,
     };
   },
   methods: {
+    triggerFileInput() {
+      this.$refs.fileInput.click();
+    },
+    handleFileChange(event) {
+      const file = event.target.files[0];
+      this.imagePreview = URL.createObjectURL(file);
+      // 파일을 FormData에 추가하고 서버로 업로드하는 로직을 추가하세요.
+    },
+    goToMainPage() {
+      window.location.reload();
+    },
     editProfile() {
       this.isModalVisible = true;
     },
     closeModal() {
+      this.fetchUserProfile();
       this.isModalVisible = false;
     },
     fetchUserProfile() {
@@ -66,14 +79,12 @@ export default {
         }
       })
       .then(response => {
-        console.log(response.data)
         this.userProfile = response.data.result;
       })
       .catch(error => {
         console.error("프로필 정보 불러오기 실패:", error);
         alert("프로필 정보를 불러올 수 없습니다.");
       });
-      console.log(this.userProfile)
     },
     updateProfile() {
       const token = localStorage.getItem('access_token');
@@ -85,7 +96,7 @@ export default {
       .then(() => {
         alert("프로필이 업데이트 되었습니다!");
         this.closeModal();
-        this.fetchUserProfile(); // 업데이트 후 사용자 정보 재조회
+        this.fetchUserProfile();
       })
       .catch(error => {
         console.error("프로필 업데이트 실패:", error);
@@ -93,18 +104,10 @@ export default {
       });
     },
     checkNicknameLength() {
-    this.nicknameTooLong = this.userProfile?.nickname?.length > 8;
-  },
-  checkIntroductionLength() {
-    this.introductionTooLong = this.userProfile?.introduce?.length > 31;
-  },
-  },
-  watch: {
-    'userProfile.nickname'() {
-      this.checkNicknameLength();
+      this.nicknameTooLong = this.userProfile.nickname.length > 8;
     },
-    'userProfile.introduce'() {
-      this.checkIntroductionLength();
+    checkIntroductionLength() {
+      this.introductionTooLong = this.userProfile.introduce.length > 31;
     },
   },
   mounted() {
@@ -113,47 +116,61 @@ export default {
 }
 </script>
 
-
-
 <style scoped>
-.mypage-container, .modal-content {
+.mypage-container {
   font-family: 'Arial', sans-serif;
   color: #333;
-  max-width: 500px; /* 모달과 프로필 페이지 너비 통일 */
-  margin: 20px auto; /* 중앙 정렬 */
-  padding: 20px;
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 20px; /* 내부 패딩 유지 */
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* 모달 스타일에 맞춰서 유지 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 모달 스타일에 맞춰서 유지 */
 }
 
-.profile-container, .form-group {
+.profile-container {
   text-align: center; /* 텍스트 중앙 정렬 */
   margin-bottom: 20px;
+  height: 400px;
+  margin-top: 20px;
+  padding-top: 20px;
+  width: 370px;
 }
 
 .profile-pic-container, .profile-pic {
   margin: auto; /* 프로필 사진 중앙 정렬 */
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid #f76c6c;
-  object-fit: cover;
+  width: 100px; /* 사진 크기 유지 */
+  height: 100px; /* 사진 크기 유지 */
+  border-radius: 50%; /* 원형 사진 유지 */
+  border: 3px solid #f76c6c; /* 테두리 색상 유지 */
+  object-fit: cover; /* 이미지 비율 유지 */
 }
 
 .nickname, .introduction, h2 {
-  color: #f76c6c; /* 통일된 컬러 테마 */
+  color: #f76c6c; /* 통일된 컬러 테마 유지 */
 }
 
 .edit-button, button[type="submit"] {
-  background-color: #f76c6c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #f76c6c; /* 버튼 배경 색상 */
+  color: white; /* 버튼 글자 색상 */
+  padding: 10px 20px; /* 버튼 패딩 */
+  border: none; /* 버튼 테두리 제거 */
+  border-radius: 5px; /* 버튼 둥근 모서리 */
+  cursor: pointer; /* 클릭 가능한 커서 모양 */
 }
 
+.edit-modal-content {
+  width: 370px;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding: 10px;
+  width: 60%; /* 너비를 줄임 */
+  max-width: 370px; /* 최대 너비 조정 */
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
 .modal {
   display: flex;
   align-items: center;
@@ -163,33 +180,37 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
 }
 
 .close {
+  top: 5px; /* 상단으로부터 5px */
+  left: 10px; /* 좌측으로부터 10px */
   color: #aaa;
   cursor: pointer;
+  font-size: 24px;
 }
 
 .close:hover {
-  color: black;
+  color: black; /* 닫기 버튼 호버 색상 */
 }
 
 .error-message {
-  color: red;
-  font-size: 0.9em;
+  color: red; /* 에러 메시지 색상 */
+  font-size: 0.9em; /* 에러 메시지 글자 크기 */
 }
 
 input[type="text"], textarea {
   width: calc(100% - 16px); /* 입력 필드 너비 조정 */
-  padding: 8px;
-  margin-top: 5px; /* 라벨과의 간격 */
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 8px; /* 입력 필드 패딩 */
+  margin-top: 5px; /* 입력 필드와 라벨 사이의 마진 */
+  border: 1px solid #ccc; /* 입력 필드 테두리 */
+  border-radius: 4px; /* 입력 필드 둥근 모서리 */
 }
 
 .form-group label {
-  color: #333;
-  font-weight: bold; /* 라벨 가독성 향상 */
+  color: #333; /* 라벨 색상 */
+  font-weight: bold; /* 라벨 굵기 */
 }
 </style>
+
