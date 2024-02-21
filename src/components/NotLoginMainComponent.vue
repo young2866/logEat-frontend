@@ -2,6 +2,7 @@
 
 // import { ref } from 'vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
+import LeftSectionComponent from './LeftSectionComponent.vue';
 
 // const week = ref(true)
 // const month = ref(true)
@@ -24,62 +25,7 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
     <div id="main-parent">
 
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
-        <div id="left-parent">
-            <div class="search-box">
-                
-                <div class="magnifier-icon">
-                    <img src="../assets/Magnifier.png" alt="Search" width="30" height="30">
-                </div>
-                <div class="search-text">검색하기</div>
-                
-
-                <!-- <button @click="toggleSearchActive('user')" :class="{ 'active': isSearchActive === 'user' }" style="width: 76.33px; height: 14px; left: 57px; top: 110px; position: absolute; color: #666666; font-size: 13.12px; font-family: Inter; font-weight: 400; line-height: 14px; word-wrap: break-word">
-                    유저 검색
-                </button>
-                
-                <button @click="toggleSearchActive('menu')" :class="{ 'active': isSearchActive === 'menu' }" style="width: 76.33px; height: 14px; left: 146px; top: 110px; position: absolute; color: #666666; font-size: 13.12px; font-family: Inter; font-weight: 400; line-height: 14px; word-wrap: break-word">
-                    메뉴 검색
-                </button>
-                
-                <button @click="toggleSearchActive('store')" :class="{ 'active': isSearchActive === 'store' }" style="width: 76.33px; height: 14px; left: 234px; top: 110px; position: absolute; color: #666666; font-size: 13.12px; font-family: Inter; font-weight: 400; line-height: 14px; word-wrap: break-word">
-                    가게 검색
-                </button> -->
-            
-
-                <div class="search-buttons">
-                    <button class="side_button" data-search-type="user">유저 검색</button>
-                    <button class="side_button" data-search-type="menu">메뉴 검색</button>
-                    <button class="side_button" data-search-type="store">가게 검색</button>
-                </div>
-
-                <div class="search-bar">
-                    <input type="text" placeholder="유저의 아이디를 입력해주세요" class="search-input">
-                </div>
-            </div>
-            <div class="likes-box">
-                <div class="star-icon">
-                    <img src="../assets/star.png" alt="Likes" width="30" height="30">
-                </div>
-                <div class="likes-text">좋아요를 가장 많이 받은 글</div>
-
-                <div class="likes-buttons">
-                    <button class="side_button" data-like-type="week">지난 주간</button>
-                    <button class="side_button" data-like-type="month">지난 한달</button>
-                </div>
-
-                <div class="likes-content">
-                    <img src="https://via.placeholder.com/32x32" alt="Product" class="content-image">
-                    <div class="content-info">
-                        <div class="content-title">눈물 젖은 초코파이</div>
-                        <div>
-                            <button class="content-tag">과자</button>
-                            <button class="content-brand">오리온</button>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <LeftSectionComponent></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
         <div id="middle-parent">
             <div class="content-box">
