@@ -3,6 +3,7 @@
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import LeftSectionComponent from '@/components/LeftSectionComponent.vue'
 import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
+import LatestPostComponent from '@/components/LatestPostComponent.vue';
 
 </script>
 <template>
@@ -20,13 +21,16 @@ import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->
         <div id="right-parent">
             <div class="profile-updates-box">
-                <div class="updates-title">최근 업데이트 된 프로필</div>
+                <div class="updates-title">최근 글을 작성한 팔로워</div>
                 <div class="switch-buttons">
                     <div class="switch-left"></div>
                     <div class="switch-right"></div>
+                    
                 </div>
-                <!-- 추가적인 프로필 업데이트 내용 -->
-            </div>
+                <div><LatestPostComponent></LatestPostComponent></div>
+                <!-- 추가적인 프로필 업데이트 내용 --> 
+            </div> 
+           
             <!-- right-parent 내에 추가적인 요소나 섹션이 필요할 경우 여기에 포함 -->
         </div>
     </div>

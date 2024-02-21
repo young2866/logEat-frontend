@@ -11,7 +11,7 @@
       <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
-          style="z-index: 1000; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
+          style="z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
           <button class="dropdown-white" @click="openMypageModal">내 정보</button>
           <ModalMypageComponent v-if="isModalMypageOpen"></ModalMypageComponent>
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
