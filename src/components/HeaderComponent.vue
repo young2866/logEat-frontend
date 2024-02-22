@@ -30,7 +30,7 @@
         <div v-if="isDropdownOpen || isLogin"
           style="z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
           <button class="dropdown-white" @click="openMypageModal">내 정보</button>
-          <ModalMypageComponent v-if="isModalMypageOpen"></ModalMypageComponent>
+          <ModalMypageComponent v-if="isModalMypageOpen" />
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <ModalMypostComponent v-if="isModalMypostOpen"></ModalMypostComponent>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
@@ -134,7 +134,10 @@ export default {
     },
     openPostCreateModal() {
       this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
-    }
+    },
+    closeModal() {
+      this.$emit('closeModal');
+    },
   },
 };
 </script>

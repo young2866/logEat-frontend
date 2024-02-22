@@ -1,13 +1,23 @@
 <template> 
+    <div v-if="isModalPostDetailOpen" class="modal-container">
+        <div class="modal-content" @click.stop>
+          <div class="modal-inner">
+            <!-- <PostDetail v-if="isModalPostDetailOpen" :id="selectedPostId"></PostDetail> -->
+            <PostDetail :id="selectedPostId" @closePostDetailModal="closePostDetailModal"/>
+          </div>
+        </div>
+      </div>
+
     <div class="modal-header">
-       <span class="close" @click="goToMainPage">&times;</span>
+       <span class="close" @click="closemypostModal">&times;</span>
      </div>              
     <div> 
         <div v-if="userPosts.length > 0">
             <h2>내 게시물</h2>
             <div class="posts-container">
-              <div v-for="post in userPosts" :key="post.id" class="post-item">
-                <img :src="post.thumbnailPath" alt="게시물 이미지" class="post-thumbnail">
+              <div v-for="post in userPosts" :key="post.id" class="post-item"  @click="openPostDetailModal(post.id)">
+                <img v-if="post.thumbnailPath" :src="post.thumbnailPath" alt="게시물 이미지" class="post-thumbnail">
+                <img v-else src="../assets/logeat-default.png" alt="Product Image" class="post-image">
                 <div class="post-info">
                   <h3>{{ post.title }}</h3>
                   <p>좋아요: {{ post.likeCount }}</p>
@@ -25,8 +35,12 @@
   
   <script>
   import axios from 'axios';
-  
+  import PostDetail from './PostDetail.vue';
+//   import PostDetail from './PostDetail.vue';
   export default {
+    components:{
+        PostDetail,
+    },
     name: 'MyPost',
   data() {
     return {
@@ -42,9 +56,15 @@
       isModalVisible: false,
       nicknameTooLong: false,
       introductionTooLong: false,
+      selectedPostId:null,
+      isModalPostDetailOpen:false,
     };
   },
     methods: {
+        openPostDetailModal(id){
+            this.selectedPostId = id;
+            this.isModalPostDetailOpen = !this.isModalPostDetailOpen;
+        },
       triggerFileInput() {
         this.$refs.fileInput.click();
       },
@@ -53,16 +73,16 @@
         this.imagePreview = URL.createObjectURL(file);
         // 파일을 FormData에 추가하고 서버로 업로드하는 로직을 추가하세요.
       },
-      goToMainPage() {
-        window.location.reload();
+     closemypostModal() {
+        this.$emit('closemypostModal');
       },
       editProfile() {
         this.isModalVisible = true;
       },
-      closeModal() {
-        this.fetchUserPost();
-        this.isModalVisible = false;
-      },
+      closePostDetailModal() {
+            console.log("closePostDetailModal() 실행!!!")
+            this.isModalPostDetailOpen = false;
+        },
       fetchUserPost() {
       const token = localStorage.getItem('access_token');
       axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/mypost`, {
@@ -72,6 +92,7 @@
       })
       .then(response => {
         // 서버로부터 받은 게시물 데이터를 userPosts 배열에 저장
+        console.log(response.data.content)
         this.userPosts = response.data.content; // response.data.content 가정; 실제 응답 구조에 따라 조정 필요
       })
       .catch(error => {
