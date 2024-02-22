@@ -183,13 +183,7 @@ export default {
   background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
 }
 
-.close {
-  top: 5px; /* 상단으로부터 5px */
-  left: 10px; /* 좌측으로부터 10px */
-  color: #aaa;
-  cursor: pointer;
-  font-size: 24px;
-}
+
 
 .close:hover {
   color: black; /* 닫기 버튼 호버 색상 */

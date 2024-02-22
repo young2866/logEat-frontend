@@ -11,6 +11,7 @@ import PostCreate from '../components/PostCreate'
 import LatestPostComponent from '../components/LatestPostComponent'
 import WeeklyLikeComponent from '../components/WeeklyLikeComponent.vue'
 import MonthlylikeComponent from '../components/MonthlylikeComponent.vue'
+import MyPostComponent from '../components/MyPostComponent.vue'
 
 
 
@@ -28,6 +29,7 @@ const routes = [
     { path: '/post/following/latest-post', component: LatestPostComponent, },
     { path: '/post/like/weeks', component: WeeklyLikeComponent, },
     { path: '/post/like/month', component: MonthlylikeComponent, },
+    { path: '/post/mypost', component: MyPostComponent, },
   ];
   
   export default createRouter({
