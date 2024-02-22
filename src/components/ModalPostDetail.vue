@@ -1,9 +1,9 @@
 <!-- ModalComponent.vue -->
 <template>
-    <div v-if="isModalOpen" class="modal-container">
+    <div v-if="isModalOpen" class="modal-container" ref="modal-container">
       <div class="modal-content" @click.stop>
         <div class="modal-inner">
-          <PostCreate @openPostCreateModal="openPostCreateModal" @closeModal="closeModal"/>
+          <PostDetail :id="id" @openPostDetailModal="openPostDetailModal" @closeModal="closeModal"/>
         </div>
       </div>
     </div>
@@ -11,9 +11,10 @@
   </template>
   
   <script>
-  import PostCreate from './PostCreate.vue';
+  import PostDetail from './PostDetail.vue';
   
   export default {
+    props: ['id'],
     data() {
       return {
         isModalOpen: true,
@@ -21,15 +22,16 @@
       };
     },
     methods: {
-      openPostCreateModal() {
+      openPostDetailModal(id) {
         this.isModalOpen = true;
+        this.currentModalComponent = PostDetail;
       },
       closeModal() {
-        console.log("모달로그인컴포넌트 closeModal() 실행 111")
         this.isModalOpen = false;
+        this.currentModalComponent = null;
       },
     },
-    components: { PostCreate }
+    components: { PostDetail }
   };
   </script>
   

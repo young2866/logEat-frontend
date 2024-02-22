@@ -6,8 +6,10 @@ import ModalLoginComponent from '../components/ModalLoginComponent'
 import ModalSignupComponent from '../components/ModalSignupComponent'
 import ModalComponent from '../components/ModalComponent'
 import NotLoginMainComponent from '../components/NotLoginMainComponent'
+import MypageComponent from '../components/MypageComponent.vue'
 import PostCreate from '../components/PostCreate'
-
+import LatestPostComponent from '../components/LatestPostComponent'
+import PostDetail from '../components/PostDetail'
 import LeftSectionComponent from '../components/LeftSectionComponent'
 import CenterSectionComponent from '../components/CenterSectionComponent'
 
@@ -22,9 +24,13 @@ const routes = [
     { path: '/modalsignup', component: ModalSignupComponent, },
     { path: '/modal', component: ModalComponent, },
     { path: '/main', component: NotLoginMainComponent, },
+    { path: '/mypage', component: MypageComponent },
     { path: '/post/create', component: PostCreate, },
     { path: '/left', component: LeftSectionComponent, },
     { path: '/center', component: CenterSectionComponent, },
+    { path: '/post/following/latest-post', component: LatestPostComponent, },
+    { path: '/post/:id/detail', component: PostDetail,  props: true },
+
     
   ];
   
