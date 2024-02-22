@@ -28,9 +28,10 @@ export default {
     this.fetchWeeklyLikedPosts();
   },
   methods: {
-    fetchWeeklyLikedPosts() {
-      axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/like/weeks`)
+    async fetchWeeklyLikedPosts() {
+      await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/like/weeks`)
         .then(response => {
+          console.log(response.data);
           this.posts = response.data;
         })
         .catch(error => {

@@ -28,8 +28,8 @@ export default {
     this.fetchMonthlyLikedPosts();
   },
   methods: {
-    fetchMonthlyLikedPosts() {
-      axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/like/month`)
+    async fetchMonthlyLikedPosts() {
+      await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/like/month`)
         .then(response => {
           this.posts = response.data;
         })
