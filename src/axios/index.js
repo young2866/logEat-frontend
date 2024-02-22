@@ -63,7 +63,6 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        console.log(response)
         const newAccessToken = response.headers['new-access-token']
         if(newAccessToken)
         {

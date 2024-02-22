@@ -2,14 +2,28 @@
 
 <template>
   <div class="nav-bar">
-    <div style="left: 96px; top: 41px; position: absolute; color: #FF4500; font-size: 32px; font-family: Newsreader; font-weight: 500; line-height: 32px; word-wrap: break-word">
+    <div
+      style="left: 96px; top: 41px; position: absolute; color: #FF4500; font-size: 32px; font-family: Newsreader; font-weight: 500; line-height: 32px; word-wrap: break-word">
       <a class="navbar-brand mx-auto" href="/">LogEat</a>
     </div>
     <div v-if="!isLogin"> <!-- 로그인 되고 나서-->
       <button class="write-button" @click="openPostCreateModal">글쓰기</button>
-      <ModalPostCreate v-if="isModalPostCreateOpen" ></ModalPostCreate>
-      <div style="width: 48px; height: 48px; left: 80%; top: 33px; position: absolute; cursor: pointer;">
-        <img style="width: 40px; height: 43px;"  alt="notification" src="../assets/notificationIcon.png" @click="asfdfsd">
+      <ModalPostCreate v-if="isModalPostCreateOpen"></ModalPostCreate>
+      <div style="width: 48px; height: 48px; left: 78%; top: 33px; position: absolute; cursor: pointer;"
+        @click="notiDropdown">
+        <img style="width: 40px; height: 43px;" alt="notification" src="../assets/notificationIcon.png">
+        <div class="notification-dropdown" v-if="isNotiDropdownOpen || isLogin"
+          style="width: 200px; height: 300px; z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
+          <div class="notification-box">
+            <div v-for="(notification, index) in notificationList" :key="index">
+              <div class="content-info">
+                <img src="../assets/logeat-default.png" alt="Default" class="notification-image">
+                <div class="content-title">{{ notification.message }}</div>
+                  <!-- <div class="content-tag">{{ notification.senderName }}</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
@@ -29,7 +43,7 @@
       <ModalLoginComponent v-if="isModalLoginOpen" @openLoginModal="openLoginModal" />
       <!-- <router-link class="signup-button" to="/modalsignup">회원가입</router-link> -->
       <button style="margin-left: 30px" class="signup-button" @click="openSignupModal">회원가입</button>
-      <ModalSignupComponent v-if="isModalSignupOpen" @openSignupModal="openSignupModal"/>
+      <ModalSignupComponent v-if="isModalSignupOpen" @openSignupModal="openSignupModal" />
     </div>
 
 
@@ -44,6 +58,7 @@ import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
 import ModalMypageComponent from './ModalMypageComponent.vue';
 import ModalPostCreate from './ModalPostCreate.vue';
 import ModalMypostComponent from './ModalMypostComponent.vue';
+import axiosInstance from '../axios/index.js'
 
 export default {
   components: {
@@ -65,12 +80,26 @@ export default {
       isModalMypageOpen: false,
       isModalPostCreateOpen: false,
       isModalMypostOpen: false,
+      isNotiDropdownOpen: false,
+      notificationList: [],
     };
   },
   methods: {
     showMyPosts() {
     this.isModalMypostOpen = !this.isModalMypostOpen;
   },
+    async getNoitification() {
+      axiosInstance.get(
+        '/user/notifications'
+      ).then((res) => {
+        const receivedData = res.data.result;
+        // 여기서 데이터 처리 (notificationList 업데이트)
+        this.notificationList = receivedData;
+        console.log(this.notificationList);
+
+      });
+
+    },
     goToLogin() {
       this.$router.push('/login');
     },
@@ -82,15 +111,12 @@ export default {
       window.location.href = '/';
     },
     openSignupModal() {
-      console.log("헤더컴포넌트 openSignupModal() 실행111")
       this.isModalSignupOpen = !this.isModalSignupOpen;
     },
     openLoginModal() {
-      console.log("헤더컴포넌트 openLoginModal() 실행111")
       this.isModalLoginOpen = !this.isModalLoginOpen;
     },
     setsignupclosed(issignupclosed) {
-      console.log("자식 컴포넌트 전달받음: ", issignupclosed);
       this.isModalLoginOpen = issignupclosed;
     },
     openMypageModal() {
@@ -99,10 +125,14 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    showMyProfile(){
+    notiDropdown() {
+      this.isNotiDropdownOpen = !this.isNotiDropdownOpen;
+      this.getNoitification();
+    },
+    showMyProfile() {
       this.$router.push('/mypage');
     },
-    openPostCreateModal(){
+    openPostCreateModal() {
       this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
     }
   },
@@ -145,6 +175,77 @@ export default {
 
 .dropdown-white:hover {
   background-color: #EAEBEC;
+}
+
+.notification-box {
+  /* margin-top: 5px;
+  width: 185px;
+  height: 50px;
+  background: white;
+  color: #8A8A8A;
+  border-radius: 8px;
+  font-family: Inter;
+  font-size: 16px;
+  border: none; */
+  
+  margin-top: 5px;
+  width: 185px; /* 너비 조정 */
+  background: white;
+  color: #8A8A8A;
+  border-radius: 8px;
+  font-family: Inter;
+  font-size: 16px;
+  border: none;
+  
+  
+}
+.content-info {
+    display: flex;
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    justify-content: center;
+    
+    margin-left: 10%;
+    margin: 5px 0;
+  }
+
+.notification-image {
+    margin-right: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+    
+    flex-shrink: 0;
+  margin-right: 10px; /* 이미지와 텍스트 사이 간격 */
+  width: 40px;
+  }
+
+.content-detail {
+    width: 200px;
+
+}
+.notification-dropdown {
+  /* height: auto;
+  
+  width: auto;
+  height: auto;
+  z-index: 500;
+  position: absolute;
+  top: 56px;
+  background: white;
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
+  padding: 12px; */
+  width: auto; /* 내부 콘텐츠에 따라 너비 조정 */
+  height: auto; /* 내용에 따라 높이 조정 */
+  z-index: 500;
+  position: absolute;
+  top: 56px;
+  background: white;
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
+  padding: 12px;
+}
+.notification-image{
+  
+    margin-right: 10px;
+    width: 40px;
 }
 
 .dropdown-white {
@@ -229,7 +330,7 @@ export default {
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
-  color: 8A8A8A;
+  color: #8A8A8A;
   font-size: 16px;
   font-family: Inter;
   font-weight: 600;
@@ -237,4 +338,5 @@ export default {
   word-wrap: break-word;
   border: none;
   /* Assuming you don't need a border on the button */
-}</style>
+}
+</style>
