@@ -10,14 +10,13 @@
         <div class="title">로그인</div>
         <div class="form-field">
           <label for="email">이메일</label>
-          <input type="email" v-model="email" placeholder="이메일을 입력해주세요." />
+          <input @keypress.enter="doLogin" type="email" v-model="email" placeholder="이메일을 입력해주세요." />
         </div>
         <div class="form-field">
           <label for="password">비밀번호</label>
-          <input type="password" v-model="password" placeholder="비밀번호를 입력해주세요." />
+          <input @keypress.enter="doLogin" type="password" v-model="password" placeholder="비밀번호를 입력해주세요." />
         </div>
         <button class="login-button2" @click="doLogin">로그인</button>
-        <button class="kakao-login-button">카카오 로그인</button>
         <div class="non-author">
           <span style="color: #696F79; font-size: small;">아직 회원이 아니신가요?</span>
           <button class="signup-text" @click="$emit('openSignupModal');">회원 가입</button>
@@ -148,10 +147,11 @@ input {
 .login-button2 {
   background-color: #FF4500;
   color: white;
-  width: 335px;
+  width: auto;
   height: 48px;
   border-radius: 8px;
   margin-top: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
   font-size: 16px;
   font-family: Inter;
