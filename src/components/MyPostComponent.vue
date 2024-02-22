@@ -24,7 +24,7 @@
           <div class="posts-container">
             <div v-for="post in userPosts" :key="post.id" class="post-item">
               <img v-if="post.thumbnailPath" :src="post.thumbnailPath" alt="게시물 이미지" class="post-thumbnail" @click="openPostDetailModal(post.id)">
-              <img v-else src="../assets/logeat-default.png" alt="Product Image" class="post-image">
+              <img v-else src="../assets/logeat-default.png" alt="Product Image" class="post-image" @click="openPostDetailModal(post.id)">
               <div class="post-info">
                 <h3>{{ post.title }}</h3>
                 <p>좋아요: {{ post.likeCount }}</p>
