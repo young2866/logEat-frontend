@@ -145,6 +145,29 @@ export default {
       this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
     }
   },
+// 여기가 모달 열면 스크롤 막는 메소드
+  openLoginModal() {
+  this.isModalLoginOpen = true;
+  localStorage.setItem('isModalOpen', 'true'); // 모달이 열릴 때
+  this.preventBodyScroll(true); // 스크롤 방지 함수 호출
+},
+closeModal() {
+  this.isModalLoginOpen = false;
+  localStorage.removeItem('isModalOpen'); // 모달이 닫힐 때
+  this.preventBodyScroll(false); // 스크롤 방지 해제 함수 호출
+},
+preventBodyScroll(isPrevent) {
+  if (isPrevent) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+},
+// 여기 까지
+  
+
+
+
 };
 </script>
 

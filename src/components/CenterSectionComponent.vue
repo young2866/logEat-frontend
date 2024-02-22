@@ -34,7 +34,8 @@
     </div>
 
 
-    <div id="middle-parent">
+    <div id="middle-parent" :style="isModalPostDetailOpen ? 'overflow: hidden; height: 30vh;' : ''" >
+    <!-- 위에꺼 스타일은 모달을 열면 고정되게 하기위해 한거 -->
         <div class="content-box" v-if="this.isSearch === false">
             <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id, post.likeCount, post.userNickname)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != ''" class="post-image" alt="Product Image" />
@@ -78,7 +79,7 @@
                 </div>
             </div>
         </div>
-
+    
     </div>
 </template>
 
@@ -365,4 +366,7 @@ button {
     font-size: 16px;
     font-weight: 500;
     line-height: 24.50px;
-}</style>
+}
+
+
+</style>
