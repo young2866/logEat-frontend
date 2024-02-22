@@ -17,6 +17,9 @@
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
         </div>
+        <div style="width: 48px; height: 48px; left: 80%; top: 33px; position: absolute; cursor: pointer;">
+          <img alt="notification" src="../assets/notificationIcon.png" @click="asfdfsd">
+          </div>
       </div>
     </div>
     <div v-if="isLogin"> <!-- 로그인 -->
