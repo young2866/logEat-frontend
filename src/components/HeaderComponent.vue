@@ -15,6 +15,7 @@
           <button class="dropdown-white" @click="openMypageModal">내 정보</button>
           <ModalMypageComponent v-if="isModalMypageOpen"></ModalMypageComponent>
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
+          <ModalMypostComponent v-if="isModalMypostOpen"></ModalMypostComponent>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
         </div>
         <div style="width: 48px; height: 48px; left: 80%; top: 33px; position: absolute; cursor: pointer;">
@@ -41,6 +42,7 @@ import ModalLoginComponent from '@/components/ModalLoginComponent.vue';
 import ModalSignupComponent from '@/components/ModalSignupComponent.vue';
 import ModalMypageComponent from './ModalMypageComponent.vue';
 import ModalPostCreate from './ModalPostCreate.vue';
+import ModalMypostComponent from './ModalMypostComponent.vue';
 
 export default {
   components: {
@@ -49,6 +51,7 @@ export default {
     ModalSignupComponent,
     ModalMypageComponent,
     ModalPostCreate,
+    ModalMypostComponent,
   },
   data() {
     return {
@@ -60,9 +63,13 @@ export default {
       isModalLoginOpen: false,
       isModalMypageOpen: false,
       isModalPostCreateOpen: false,
+      isModalMypostOpen: false,
     };
   },
   methods: {
+    showMyPosts() {
+    this.isModalMypostOpen = !this.isModalMypostOpen;
+  },
     goToLogin() {
       this.$router.push('/login');
     },
