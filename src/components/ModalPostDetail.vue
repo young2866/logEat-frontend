@@ -3,7 +3,7 @@
     <div v-if="isModalOpen" class="modal-container" ref="modal-container">
       <div class="modal-content" @click.stop>
         <div class="modal-inner">
-          <PostDetail :id="id" @openPostDetailModal="openPostDetailModal" @closeModal="closeModal"/>
+          <PostDetail :id="id" @openPostDetailModal="openPostDetailModal" @closePostDetailModal="closeModalPost"/>
         </div>
       </div>
     </div>
@@ -26,7 +26,8 @@
         this.isModalOpen = true;
         this.currentModalComponent = PostDetail;
       },
-      closeModal() {
+      closeModalPost() {
+        console.log("ModalPostDetail컴포넌트 closeModal() 실행!!!")
         this.isModalOpen = false;
         this.currentModalComponent = null;
       },

@@ -95,7 +95,8 @@ export default {
             }
         },
         closeModal() {
-            window.location.reload();
+            this.$emit('closePostDetailModal');
+            console.log("PostDetail컴포넌트 closeModal() 실행!!!")
         }
     }
 }

@@ -3,18 +3,19 @@
         <div class="modal-content" @click.stop>
           <div class="modal-inner">
             <!-- <PostDetail v-if="isModalPostDetailOpen" :id="selectedPostId"></PostDetail> -->
-            <PostDetail :id="selectedPostId"/>
+            <PostDetail :id="selectedPostId" @closePostDetailModal="closePostDetailModal"/>
           </div>
         </div>
       </div>
     
 
     <div id="middle-parent">
+
         <div class="content-box" v-if="this.isSearch === false" >
             <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
-                <div class="post-info" v-if="this.isSearch === true">
+                <div class="post-info">
                     <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
                     <img :src="post.profileImagePath" v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
                     <div class="post-author">{{ post.userNickname }}</div>
@@ -28,31 +29,29 @@
                     </div>
                 </div>
             </div>
-    
         </div>
 
         <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div>
-                <div class="post-design-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
-                    <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
-                    <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
-                    <div class="post-info" >
-                        <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
-                        <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
-                        <div class="post-author">{{ post.userNickname }}</div>
-                    </div>
-                    <div class="post-description">{{ post.title }}</div>
-                    <div class="post-details">
-                        <div class="post-location">{{post.location}}</div>
-                        <div class="post-score">
-                            <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
-                            {{ post.likeCount }}
-                        </div>
+            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
+                <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
+                <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
+                <div class="post-info" >
+                    <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
+                    <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
+                    <div class="post-author">{{ post.userNickname }}</div>
+                </div>
+                <div class="post-description">{{ post.title }}</div>
+                <div class="post-details">
+                    <div class="post-location">{{post.location}}</div>
+                    <div class="post-score">
+                        <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
+                        {{ post.likeCount }}
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </template>
@@ -71,13 +70,16 @@ export default {
             postList: [],
             pageSize: 10,
             currentPage: 0,
-            searchType: '',
-            searchValue: '',
             isLastPage: false,
             isLoading: false,
             isModalPostDetailOpen: false,
             selectedPostId: null,
             /* 검색관련 */
+            searchType: '',
+            searchValue: '',
+            searchCurrentPage: 0,
+            searchPageSize: 0,
+            isSearchLastPage: false,
 
         }
     },
@@ -99,6 +101,11 @@ export default {
                 this.currentPage++;
                 this.loadPosts();
             }
+            if(nearBottom && this.isSearch === true) {
+                this.searchCurrentPage++;
+                this.loadSearchUser();
+            }
+
         },
         async loadPosts() {
             try {
@@ -127,8 +134,24 @@ export default {
             }
             this.isLoading = false;
         },
-        loadSearchUser() {
-            
+        async loadSearchUser() {
+            console.log(" loadSearchUser() 실행!!!!!!!!! ");
+
+            /* 마지막페이지에서 페이지네이션 실행 X */
+            if(this.responseValue.totalPages < this.searchCurrentPage) {
+                console.log("마지막페이지에서 페이지네이션 실행 X");
+                return;
+            }
+
+            const searchParams = {
+                page: this.searchCurrentPage,
+                size: this.searchPageSize,
+            }
+
+            this.$emit('searchParams', searchParams);
+            console.log("loadSearchUser() 페이지 파라미터 보낸 거 확인");
+            console.log(searchParams);
+
         },
         async loadSearchTitle() {
 
@@ -136,6 +159,10 @@ export default {
         async loadSearchCategory() {
 
         },
+        closePostDetailModal() {
+            console.log("closePostDetailModal() 실행!!!")
+            this.isModalPostDetailOpen = false;
+        }
         
     }
 }
