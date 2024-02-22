@@ -9,9 +9,13 @@ import NotLoginMainComponent from '../components/NotLoginMainComponent'
 import MypageComponent from '../components/MypageComponent.vue'
 import PostCreate from '../components/PostCreate'
 import LatestPostComponent from '../components/LatestPostComponent'
+import WeeklyLikeComponent from '../components/WeeklyLikeComponent.vue'
+import MonthlylikeComponent from '../components/MonthlylikeComponent.vue'
+import MyPostComponent from '../components/MyPostComponent.vue'
 import PostDetail from '../components/PostDetail'
 import LeftSectionComponent from '../components/LeftSectionComponent'
 import CenterSectionComponent from '../components/CenterSectionComponent'
+
 
 
 
@@ -29,9 +33,10 @@ const routes = [
     { path: '/left', component: LeftSectionComponent, },
     { path: '/center', component: CenterSectionComponent, },
     { path: '/post/following/latest-post', component: LatestPostComponent, },
+    { path: '/post/like/weeks', component: WeeklyLikeComponent, },
+    { path: '/post/like/month', component: MonthlylikeComponent, },
+    { path: '/post/mypost', component: MyPostComponent, },
     { path: '/post/:id/detail', component: PostDetail,  props: true },
-
-    
   ];
   
   export default createRouter({
