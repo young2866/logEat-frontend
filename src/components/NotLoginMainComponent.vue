@@ -4,7 +4,7 @@
     <div id="main-parent">
 
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
-        <LeftSectionComponent class="left-section" :test="testvalue" @handleSearch="handleSearch"></LeftSectionComponent>
+        <LeftSectionComponent class="left-section" @handleSearch="handleSearch"></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
         <div id="middle-parent">
             <div class="content-box">
@@ -60,7 +60,7 @@
 
                 </div>
                 
-                <CenterSectionComponent></CenterSectionComponent>
+                <CenterSectionComponent :responseValue="responseValue"></CenterSectionComponent>
 
             </div>
         </div>
@@ -110,14 +110,16 @@ export default {
     },
     data() {
         return {
-            testvalue : 0,
+            responseValue : '',
         }
     },
     methods: {
         handleSearch(res) {
-            console.log("왼쪽창에서 메인창 부모로 실행로그!!!!");
+            console.log("왼쪽창에서 메인창 부모로 실행로그 + 받은 데이터 확인!!!!");
             console.log(res);
+            this.responseValue = res;
             
+
         },
     },
 

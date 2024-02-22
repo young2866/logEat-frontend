@@ -118,8 +118,12 @@ export default {
           alert("분류를 선택해주세요.")
           return;
         }
-        this.$emit('handleSearch', this.responseData);
-        console.log("searchHub searchResult 실행!!");   
+
+
+        console.log("searchHub 부모로 보내기전 값 확인");   
+        console.log(this.responseData.data);   
+
+        this.$emit('handleSearch', this.responseData.data);
       },
       async searchUser() {
         console.log("searchUser()실행111");
@@ -129,7 +133,7 @@ export default {
             userName: this.searchValue
           }, })
           .then((res) => {
-            this.responseData = res.data;
+            this.responseData = res;
           })
           .catch((error) => {
             console.log(error);
@@ -146,7 +150,7 @@ export default {
             titleKeyword: this.searchValue
         },
         }).then((res) => {
-          this.responseData = res.json();
+          this.responseData = res;
         }).catch((error) => {
           console.log(error);
         }).then(() => {
@@ -161,7 +165,7 @@ export default {
             titleKeyword: this.searchValue
         },
         }).then((res) => {
-          this.responseData = res.json();
+          this.responseData = res;
         }).catch((error) => {
           console.log(error);
         }).then(() => {

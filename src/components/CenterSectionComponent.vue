@@ -2,7 +2,24 @@
     <div id="middle-parent">
         <div class="content-box">
             <!-- 첫 번째 post -->
-            <div class="post" v-for="post in postList" :key="post.id">
+            <!-- <div class="post" v-for="post in postList" :key="post.id">
+                <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
+                <div class="post-info">
+                    <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
+                    <div class="post-author">{{post.userNickname}}</div>
+                </div>
+                <div class="post-description">{{post.title}}</div>
+                <div class="post-details">
+                    <div class="post-location">플레이 데이타 동작점</div>
+                    <div class="post-score">
+                        <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
+                        {{post.likeCount}}
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- 검색창에서 받아온 post -->
+            <div class="post" v-for="post in this.responseValue.content" :key="post.id">
                 <img src="https://via.placeholder.com/247x225" class="post-image" alt="Product Image" />
                 <div class="post-info">
                     <img src="https://via.placeholder.com/21x21" class="post-icon" alt="Icon" />
@@ -17,6 +34,7 @@
                     </div>
                 </div>
             </div>
+            
 
 
         </div>
@@ -27,6 +45,7 @@
 import axios from 'axios';
 
 export default {
+    props:['responseValue'],    
     data() {
         return {
             postList: [],
@@ -37,7 +56,6 @@ export default {
             isLastPage: false,
             isLoading: false,
             /* 검색관련 */
-            
 
         }
     },
