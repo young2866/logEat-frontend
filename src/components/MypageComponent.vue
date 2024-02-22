@@ -3,7 +3,8 @@
     <span class="close" @click="goToMainPage">&times;</span>
     <div class="profile-container">
       <div class="profile-pic-container" @click="triggerFileInput">
-        <img :src="userProfile.imageUrl" alt="Profile Picture" class="profile-pic" />
+        <img v-if="userProfile.imageUrl === null" src="../assets/Anonymous.png" alt="Profile Picture" class="profile-pic" />
+        <img v-if="userProfile.imageUrl!=null" :src="userProfile.imageUrl" alt="Profile Picture" class="profile-pic" />
         <input type="file" ref="fileInput" @change="handleFileChange" style="display: none;">
       </div>
       <div class="profile-info">
@@ -167,7 +168,6 @@ export default {
   /* 사진 크기 유지 */
   border-radius: 50%;
   /* 원형 사진 유지 */
-  border: 3px solid #f76c6c;
   /* 테두리 색상 유지 */
   object-fit: cover;
   /* 이미지 비율 유지 */

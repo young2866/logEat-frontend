@@ -75,8 +75,8 @@ export default {
         return {
             week: true,
             month: true,
-            isSearchActive: null,
-            isLikeActive: null,
+            isSearchActive: 'user',
+            isLikeActive: 'week',
             searchValue: null,
             responseData: '',
             isSearch: false,
