@@ -17,10 +17,10 @@
     <div v-for="post in posts" :key="post.id" >  
       <div class="posts" style="cursor: pointer;" @click="openPostDetailModal(post.id)">
       
-        <img src="../assets/Anonymous.png"  v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " alt="Profile" width="40" height="40" class="post-profile" />
+        <img src="../assets/Anonymous.png"  v-if="post.profileImagePath === null  || post.profileImagePath === '' " alt="Profile" width="40" height="40" class="post-profile" />
           
         <!-- thumbnailPath 값이 'thumbnailPath insert'가 아닐 때 표시될 부분 -->
-        <div v-else class="post-author">{{ post.thumbnailPath }}</div>
+        <img :src="post.profileImagePath" v-else class="post-author-img"/>
         <div class="post-detail">
           <div class="post-author">{{ post.userNickname }}</div>
           <div class="post-content">{{ post.title }}</div>

@@ -13,7 +13,14 @@
   .post-profile {
     margin-right: 15px; /* 이미지와 텍스트 사이의 공간 */
   }
-  
+  .post-author-img{
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  .post-author{
+    margin-right: 15px;
+  }
   .profile-updates-box {
     display: flex;
     flex-direction: column;
