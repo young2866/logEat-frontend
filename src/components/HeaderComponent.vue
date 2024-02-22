@@ -8,6 +8,9 @@
     <div v-if="!isLogin"> <!-- 로그인 되고 나서-->
       <button class="write-button" @click="openPostCreateModal">글쓰기</button>
       <ModalPostCreate v-if="isModalPostCreateOpen" ></ModalPostCreate>
+      <div style="width: 48px; height: 48px; left: 80%; top: 33px; position: absolute; cursor: pointer;">
+        <img style="width: 40px; height: 43px;"  alt="notification" src="../assets/notificationIcon.png" @click="asfdfsd">
+      </div>
       <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
@@ -17,9 +20,7 @@
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
         </div>
-        <div style="width: 48px; height: 48px; left: 80%; top: 33px; position: absolute; cursor: pointer;">
-          <img alt="notification" src="../assets/notificationIcon.png" @click="asfdfsd">
-          </div>
+        
       </div>
     </div>
     <div v-if="isLogin"> <!-- 로그인 -->

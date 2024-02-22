@@ -1,5 +1,23 @@
 <template>
     <div v-if="isModalPostDetailOpen" class="modal-container">
+        <div class="like-share-buttons">
+            <div style="width: 64px; height: 150px; padding-left: 8px; padding-top: 9px; padding-bottom: 9px; background: #F8F9FA; border-radius: 32px; border: 1px #F1F3F5 solid; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
+                  <div style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 1px; justify-content: center; align-items: center; display: flex">
+                  </div>
+                </div>
+                <div style="align-self: stretch; padding-top: 8px; padding-bottom: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                  <div style="color: #495057; font-size: 12px; font-family: Helvetica Neue; font-weight: 700; line-height: 12px; word-wrap: break-word">0</div>
+                </div>
+                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                    <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
+                        <div style="width: 20px; height: 20px; justify-content: center; align-items: center; display: flex">
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
         <div class="modal-content" @click.stop>
           <div class="modal-inner">
             <!-- <PostDetail v-if="isModalPostDetailOpen" :id="selectedPostId"></PostDetail> -->
@@ -14,7 +32,7 @@
             <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
-                <div class="post-info" v-if="this.isSearch === true">
+                <div class="post-info">
                     <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
                     <img :src="post.profileImagePath" v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
                     <div class="post-author">{{ post.userNickname }}</div>
@@ -33,8 +51,7 @@
 
         <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div>
-                <div class="post-design-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
+                <div class="post-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
                     <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                     <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
                     <div class="post-info" >
@@ -53,7 +70,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 </template>
 
@@ -142,6 +158,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.like-share-buttons {
+    margin: 30px;
+  }
 .modal-container {
     position: fixed;
     z-index: 1000;
@@ -208,18 +227,22 @@ export default {
     position: relative;
     /* 내부 절대 위치 요소의 기준 */
     cursor: pointer;
-
+    max-height: 300px;
 }
 
 
 .post-image {
     width: 100%;
     /* post 컨테이너에 맞게 이미지 너비 조정 */
-    height: auto;
+    height: 50%;
     /* 이미지의 비율을 유지하면서 높이 조정 */
     top: 0;
     left: 0;
     /* 이미지의 위치를 조정 */
+    background-size: contain;
+    object-fit: cover;
+    margin-bottom: 30px;
+
 }
 
 .post-info {

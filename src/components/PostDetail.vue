@@ -1,5 +1,6 @@
 <template>
     <div class="" v-if="postInfo">
+        
         <div><span class="close" @click="closeModal">&times;</span></div>
         
         <div
@@ -49,11 +50,8 @@
                     </div>
                 </div>
                 <div
-                    style="height: 100%; width: 90%; padding-left: 24px; padding-right: 24px; padding-top: 32px; padding-bottom: 32px; left: 0px; top: 286px; position: absolute; background: #F8F9FA; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.06); border-radius: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 48px; display: inline-flex">
-                    <div
-                        style="width: 32px; height: 48px; flex-direction: column; justify-content: center; align-items: center; display: flex">
-                        <div style="width: 32px; height: 48px; background: #FF8C00"></div>
-                    </div>
+                    style=" width: 90%; padding-left: 24px; padding-right: 24px; padding-top: 32px; padding-bottom: 32px; left: 0px; top: 286px; position: absolute; background: #F8F9FA; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.06); border-radius: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 48px; display: inline-flex; overflow: auto" 
+                    >
                     <div
                         style="align-self: stret height: 30px; padding-bottom: 1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
                         <div
