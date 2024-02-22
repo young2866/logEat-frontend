@@ -120,16 +120,15 @@ export default {
                 params: {
                     userName: this.searchValue
                 },
+            }).then((res) => {
+                this.responseData = res;
             })
-                .then((res) => {
-                    this.responseData = res;
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-                .then(() => {
-                    console.log('searchUser End!!');
-                });
+            .catch((error) => {
+                console.log(error);
+            })
+            .then(() => {
+                console.log('searchUser End!!');
+            });
         },
         async searchTitle() {
             console.log("searchTitle()실행111");
@@ -147,11 +146,11 @@ export default {
             });
         },
         async searchCategory() {
-            console.log("searchTitle()실행111 category");
+            console.log("searchCategory()실행111 category");
             const url = `${process.env.VUE_APP_API_BASE_URL}/post/search/category`;
             await axios.get(url, {
                 params: {
-                    titleKeyword: this.searchValue
+                    category: this.searchValue
                 },
             }).then((res) => {
                 this.responseData = res;
