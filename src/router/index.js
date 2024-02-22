@@ -15,7 +15,8 @@ import MyPostComponent from '../components/MyPostComponent.vue'
 import PostDetail from '../components/PostDetail'
 import LeftSectionComponent from '../components/LeftSectionComponent'
 import CenterSectionComponent from '../components/CenterSectionComponent'
-
+import MyFollowingComponent from '../components/MyFollowingComponent'
+import MyFollowerComponent from '../components/MyFollowerComponent'
 
 
 
@@ -37,6 +38,8 @@ const routes = [
     { path: '/post/like/month', component: MonthlylikeComponent, },
     { path: '/post/mypost', component: MyPostComponent, },
     { path: '/post/:id/detail', component: PostDetail,  props: true },
+    { path: '/user/myfollower', component: MyFollowerComponent,  props: true },
+    { path: '/user/myfollowing', component: MyFollowingComponent,  props: true },
   ];
   
   export default createRouter({

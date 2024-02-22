@@ -3,7 +3,7 @@
   <div v-if="isModalOpen" class="modal-container" ref="modalContainer" >
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <MyPostComponent @openMypageModal="openMypageModal"/>
+        <MyPostComponent @openMypageModal="openMypageModal" @closemypostModal="closeModal"/>
         <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
       </div>
     </div>

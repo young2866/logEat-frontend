@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="close" @click="goToMainPage">&times;</span>
+    <span class="close" @click="closemypageModal">&times;</span>
     <div class="profile-container">
       <div class="profile-pic-container" @click="triggerFileInput">
         <img v-if="userProfile.imageUrl === null" src="../assets/Anonymous.png" alt="Profile Picture" class="profile-pic" />
@@ -11,6 +11,14 @@
         <h2 class="nickname">{{ userProfile.nickname }}</h2>
         <p class="introduction">{{ userProfile.introduce }}</p>
         <button class="edit-button" @click="editProfile">수정</button>
+      </div>
+      <div class="follow-container">
+        <div class="follow-component">
+          <MyFollowerComponent></MyFollowerComponent>
+        </div>
+        <div class="follow-component">
+          <MyFollowingComponent></MyFollowingComponent>
+        </div>
       </div>
     </div>
 
@@ -40,7 +48,13 @@
 <script>
 import axios from 'axios';
 import axiosInstance from '../axios/index.js';
+import MyFollowingComponent from './MyFollowingComponent.vue';
+import MyFollowerComponent from './MyFollowerComponent.vue';
 export default {
+  components:{
+        MyFollowerComponent,
+        MyFollowingComponent,
+    },
   name: 'MyPage',
   data() {
     return {
@@ -54,6 +68,9 @@ export default {
     };
   },
   methods: {
+    closemypageModal(){
+      this.$emit('closemypageModal');
+    },
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
@@ -78,9 +95,7 @@ export default {
       }
     },
     // 파일을 FormData에 추가하고 서버로 업로드하는 로직을 추가하세요.
-    goToMainPage() {
-      window.location.reload();
-    },
+
     editProfile() {
       this.isModalVisible = true;
     },
@@ -139,7 +154,7 @@ export default {
   color: #333;
   margin: 0 auto;
   /* 중앙 정렬 */
-  padding: 20px;
+  padding: 15px;
   /* 내부 패딩 유지 */
   background: #fff;
   border-radius: 10px;
@@ -153,8 +168,8 @@ export default {
   /* 텍스트 중앙 정렬 */
   margin-bottom: 20px;
   height: 400px;
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 0px;
+  padding-top: 15px;
   width: 370px;
 }
 

@@ -3,8 +3,7 @@
   <div v-if="isModalOpen" class="modal-container" ref="modalContainer" >
     <div class="modal-content" @click.stop>
       <div class="modal-inner">
-        <MypageComponent @openMypageModal="openMypageModal"/>
-        <!-- <component :is="currentModalComponent" @closeModal="closeModal" /> -->
+        <MypageComponent @openMypageModal="openMypageModal" @closemypageModal="closeModal"/>
       </div>
     </div>
   </div>
@@ -28,7 +27,6 @@ export default {
         },
         closeModal() {
           this.isModalOpen = false;
-          this.currentModalComponent = null;
         },
     },
     components: { MypageComponent }
