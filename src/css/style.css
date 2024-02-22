@@ -61,6 +61,7 @@
 
 .post-author {
     color: black;
+    margin-top: 3px;
     font-size: 14px;
     font-weight: 600;
     line-height: 22px;
@@ -111,6 +112,7 @@
     overflow: hidden;
     border: 1px solid #EAEBEC;
     margin: 20px; /* 중앙 정렬 */
+    margin-left: 60px;
     position: relative; /* 자식 요소들의 위치 기준 */
 }
 .updates-container {

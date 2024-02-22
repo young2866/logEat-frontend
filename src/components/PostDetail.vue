@@ -1,9 +1,11 @@
 <template>
-    <div class="post" v-if="postInfo">
+    <div class="" v-if="postInfo">
+        <div><span class="close" @click="closeModal">&times;</span></div>
+        
         <div
-            style="width: 768px; height: 450px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 32px; display: inline-flex">
-            <span class="close" @click="closeModal">&times;</span>
-            <div style="width: 768px; height: 450px; position: relative">
+            style="width: 100%; height: 450px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 32px; display: inline-flex">
+            
+            <div style="width: 100%; height: 450px; position: relative">
                 <div
                     style="height: 144.50px; padding-bottom: 0.50px; padding-right: 106.95px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
                     <div
@@ -11,7 +13,7 @@
                         {{ postInfo.title }}</div>
                 </div>
                 <div
-                    style="width: 768px; left: 0px; top: 176px; position: absolute; justify-content: space-between; align-items: center; display: inline-flex">
+                    style="width: 100%; left: 0px; top: 176px; position: absolute; justify-content: space-between; align-items: center; display: inline-flex">
                     <div
                         style="padding-bottom: 1px; padding-right: 0.01px; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
                         <div
@@ -31,7 +33,7 @@
                     </div>
                 </div>
                 <div
-                    style="width: 768px; padding-bottom: 14px; padding-right: 538.55px; left: 0px; top: 222px; position: absolute; justify-content: flex-start; align-items: flex-start; gap: 14px; display: inline-flex">
+                    style="width: 100%; padding-bottom: 14px; left: 0px; top: 222px; position: absolute; justify-content: flex-start; align-items: flex-start; gap: 14px; display: inline-flex">
                     <div
                         style="padding-top: 7px; padding-bottom: 8px; padding-left: 16px; padding-right: 16px; background: #F8F9FA; border-radius: 16px; justify-content: flex-start; align-items: center; display: flex">
                         <div
@@ -41,22 +43,22 @@
                 </div>
 
                 <div
-                    style="padding-left: 768px; left: 0px; top: 286px; position: absolute; justify-content: flex-end; align-items: center; display: inline-flex">
+                    style="padding-left: 100%; left: 0px; top: 286px; position: absolute; justify-content: flex-end; align-items: center; display: inline-flex">
                     <div
                         style="width: 320px; align-self: stretch; padding-left: 80px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
                     </div>
                 </div>
                 <div
-                    style="height: 50%; width: 70%; padding-left: 24px; padding-right: 24px; padding-top: 32px; padding-bottom: 32px; left: 0px; top: 286px; position: absolute; background: #F8F9FA; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.06); border-radius: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 48px; display: inline-flex">
+                    style="height: 100%; width: 90%; padding-left: 24px; padding-right: 24px; padding-top: 32px; padding-bottom: 32px; left: 0px; top: 286px; position: absolute; background: #F8F9FA; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.06); border-radius: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 48px; display: inline-flex">
                     <div
                         style="width: 32px; height: 48px; flex-direction: column; justify-content: center; align-items: center; display: flex">
                         <div style="width: 32px; height: 48px; background: #FF8C00"></div>
                     </div>
                     <div
-                        style="align-self: stretch; height: 30px; padding-bottom: 1px; padding-right: 581.30px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                        style="align-self: stret height: 30px; padding-bottom: 1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
                         <div
                             style="color: #495057; font-size: 23.81px; font-family: Helvetica Neue; font-weight: 700; word-wrap: break-word">
-                            {{ postInfo.contents }}</div>
+                            <div v-html="postInfo.contents" ></div></div>
                     </div>
 
                 </div>
@@ -103,7 +105,7 @@ export default {
 <style lang="scss" scoped>
 .close {
     top: 5px; /* 상단으로부터 5px */
-    left: 10px; /* 좌측으로부터 10px */
+    left: 0px; /* 좌측으로부터 10px */
     color: #aaa;
     cursor: pointer;
     font-size: 24px;

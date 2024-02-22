@@ -29,7 +29,7 @@
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 
 library.add(faArrowRight)
 
@@ -40,7 +40,6 @@ import LatestPostComponent from '@/components/LatestPostComponent.vue';
 
 export default {
     components: {
-        FontAwesomeIcon,
         HeaderComponent,
         LeftSectionComponent,
         CenterSectionComponent,

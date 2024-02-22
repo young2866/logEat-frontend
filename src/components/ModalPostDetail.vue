@@ -47,6 +47,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  
   }
   
   .modal-content {
@@ -62,7 +63,7 @@
     /* 추가된 부분 */
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
   
   button {
