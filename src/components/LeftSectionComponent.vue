@@ -78,6 +78,7 @@ export default {
       isLikeActive : null, 
       searchValue : null,
       responseData : '',
+      isSearch : false,
     }
   },
   created() {
@@ -119,11 +120,13 @@ export default {
           return;
         }
 
-
+        this.isSearch = true;
         console.log("searchHub 부모로 보내기전 값 확인");   
-        console.log(this.responseData.data);   
+        console.log(this.responseData.data);
+        console.log(this.isSearch);
+        
 
-        this.$emit('handleSearch', this.responseData.data);
+        this.$emit('handleSearch', this.responseData.data, this.isSearch);
       },
       async searchUser() {
         console.log("searchUser()실행111");

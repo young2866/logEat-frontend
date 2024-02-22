@@ -10,11 +10,11 @@
     
 
     <div id="middle-parent">
-        <div class="content-box">
+        <div class="content-box" v-if="this.isSearch === false" >
             <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
-                <div class="post-info" >
+                <div class="post-info" v-if="this.isSearch === true">
                     <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
                     <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
                     <div class="post-author">{{ post.userNickname }}</div>
@@ -28,9 +28,12 @@
                     </div>
                 </div>
             </div>
-            
+    
+        </div>
+
+        <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div class="post" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
+            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
                 <div class="post-info" >
@@ -47,9 +50,6 @@
                     </div>
                 </div>
             </div>
-            
-
-
         </div>
     </div>
 
@@ -60,7 +60,7 @@ import axios from 'axios';
 import PostDetail from './PostDetail.vue';
 
 export default {
-    props:['responseValue'],    
+    props:['responseValue', 'isSearch'],
     components: {
         PostDetail,
     },

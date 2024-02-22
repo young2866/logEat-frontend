@@ -6,7 +6,7 @@
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
         <LeftSectionComponent class="left-section" @handleSearch="handleSearch"></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
-        <CenterSectionComponent :responseValue="responseValue"></CenterSectionComponent>
+        <CenterSectionComponent :responseValue="responseValue" :isSearch="isSearch" ></CenterSectionComponent>
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->
         <div id="right-parent">
             <div class="profile-updates-box">
@@ -48,14 +48,16 @@ export default {
     data() {
         return {
             responseValue : '',
+            isSearch: false,
         }
     },
     methods: {
-        handleSearch(res) {
+        handleSearch(res, issearch) {
             console.log("왼쪽창에서 메인창 부모로 실행로그 + 받은 데이터 확인!!!!");
             console.log(res);
+            console.log(issearch);
             this.responseValue = res;
-            
+            this.isSearch = issearch;
 
         },
     },
