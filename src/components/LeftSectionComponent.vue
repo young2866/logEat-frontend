@@ -24,10 +24,12 @@
             </div>
         </div>
         <div class="likes-box">
-            <div class="star-icon">
-                <img src="../assets/star.png" alt="Likes" width="30" height="30">
+            <div class="magnifier-icon">
+                <!-- <div class="star-icon"> -->
+                    <img src="../assets/star.png" alt="Likes" width="30" height="30">
+                <!-- </div> -->
+                <div class="likes-text">좋아요를 가장 많이 받은 글</div>
             </div>
-            <div class="likes-text">좋아요를 가장 많이 받은 글</div>
             <div class="likes-buttons">
                 <button class="side_button" :class="{ 'active': isLikeActive === 'week' }" @click="setLikeActive('week')">
                     지난 주간

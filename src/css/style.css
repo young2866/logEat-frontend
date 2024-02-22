@@ -12,7 +12,34 @@
 #right-parent{
     position: relative;
 }
-
+.modal-container {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    width: 50%;
+    height: 95%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-inner {
+    /* 추가된 부분 */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
 /* middle-parent의 디자인 */
 .content-box {
     width: auto; 
@@ -106,85 +133,6 @@
 }
 
 
-/* right-parent 디자인 */
-.profile-updates-box {
-    width: auto;
-    height: 640.50px;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #EAEBEC;
-    margin: 20px; /* 중앙 정렬 */
-    margin-left: 60px;
-    position: relative; /* 자식 요소들의 위치 기준 */
-}
-.updates-container {
-    display: flex;
-    justify-content: space-between; /* 요소들을 양끝으로 정렬 */
-    align-items: center; /* 수직 방향 중앙 정렬 */
-    padding: 0 20px; /* 내부 여백 */
-}
-.updates-title, .switch-buttons {
-    /* flex: 1;  */
-    text-align: center;
-}
-.updates-title {
-    color: #555555;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 28px;
-    /* position: absolute;
-    top: 41px;
-    left: 31px; */
-}
-.switch-buttons {
-    
-    
-    border-radius: 17px; 
-    border: 1px solid #E1E2E4; 
-    /* justify-content: space-between; 
-    align-items: center;
-    
-    position: relative; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
-    display: flex;
-    align-items: center;
-    justify-content: space-around; */
-
-    display: flex;
-    justify-content: center; /* 버튼들을 중앙 정렬 */
-    align-items: center;
-    width: auto; /* 선과 버튼들을 포함할 수 있도록 너비 조정 */
-    padding: 0 10px;
-}
-/* .switch-buttons::after {
-    content: '';
-    position: absolute;
-    height: 100%; 
-    width: 1px; 
-    background-color: #E1E2E4; 
-    left: 50%; 
-    transform: translateX(-50%);
-} */
-
-/* 버튼 내 이미지 아이콘에 대한 스타일 */
-/* .switch-left, .switch-right { */
-    /* background-color: transparent; 
-    width: 16px; 
-    height: 16px;
-    border: none;
-    font-size: 24px;
-    flex: none;  */
-
-    /* font-size: 24px;
-    margin: 0 5px; */
-/* } */
-
-
-
-.switch-right {
-    margin-right: 0;
-}
 
 
 
