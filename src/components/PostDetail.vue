@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from '../axios/index.js';
 
 export default {
     props: ['id'], // id prop 받기
@@ -84,7 +84,7 @@ export default {
     methods: {
         async postDetail() {
             try {
-                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/${this.id}/detail`);
+                const response = await axiosInstance.get(`${process.env.VUE_APP_API_BASE_URL}/post/${this.id}/detail`);
                 this.postInfo = response.data;
                 // document.body.classList.add("noscroll");
             } catch (error) {

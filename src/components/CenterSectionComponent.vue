@@ -84,7 +84,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import PostDetail from './PostDetail.vue';
 import axiosInstance from '../axios/index.js';
 
@@ -145,6 +144,7 @@ export default {
                 }
             }catch(error){
                 console.log(error);
+                alert("본인을 팔로우 할 수 없습니다.")
             }
         },
 
@@ -179,7 +179,7 @@ export default {
                 //     params.category = this.searchValue;
                 // }
                 console.log(params);
-                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/main`, { params });
+                const response = await axiosInstance.get(`${process.env.VUE_APP_API_BASE_URL}/post/main`, { params });
                 const receivedData = response.data;
 
                 const addPostList = receivedData.content.map(post => ({ ...post }))

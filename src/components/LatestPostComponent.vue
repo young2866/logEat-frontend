@@ -118,6 +118,7 @@ export default {
                     alert(selectedPostUserNickname + "님 팔로우를 하셨습니다.");
                 }
             }catch(error){
+              alert("본인을 팔로우 할 수 없습니다.")
                 console.log(error);
             }
         },
