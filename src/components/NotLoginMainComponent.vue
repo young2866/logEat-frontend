@@ -11,11 +11,11 @@
         <div id="right-parent">
             <div class="profile-updates-box">
                 <div class="updates-title">최근 글을 작성한 팔로워</div>
-                <div class="switch-buttons">
+                <!-- <div class="switch-buttons">
                     <div class="switch-left"></div>
                     <div class="switch-right"></div>
                     
-                </div>
+                </div> -->
                 <div><LatestPostComponent></LatestPostComponent></div>
                 <!-- 추가적인 프로필 업데이트 내용 --> 
             </div> 
