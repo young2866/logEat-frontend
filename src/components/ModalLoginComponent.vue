@@ -48,6 +48,7 @@ export default {
     closeModal() {
       console.log("모달로그인컴포넌트 closeModal() 실행 111")
       this.isModalOpen = false;
+      this.$emit('openLoginModal');
     },
     closeSignupModal() {
       console.log("모달로그인컴포넌트 closeSignupModal() 실행 111")

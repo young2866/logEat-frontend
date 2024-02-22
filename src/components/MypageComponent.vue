@@ -3,7 +3,7 @@
     <span class="close" @click="goToMainPage">&times;</span>
     <div class="profile-container">
       <div class="profile-pic-container" @click="triggerFileInput">
-        <img :src="imagePreview || require('@/assets/test.jpeg')" alt="Profile Picture" class="profile-pic"/>
+        <img :src="userProfile.imageUrl" alt="Profile Picture" class="profile-pic" />
         <input type="file" ref="fileInput" @change="handleFileChange" style="display: none;">
       </div>
       <div class="profile-info">
@@ -38,7 +38,7 @@
 
 <script>
 import axios from 'axios';
-
+import axiosInstance from '../axios/index.js';
 export default {
   name: 'MyPage',
   data() {
@@ -56,11 +56,27 @@ export default {
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
-    handleFileChange(event) {
+    async handleFileChange(event) {
       const file = event.target.files[0];
-      this.imagePreview = URL.createObjectURL(file);
-      // 파일을 FormData에 추가하고 서버로 업로드하는 로직을 추가하세요.
+      const formData = new FormData();
+      formData.append('upload', file);
+      try {
+        const response = await axiosInstance.post(`${process.env.VUE_APP_API_BASE_URL}/user/image`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        const data = response.data;
+        if (data.uploaded) {
+          this.userProfile.imageUrl = data.url;
+        } else {
+          console.error(data.error.message);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
+    // 파일을 FormData에 추가하고 서버로 업로드하는 로직을 추가하세요.
     goToMainPage() {
       window.location.reload();
     },
@@ -78,13 +94,13 @@ export default {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(response => {
-        this.userProfile = response.data.result;
-      })
-      .catch(error => {
-        console.error("프로필 정보 불러오기 실패:", error);
-        alert("프로필 정보를 불러올 수 없습니다.");
-      });
+        .then(response => {
+          this.userProfile = response.data.result;
+        })
+        .catch(error => {
+          console.error("프로필 정보 불러오기 실패:", error);
+          alert("프로필 정보를 불러올 수 없습니다.");
+        });
     },
     updateProfile() {
       const token = localStorage.getItem('access_token');
@@ -93,15 +109,15 @@ export default {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(() => {
-        alert("프로필이 업데이트 되었습니다!");
-        this.closeModal();
-        this.fetchUserProfile();
-      })
-      .catch(error => {
-        console.error("프로필 업데이트 실패:", error);
-        alert("프로필 업데이트에 실패했습니다.");
-      });
+        .then(() => {
+          alert("프로필이 업데이트 되었습니다!");
+          this.closeModal();
+          this.fetchUserProfile();
+        })
+        .catch(error => {
+          console.error("프로필 업데이트 실패:", error);
+          alert("프로필 업데이트에 실패했습니다.");
+        });
     },
     checkNicknameLength() {
       this.nicknameTooLong = this.userProfile.nickname.length > 8;
@@ -120,15 +136,20 @@ export default {
 .mypage-container {
   font-family: 'Arial', sans-serif;
   color: #333;
-  margin: 0 auto; /* 중앙 정렬 */
-  padding: 20px; /* 내부 패딩 유지 */
+  margin: 0 auto;
+  /* 중앙 정렬 */
+  padding: 20px;
+  /* 내부 패딩 유지 */
   background: #fff;
-  border-radius: 10px; /* 모달 스타일에 맞춰서 유지 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 모달 스타일에 맞춰서 유지 */
+  border-radius: 10px;
+  /* 모달 스타일에 맞춰서 유지 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* 모달 스타일에 맞춰서 유지 */
 }
 
 .profile-container {
-  text-align: center; /* 텍스트 중앙 정렬 */
+  text-align: center;
+  /* 텍스트 중앙 정렬 */
   margin-bottom: 20px;
   height: 400px;
   margin-top: 20px;
@@ -136,26 +157,43 @@ export default {
   width: 370px;
 }
 
-.profile-pic-container, .profile-pic {
-  margin: auto; /* 프로필 사진 중앙 정렬 */
-  width: 100px; /* 사진 크기 유지 */
-  height: 100px; /* 사진 크기 유지 */
-  border-radius: 50%; /* 원형 사진 유지 */
-  border: 3px solid #f76c6c; /* 테두리 색상 유지 */
-  object-fit: cover; /* 이미지 비율 유지 */
+.profile-pic-container,
+.profile-pic {
+  margin: auto;
+  /* 프로필 사진 중앙 정렬 */
+  width: 100px;
+  /* 사진 크기 유지 */
+  height: 100px;
+  /* 사진 크기 유지 */
+  border-radius: 50%;
+  /* 원형 사진 유지 */
+  border: 3px solid #f76c6c;
+  /* 테두리 색상 유지 */
+  object-fit: cover;
+  /* 이미지 비율 유지 */
 }
 
-.nickname, .introduction, h2 {
-  color: #f76c6c; /* 통일된 컬러 테마 유지 */
+.nickname,
+.introduction,
+h2 {
+  color: #f76c6c;
+  /* 통일된 컬러 테마 유지 */
 }
 
-.edit-button, button[type="submit"] {
-  background-color: #f76c6c; /* 버튼 배경 색상 */
-  color: white; /* 버튼 글자 색상 */
-  padding: 10px 20px; /* 버튼 패딩 */
-  border: none; /* 버튼 테두리 제거 */
-  border-radius: 5px; /* 버튼 둥근 모서리 */
-  cursor: pointer; /* 클릭 가능한 커서 모양 */
+.edit-button,
+button[type="submit"] {
+  background-color: #f76c6c;
+  /* 버튼 배경 색상 */
+  color: white;
+  /* 버튼 글자 색상 */
+  padding: 10px 20px;
+  /* 버튼 패딩 */
+  border: none;
+  /* 버튼 테두리 제거 */
+  border-radius: 5px;
+  /* 버튼 둥근 모서리 */
+  cursor: pointer;
+  /* 클릭 가능한 커서 모양 */
 }
 
 .edit-modal-content {
@@ -164,13 +202,16 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
   padding: 10px;
-  width: 60%; /* 너비를 줄임 */
-  max-width: 370px; /* 최대 너비 조정 */
+  width: 60%;
+  /* 너비를 줄임 */
+  max-width: 370px;
+  /* 최대 너비 조정 */
   margin: auto;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
 }
+
 .modal {
   display: flex;
   align-items: center;
@@ -180,31 +221,41 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  background: rgba(0, 0, 0, 0.5);
+  /* 반투명 배경 */
 }
 
-
-
 .close:hover {
-  color: black; /* 닫기 버튼 호버 색상 */
+  color: black;
+  /* 닫기 버튼 호버 색상 */
 }
 
 .error-message {
-  color: red; /* 에러 메시지 색상 */
-  font-size: 0.9em; /* 에러 메시지 글자 크기 */
+  color: red;
+  /* 에러 메시지 색상 */
+  font-size: 0.9em;
+  /* 에러 메시지 글자 크기 */
 }
 
-input[type="text"], textarea {
-  width: calc(100% - 16px); /* 입력 필드 너비 조정 */
-  padding: 8px; /* 입력 필드 패딩 */
-  margin-top: 5px; /* 입력 필드와 라벨 사이의 마진 */
-  border: 1px solid #ccc; /* 입력 필드 테두리 */
-  border-radius: 4px; /* 입력 필드 둥근 모서리 */
+input[type="text"],
+textarea {
+  width: calc(100% - 16px);
+  /* 입력 필드 너비 조정 */
+  padding: 8px;
+  /* 입력 필드 패딩 */
+  margin-top: 5px;
+  /* 입력 필드와 라벨 사이의 마진 */
+  border: 1px solid #ccc;
+  /* 입력 필드 테두리 */
+  border-radius: 4px;
+  /* 입력 필드 둥근 모서리 */
 }
 
 .form-group label {
-  color: #333; /* 라벨 색상 */
-  font-weight: bold; /* 라벨 굵기 */
+  color: #333;
+  /* 라벨 색상 */
+  font-weight: bold;
+  /* 라벨 굵기 */
 }
 </style>
 
