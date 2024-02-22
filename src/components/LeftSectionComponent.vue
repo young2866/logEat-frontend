@@ -355,5 +355,13 @@ export default {
 </script>
 
 <style scoped>
+input {
+    width: calc(100% - 20px);
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #F1F3F5; 
+  }
 @import "../css/LeftStyle.css";
 </style>

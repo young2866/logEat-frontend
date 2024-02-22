@@ -2,15 +2,19 @@
     <div class="post_create" style="width : 80%; margin: 0 auto;">
         <div class="input-title">
             <label for="title">제목</label>
-            <input class="title-input-place" type="text" id="title" v-model="title" placeholder="제목을 입력해주세요." />
+            <input class="input-box" type="text" id="title" v-model="title" placeholder="제목을 입력해주세요." />
         </div>
         <div class="input-category">
             <label for="category">카테고리</label>
-            <input type="text" id="category" v-model="category" placeholder="카테고리를 입력해주세요." />
+            <input class="input-box" type="text" id="category" v-model="category" placeholder="카테고리를 입력해주세요." />
         </div>
         <div class="input-category">
             <label for="location">위치</label>
-            <input type="text" id="location" v-model="location" placeholder="위치를 입력해주세요." />
+            <input class="input-box" type="text" id="location" v-model="location" placeholder="위치를 입력해주세요." />
+        </div>
+        <div class="input-secret" style="display: flex; align-items: center;">
+            <label for="secretYn" style="margin-right: 5px;margin bottom: 10px;">비밀글 설정</label>
+            <input style="margin-bottom: 10px;" type="checkbox" id="secretYn" v-model="secretYn" value="Y" />
         </div>
         <div id="app" style="width: 100%;">
             <label for="editor">내용</label>
@@ -41,6 +45,7 @@ export default {
             location: "",
             editor: Editor,
             contents: "",
+            secretYn: "N",
             editorConfig: {
                 placeholder: "내용을 작성해 주세요!",
                 ckfinder: {
@@ -59,6 +64,7 @@ export default {
                     category: this.category,
                     contents: this.contents,
                     location: this.location,
+                    secretYn: this.secretYn,
                 },
                 {
                     headers: {
@@ -87,10 +93,12 @@ export default {
 .input-title {
     margin-top: 20px;
     margin-bottom: 15px;
+    
 }
 
 .input-category {
     margin-bottom: 15px;
+    
 }
 
 label {
@@ -98,7 +106,7 @@ label {
     margin-bottom: 5px;
 }
 
-input {
+.input-box {
     width: 99%;
     height: 30px;
     border: 1px solid #ccc;
