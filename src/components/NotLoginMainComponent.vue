@@ -1,59 +1,10 @@
-// <script setup>
 
-// import HeaderComponent from '@/components/HeaderComponent.vue'
-// import LeftSectionComponent from './LeftSectionComponent.vue';
-// const week = ref(true)
-// const month = ref(true)
-
-// const isSearchActive = ref(null);
-// const isLikeActive = ref(null);
-
-// const toggleSearchActive = (selection) => {
-//     isSearchActive.value = selection;
-// };
-
-// const toggleLikeActive = (selection) => {
-//     isLikeActive.value = selection;
-// };
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-// library.add(faArrowRight)
-
-// export default {
-//   components: {
-//     FontAwesomeIcon
-//   }
-// }
-
-// </script>
-    
-<script>
-    import { library } from '@fortawesome/fontawesome-svg-core'
-    import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-    library.add(faArrowRight)
-    
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import LeftSectionComponent from '@/components/LeftSectionComponent.vue'
-import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
-
-
-    export default {
-    components: {
-        FontAwesomeIcon
-    }
-    }
-</script>
-
-<template>
+    <template>
     <HeaderComponent />
     <div id="main-parent">
 
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
-        <LeftSectionComponent class="left-section"></LeftSectionComponent>
+        <LeftSectionComponent class="left-section" :test="testvalue" @handleSearch="handleSearch"></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
         <div id="middle-parent">
             <div class="content-box">
@@ -136,6 +87,42 @@ import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
         </div>
     </div>
 </template>
+
+
+<script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faArrowRight)
+
+import HeaderComponent from '@/components/HeaderComponent.vue'
+import LeftSectionComponent from '@/components/LeftSectionComponent.vue'
+import CenterSectionComponent from '@/components/CenterSectionComponent.vue'
+
+
+export default {
+    components: {
+        FontAwesomeIcon,
+        HeaderComponent,
+        LeftSectionComponent,
+        CenterSectionComponent,
+    },
+    data() {
+        return {
+            testvalue : 0,
+        }
+    },
+    methods: {
+        handleSearch(res) {
+            console.log("왼쪽창에서 메인창 부모로 실행로그!!!!");
+            console.log(res);
+            
+        },
+    },
+
+}
+</script>
 
 
 

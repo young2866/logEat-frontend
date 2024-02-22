@@ -87,8 +87,8 @@ export default {
             }
             this.isLoading = false;
         },
-        async loadSearchUser() {
-
+        loadSearchUser() {
+            
         },
         async loadSearchTitle() {
 
@@ -96,6 +96,7 @@ export default {
         async loadSearchCategory() {
 
         },
+        
     }
 }
 </script>

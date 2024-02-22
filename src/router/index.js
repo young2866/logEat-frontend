@@ -8,6 +8,9 @@ import ModalComponent from '../components/ModalComponent'
 import NotLoginMainComponent from '../components/NotLoginMainComponent'
 import PostCreate from '../components/PostCreate'
 
+import LeftSectionComponent from '../components/LeftSectionComponent'
+import CenterSectionComponent from '../components/CenterSectionComponent'
+
 
 
 const routes = [
@@ -20,6 +23,8 @@ const routes = [
     { path: '/modal', component: ModalComponent, },
     { path: '/main', component: NotLoginMainComponent, },
     { path: '/post/create', component: PostCreate, },
+    { path: '/left', component: LeftSectionComponent, },
+    { path: '/center', component: CenterSectionComponent, },
     
   ];
   
