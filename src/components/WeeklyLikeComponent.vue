@@ -1,14 +1,17 @@
 <template>
   <div class="latest-posts">
-    <div class="posts">
-      <div v-for="post in posts" :key="post.id" class="post">
-       <!-- <img :src="post.postImage || 'https://via.placeholder.com/247x225'" class="post-image" alt="Post Image" /> -->
-        <div class="post-author">{{ post.title }}</div>
-        <div class="post-content">{{ post.category }}</div>
-        <!-- 추가적인 포스트 정보를 여기에 표시 -->
+    <div v-for="post in posts" :key="post.id" class="post">
+      <div class="likes-content">
+        <img src="https://via.placeholder.com/32x32" alt="Product" class="content-image">
+        <div class="content-info">
+            <div class="content-title">{{ post.title }}</div>
+            <div>
+              <div class="content-tag">{{ post.category }}</div>
+            </div>    
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
