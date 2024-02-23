@@ -102,10 +102,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <details> <summary><b>1. 회원가입 테스트</b></summary> 
     <div markdown="1"> 
         <details> <summary><b>1-1. 이메일 인증 테스트</b></summary> 
-            <div markdown="1"> 
-                <img src=""/>
+            <div markdown="1">
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/5e62e753-9fc2-4a45-82d8-3c99206df043"/>
             </div>
         </details>
+        <details> <summary><b>1-2. 이메일 인증 테스트</b></summary> 
+            <div markdown="1">
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/891a2855-0b27-435d-a7b5-79f55dd6c9f2"/>
+            </div>
+        </details>        
     </div>
 </details>
 
