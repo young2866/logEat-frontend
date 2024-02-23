@@ -101,18 +101,23 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>1. 회원가입 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
         <details> <summary><b>1-1. 이메일 인증 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src=""/>
             </div>
         </details>
     </div>
 </details>
 
-<details> <summary><b>2. 로그인 테스트</b></summary> 
+<details> <summary><b>2. 로그인, 로그아웃 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <details> <summary><b>2-1. 로그인 테스트</b></summary> 
+            <div markdown="1"> 
+                <img src=""/>
+            </div>
+        </details>
+    </div>
+    <div markdown="1"> 
         <details> <summary><b>2-1. 로그아웃 테스트</b></summary> 
             <div markdown="1"> 
                 <img src="https://github.com/young2866/logEat-frontend/assets/122894395/5e06fee8-d261-41e0-97eb-875559a15513"/>
@@ -123,20 +128,19 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>3. 글 검색 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
         <details> <summary><b>3-1. 유저 검색 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src="">
             </div>
         </details>
         <details> <summary><b>3-2. 제목 검색 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src="">
             </div>
         </details>
         <details> <summary><b>1-1. 카테고리 검색 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src="">
             </div>
         </details>
     </div>
@@ -188,10 +192,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>8. 팔로워의 최신글 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
         <details> <summary><b>8-1. 팔로워의 최신글 상세보기 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src=""/>
             </div>
         </details>
     </div>
@@ -205,15 +208,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>10. 내가 쓴글 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
         <details> <summary><b>10-1. 내가 쓴글 수정 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src=""/>
             </div>
         </details>
         <details> <summary><b>10-2. 내가 쓴글 삭제 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src=""/>
             </div>
         </details>
     </div>
