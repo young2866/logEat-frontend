@@ -118,7 +118,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     <div markdown="1"> 
         <details> <summary><b>2-1. 로그인 테스트</b></summary> 
             <div markdown="1"> 
-                <img src=""/>
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/51cf6e16-9d11-4aab-b7b1-c215785d5f28"/>
             </div>
         </details>
     </div>
