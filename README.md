@@ -87,7 +87,12 @@
 ## Project setup
 ```
 npm install
+
+npm add file:./ckeditor5
+
+npm install @ckeditor/ckeditor5-vue
 ```
+
 
 ### Compiles and hot-reloads for development
 ```
@@ -124,7 +129,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <details> <summary><b>개념/논리 모델링에 따른 ERD모델링 및 DB아키텍쳐</b></summary> 
   <div markdown="1"> 
     <br>
-    - ERD
+    <a href="https://dbdiagram.io/d/65d74f545cd041277492edf0">
     <img src="https://github.com/young2866/logEat-frontend/assets/125184448/a14b3c29-a0c0-4e27-b7f2-0ab7ce33ba4e"/>
   </div>
 </details>
