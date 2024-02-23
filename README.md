@@ -12,6 +12,15 @@
   <a>
     <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D"/>
   </a>
+  <a>
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+  </a>
+    <a>
+    <img src="https://img.shields.io/badge/JSS-F7DF1E?style=for-the-badge&logo=JSS&logoColor=white"/>
+  </a>
+    <a>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  </a>
   <br>
 
 </p> 
@@ -34,12 +43,16 @@
 ## 프로젝트 개요 및 설명
 
 - 프로젝트 개요
+  - 저희는 동기분들의 점심 메뉴를 궁금해하기 때문에 해당 서비스를 구현하기로 했습니다.
+  - 서로의 점심 메뉴를 해당 서비스를 통해 공유하여 궁금증을 해소할 수 있습니다.
+
+- 메인 페이지
+<a href="http://localhost:8081/main"><img src="https://github.com/young2866/logEat-frontend/assets/122894395/895e7c3b-0e09-4bcc-98fb-dacaedc9cb53"/></a>
 
 - 주요 기능
-  - 게시 및 공유: 식사의 사진을 찍어 전 세계와 공유하세요. 집밥, 길거리음식, 고급 레스토랑의 음식 등 모든 것이 여기에 속합니다.
-  - 카테고리 탐색: 다양한 음식 카테고리를 탐색하세요. 채식부터 육식까지, 당신의 입맛에 맞는 다양한 음식을 찾아보세요.
-  - 좋아요 및 팔로우: 좋아하는 게시물에 좋아요를 누르고, 다른 미식가들을 팔로우하며 커뮤니티와 소통하세요. 당신의 팔로워도 점점 늘어날 것입니다.
-
+  - 게시 및 공유 📷: 식사의 사진을 찍어 동기들과 공유하세요! 집밥🍚, 식당🍔🍟, 도시락🍱 등 모든 것! 
+  - 카테고리 탐색 🔍: 다양한 음식 카테고리를 탐색하세요. 채식부터 육식 인스턴스 까지, 동기분들의 다양한 음식을 찾아보세요.
+  - 좋아요 및 팔로우 🧡: 좋아하는 게시물에 좋아요🧡를 누르고, 다른 동기분들을 팔로우하며 최신글을 바로 볼 수 있습니다!
 
 ## 프로젝트 협업
 
@@ -53,11 +66,14 @@
 </div>
 </details>
 
+<details> <summary> 뭐 </summary> 
+<div markdown="1">
+</div>
+</details>
 
+## 환경 설정
 
-
-
-<details> <summary><b>🔧 환경 설정</b></summary> 
+<details> <summary><b>npm 🔧</b></summary> 
 <div markdown="1"> 
   
 ## Project setup
@@ -94,34 +110,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 테스트 계획 및 결과 보고서
 
-<details> <summary><b> 회원가입</b></summary> 
+<details> <summary><b></b></summary> 
 <div markdown="1"> 
 </div>
 </details>
-
-<details> <summary><b> 로그인</b></summary> 
-<div markdown="1"> 
-</div>
-</details>
-
-<details> <summary><b> 글쓰기</b></summary> 
-<div markdown="1"> 
-</div>
-</details>
-
-<details> <summary><b> 내정보</b></summary> 
-<div markdown="1"> 
-</div>
-</details>
-
-
-<details> <summary><b>좋아요를 가장 많이 받은 글</b></summary> 
-<div markdown="1"> 
-</div>
-</details>
-
-<details> <summary><b>최근 글을 작성한 팔로워</b></summary> 
-<div markdown="1"> 
-</div>
-</details>
-
