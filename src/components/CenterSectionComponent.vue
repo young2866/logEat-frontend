@@ -59,7 +59,7 @@
 
         <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id"
+            <div class="post-design" v-for="post in this.responseValue" :key="post.id"
                 @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != ''" class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null || post.thumbnailPath === ''"
