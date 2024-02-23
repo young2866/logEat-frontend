@@ -148,12 +148,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>4. 글 쓰기 테스트</b></summary> 
     <div markdown="1"> 
-        <details> <summary><b>4-1. 글 쓰기</b></summary> 
+        <details> <summary><b>4-1. 글 쓰기 1</b></summary> 
             <div markdown="1"> 
                 <img src="https://github.com/young2866/logEat-frontend/assets/122894395/3d5d0ec2-c2c3-4e59-ad2e-370dc1502cbe">
             </div>
         </details>
-        <details> <summary><b>4-2. 글 쓰기</b></summary> 
+        <details> <summary><b>4-2. 글 쓰기 2</b></summary> 
             <div markdown="1">                 
                 <img src="https://github.com/young2866/logEat-frontend/assets/122894395/9aa37372-633e-4488-8c90-07645be50338">
             </div>
