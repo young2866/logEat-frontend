@@ -94,7 +94,34 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 테스트 계획 및 결과 보고서
 
-<details> <summary><b></b></summary> 
+<details> <summary><b> 회원가입</b></summary> 
 <div markdown="1"> 
 </div>
 </details>
+
+<details> <summary><b> 로그인</b></summary> 
+<div markdown="1"> 
+</div>
+</details>
+
+<details> <summary><b> 글쓰기</b></summary> 
+<div markdown="1"> 
+</div>
+</details>
+
+<details> <summary><b> 내정보</b></summary> 
+<div markdown="1"> 
+</div>
+</details>
+
+
+<details> <summary><b>좋아요를 가장 많이 받은 글</b></summary> 
+<div markdown="1"> 
+</div>
+</details>
+
+<details> <summary><b>최근 글을 작성한 팔로워</b></summary> 
+<div markdown="1"> 
+</div>
+</details>
+
