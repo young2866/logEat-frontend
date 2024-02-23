@@ -59,7 +59,7 @@
 
         <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id"
+            <div class="post-design" v-for="post in this.responseValue" :key="post.id"
                 @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != ''" class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null || post.thumbnailPath === ''"
@@ -96,7 +96,7 @@ export default {
     data() {
         return {
             postList: [],
-            pageSize: 10,
+            pageSize: 100,
             currentPage: 0,
             isLastPage: false,
             isLoading: false,
@@ -187,6 +187,7 @@ export default {
                     this.isLastPage = true;
                 }
                 this.postList = [...this.postList, ...addPostList];
+      
 
             } catch (error) {
                 console.log(error)
@@ -194,7 +195,7 @@ export default {
             this.isLoading = false;
         },
         async loadSearchUser() {
-            console.log(" loadSearchUser() 실행!!!!!!!!! ");
+            console.log(" loadSearchUser() 실행!!!! ");
 
             /* 마지막페이지에서 페이지네이션 실행 X */
             if (this.responseValue.totalPages < this.searchCurrentPage) {

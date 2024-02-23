@@ -4,9 +4,9 @@
     <div id="main-parent">
 
         <!-- 왼쪽 박스 - 검색/좋아요 받은 피드-->
-        <LeftSectionComponent class="left-section" @handleSearch="handleSearch"></LeftSectionComponent>
+        <LeftSectionComponent class="left-section" @handleSearch="handleSearch" :searchResValue="searchResValue"></LeftSectionComponent>
         <!-- 가운데 박스 - 피드 -->
-        <CenterSectionComponent :responseValue="responseValue" :isSearch="isSearch" ></CenterSectionComponent>
+        <CenterSectionComponent :responseValue="responseValue" :isSearch="isSearch" @searchParams="searchParams" ></CenterSectionComponent>
         <!-- 오른쪽 박스- 최근업데이트 된 프로필 -->
         <div id="right-parent">
             <div class="profile-updates-box">
@@ -43,8 +43,12 @@ export default {
     },
     data() {
         return {
+            //검색 -> 중앙
             responseValue : '',
             isSearch: false,
+
+            //중앙 -> 검색
+            searchResValue : '',
             isModalOpen: false,  //이거 추가한겨
         }
     },
@@ -63,8 +67,11 @@ export default {
             console.log(issearch);
             this.responseValue = res;
             this.isSearch = issearch;
-
         },
+        searchParams(res) {
+            this.searchResValue = res;
+        }
+ 
     },
 
 }

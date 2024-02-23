@@ -87,6 +87,7 @@ export default {
         const data = response.data;
         if (data.uploaded) {
           this.userProfile.imageUrl = data.url;
+          alert("프로필사진이 변경됐습니다");
         } else {
           console.error(data.error.message);
         }
