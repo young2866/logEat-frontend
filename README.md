@@ -128,19 +128,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>3. 글 검색 테스트</b></summary> 
     <div markdown="1"> 
-        <details> <summary><b>3-1. 유저 검색 테스트</b></summary> 
+        <details> <summary><b>3-1. 유저,제목 검색 테스트</b></summary> 
             <div markdown="1"> 
-                <img src="">
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/920ab82b-e770-4431-9276-6951b781ecde">
+
             </div>
         </details>
-        <details> <summary><b>3-2. 제목 검색 테스트</b></summary> 
-            <div markdown="1"> 
-                <img src="">
-            </div>
-        </details>
-        <details> <summary><b>1-1. 카테고리 검색 테스트</b></summary> 
-            <div markdown="1"> 
-                <img src="">
+        <details> <summary><b>3-2. 카테고리 검색 테스트</b></summary> 
+            <div markdown="1">
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/323ebcce-0364-45b9-ab22-34453f54318d">
             </div>
         </details>
     </div>
@@ -192,11 +188,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>8. 팔로워의 최신글 테스트</b></summary> 
     <div markdown="1"> 
-        <details> <summary><b>8-1. 팔로워의 최신글 상세보기 테스트</b></summary> 
-            <div markdown="1"> 
-                <img src=""/>
-            </div>
-        </details>
+        <img src=""/>
     </div>
 </details>
 
