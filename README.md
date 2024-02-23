@@ -53,14 +53,6 @@
 </div>
 </details>
 
-<details> <summary> GITHUB </summary> 
-<div markdown="1">
-  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
-<a href="https://github.com/users/young2866/projects/2">
-  <img src="https://github.com/young2866/logEat-frontend/assets/122894395/ac8f0566-a29e-49bb-a3b9-023c78ec5a49"/>
-</a>
-</div>
-</details>
 
 
 
