@@ -1,65 +1,54 @@
 <template>
     <div v-if="isModalPostDetailOpen" class="modal-container">
         <div class="like-share-buttons">
-            <div style="width: 64px; height: 150px; padding-left: 8px; padding-top: 9px; padding-bottom: 9px; background: #F8F9FA; border-radius: 32px; border: 1px #F1F3F5 solid; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 1px; justify-content: center; align-items: center; display: flex"></div>
+            <div
+                style="width: 64px; height: 150px; padding-left: 8px; padding-top: 9px; padding-bottom: 9px; background: #F8F9FA; border-radius: 32px; border: 1px #F1F3F5 solid; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+                <div @click="likeClick(selectedPostId)"
+                    style="cursor: pointer; align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
+                    <div 
+                        style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 1px; justify-content: center; align-items: center; display: flex">
+                        <img style="width: 30px;" src="../assets/Full_Heart.png">
+                    </div>
                 </div>
-                <div style="align-self: stretch; padding-top: 8px; padding-bottom: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                    <div style="color: #495057; font-size: 12px; font-family: Helvetica Neue; font-weight: 700; line-height: 12px; word-wrap: break-word">0</div>
+                <div style="margin-right:10px; padding-top: 8px; padding-bottom: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                    {{ postlikeCount }} 
                 </div>
-                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                    <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
-                        <div style="width: 20px; height: 20px; justify-content: center; align-items: center; display: flex"></div>
+                <div @click="followClick(selectedPostUserNickname)"
+                    style="cursor: pointer; align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                    <div 
+                        style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
+                        <div style="width: 20px; height: 20px; justify-content: center; align-items: center; display: flex">
+                             <img style="width: 30px;" src="../assets/follow.png">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="modal-content" @click.stop>
-          <div class="modal-inner">
-            <!-- <PostDetail v-if="isModalPostDetailOpen" :id="selectedPostId"></PostDetail> -->
-            <PostDetail :id="selectedPostId" @closePostDetailModal="closePostDetailModal"/>
-          </div>
+            <div class="modal-inner">
+                <!-- <PostDetail v-if="isModalPostDetailOpen" :id="selectedPostId"></PostDetail> -->
+                <PostDetail :id="selectedPostId" @closePostDetailModal="closePostDetailModal" />
+            </div>
         </div>
-      </div>
-    
+    </div>
 
-    <div id="middle-parent">
 
-        <div class="content-box" v-if="this.isSearch === false" >
-            <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id)">
-                <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
-                <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
+    <div id="middle-parent" :style="isModalPostDetailOpen ? 'overflow: hidden; height: 30vh;' : ''" >
+    <!-- 위에꺼 스타일은 모달을 열면 고정되게 하기위해 한거 -->
+        <div class="content-box" v-if="this.isSearch === false">
+            <div class="post-design" v-for="post in postList" :key="post.id" @click="openPostDetailModal(post.id, post.likeCount, post.userNickname)">
+                <img :src="post.thumbnailPath" v-if="post.thumbnailPath != ''" class="post-image" alt="Product Image" />
+                <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null || post.thumbnailPath === ''"
+                    class="post-image" alt="Product Image" />
                 <div class="post-info">
                     <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
                     <img :src="post.profileImagePath" v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
                     <div class="post-author">{{ post.userNickname }}</div>
                 </div>
-                <div class="post-description">{{post.title}}</div>
-                <div class="post-details">
-                    <div class="post-location">{{post.location}}</div>
-                    <div class="post-score">
-                        <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
-                        {{post.likeCount}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box">
-            <!-- 검색창에서 받아온 post -->
-            <div class="post-design" v-for="post in responseValue " :key="post.id" @click="openPostDetailModal(post.id)">
-                <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
-                <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
-                <div class="post-info" >
-                    <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
-                    <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
-                    <div class="post-author">{{ post.userNickname }}</div>
-                </div>
                 <div class="post-description">{{ post.title }}</div>
                 <div class="post-details">
-                    <div class="post-location">{{post.location}}</div>
+                    <div class="post-location">{{ post.location }}</div>
                     <div class="post-score">
                         <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
                         {{ post.likeCount }}
@@ -68,16 +57,39 @@
             </div>
         </div>
 
+        <div class="content-box">
+            <!-- 검색창에서 받아온 post -->
+            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id"
+                @click="openPostDetailModal(post.id)">
+                <img :src="post.thumbnailPath" v-if="post.thumbnailPath != ''" class="post-image" alt="Product Image" />
+                <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null || post.thumbnailPath === ''"
+                    class="post-image" alt="Product Image" />
+                <div class="post-info">
+                    <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
+                    <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
+                    <div class="post-author">{{ post.userNickname }}</div>
+                </div>
+                <div class="post-description">{{ post.title }}</div>
+                <div class="post-details">
+                    <div class="post-location">{{ post.location }}</div>
+                    <div class="post-score">
+                        <img src="../assets/heart-LikePost.png" alt="LikePost" width="15" height="15">
+                        {{ post.likeCount }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     </div>
-
 </template>
 
 <script>
-import axios from 'axios';
 import PostDetail from './PostDetail.vue';
+import axiosInstance from '../axios/index.js';
+
 
 export default {
-    props:['responseValue', 'isSearch'],
+    props: ['responseValue', 'isSearch'],
     components: {
         PostDetail,
     },
@@ -96,7 +108,8 @@ export default {
             searchCurrentPage: 0,
             searchPageSize: 0,
             isSearchLastPage: false,
-
+            postlikeCount: 0,
+            selectedPostUserNickname: '',
         }
     },
 
@@ -107,8 +120,38 @@ export default {
         window.addEventListener("scroll", this.scrollPagination)
     },
     methods: {
-        openPostDetailModal(id) {
+        async likeClick(selectedPostId){
+            try {
+                const response = await axiosInstance.post(`${process.env.VUE_APP_API_BASE_URL}/post/${selectedPostId}/like`);
+                const message = response.data.message;
+                if(message==="cancel"){
+                    alert("좋아요를 취소하셨습니다.");
+                }else if(message==="success"){
+                    alert("좋아요를 눌렀습니다.");
+                }
+            }catch(error){
+                console.log(error);
+            }
+        },
+        async followClick(selectedPostUserNickname){
+            try {
+                const response = await axiosInstance.post(`${process.env.VUE_APP_API_BASE_URL}/follow/${selectedPostUserNickname}`);
+                const message = response.data.message;
+                if(message==="cancel"){
+                    alert(selectedPostUserNickname + "님 팔로우를 취소하셨습니다.");
+                }else if(message==="success"){
+                    alert(selectedPostUserNickname + "님 팔로우를 하셨습니다.");
+                }
+            }catch(error){
+                console.log(error);
+                alert("본인을 팔로우 할 수 없습니다.")
+            }
+        },
+
+        openPostDetailModal(id, likeCount, userNickname) {
             this.selectedPostId = id;
+            this.postlikeCount = likeCount;
+            this.selectedPostUserNickname = userNickname;
             this.isModalPostDetailOpen = !this.isModalPostDetailOpen;
         },
         scrollPagination() {
@@ -117,10 +160,10 @@ export default {
                 this.currentPage++;
                 this.loadPosts();
             }
-            // if(nearBottom && this.isSearch === true) {
-            //     this.searchCurrentPage++;
-            //     this.loadSearchUser();
-            // }
+            if (nearBottom && this.isSearch === true) {
+                this.searchCurrentPage++;
+                this.loadSearchUser();
+            }
 
         },
         async loadPosts() {
@@ -136,10 +179,10 @@ export default {
                 //     params.category = this.searchValue;
                 // }
                 console.log(params);
-                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/main`, { params });
+                const response = await axiosInstance.get(`${process.env.VUE_APP_API_BASE_URL}/post/main`, { params });
                 const receivedData = response.data;
 
-                const addPostList = receivedData.content.map(post => ({ ...post}))
+                const addPostList = receivedData.content.map(post => ({ ...post }))
                 if (addPostList.length < this.pageSize) {
                     this.isLastPage = true;
                 }
@@ -155,7 +198,7 @@ export default {
             console.log(" loadSearchUser() 실행!!!! ");
 
             /* 마지막페이지에서 페이지네이션 실행 X */
-            if(this.responseValue.totalPages < this.searchCurrentPage) {
+            if (this.responseValue.totalPages < this.searchCurrentPage) {
                 console.log("마지막페이지에서 페이지네이션 실행 X");
                 return;
             }
@@ -180,7 +223,7 @@ export default {
             console.log("closePostDetailModal() 실행!!!")
             this.isModalPostDetailOpen = false;
         }
-        
+
     }
 }
 </script>
@@ -188,7 +231,8 @@ export default {
 <style lang="scss" scoped>
 .like-share-buttons {
     margin: 30px;
-  }
+}
+
 .modal-container {
     position: fixed;
     z-index: 1000;
@@ -200,28 +244,29 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background: white;
     width: 50%;
-    height: 95%;
+    height: 90%;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal-inner {
+}
+
+.modal-inner {
     /* 추가된 부분 */
     width: 100%;
     height: 100%;
     overflow: auto;
-  }
-  
-  button {
+}
+
+button {
     margin-top: 10px;
     cursor: pointer;
-  }
+}
+
 /* middle-parent의 디자인 */
 .content-box {
     width: 100%;
@@ -323,4 +368,6 @@ export default {
     font-weight: 500;
     line-height: 24.50px;
 }
+
+
 </style>

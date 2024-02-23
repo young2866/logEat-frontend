@@ -24,10 +24,12 @@
             </div>
         </div>
         <div class="likes-box">
-            <div class="star-icon">
-                <img src="../assets/star.png" alt="Likes" width="30" height="30">
+            <div class="magnifier-icon">
+                <!-- <div class="star-icon"> -->
+                    <img src="../assets/star.png" alt="Likes" width="30" height="30">
+                <!-- </div> -->
+                <div class="likes-text">좋아요를 가장 많이 받은 글</div>
             </div>
-            <div class="likes-text">좋아요를 가장 많이 받은 글</div>
             <div class="likes-buttons">
                 <button class="side_button" :class="{ 'active': isLikeActive === 'week' }" @click="setLikeActive('week')">
                     지난 주간
@@ -77,8 +79,8 @@ export default {
             month: true,
             pageSize: 7,
             currentPage: 0,
-            isSearchActive: null,
-            isLikeActive: null,
+            isSearchActive: 'user',
+            isLikeActive: 'week',
             searchValue: null,
             responseData: [],
             isSearch: false,
@@ -446,5 +448,13 @@ export default {
 </script>
 
 <style scoped>
+input {
+    width: calc(100% - 20px);
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #F1F3F5; 
+  }
 @import "../css/LeftStyle.css";
 </style>

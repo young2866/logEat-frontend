@@ -1,0 +1,117 @@
+/* right-parent 디자인 */
+.posts {
+    width: 200px;
+    display: flex; /* Flexbox를 사용하여 내용을 가로로 배열 */
+    align-items: center;
+    justify-content: start; 
+    margin-bottom: 20px; 
+    padding: 10px; 
+    border-radius: 8px; /* 경계선 둥글게 */
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 그림자 효과 */
+  }
+  .post-profile {
+    margin-right: 15px; /* 이미지와 텍스트 사이의 공간 */
+  }
+  .post-author-img{
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  .post-author{
+    margin-right: 15px;
+  }
+  .profile-updates-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-left: 60px;
+  }
+.profile-updates-box {
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #EAEBEC;
+    margin: 20px; /* 중앙 정렬 */
+    margin-left: 60px;
+    position: relative; /* 자식 요소들의 위치 기준 */
+}
+.updates-container {
+  display: flex;
+  justify-content: space-between; /* 좌우 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  width: 100%; /* 컨테이너 너비를 부모의 100%로 설정 */
+  padding: 0 20px; /* 좌우 패딩 */
+}
+.updates-title, .switch-buttons {
+    /* flex: 1;  */
+    text-align: center;
+}
+.updates-title {
+    /* position: sticky; */
+
+    top: 0;
+    background: white; /* 배경색 추가로 덮어쓰기 효과를 방지 */
+    z-index: 10; /* 다른 요소들 위에 렌더링되도록 함 */
+    padding: 10px 0; /* 타이틀과 내용 사이의 간격 */
+    width: 100%; /* 부모 컨테이너의 전체 너비를 차지하도록 설정 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.switch-right {
+    margin-right: 0;
+}
+  .switch-buttons {
+    display: flex;
+    justify-content: center; /* 변경된 부분: 버튼을 가운데 정렬 */
+    align-items: center;
+    border-radius: 20px;
+    /* border: 1px solid #E1E2E4; */
+    width: auto; /* 변경된 부분: 너비를 자동으로 조정 */
+    min-width: 120px; /* 최소 너비를 지정하여 내용에 따라 조정 */
+    height: 40px;
+    padding: 0 10px;
+    /* background-color: #f0f0f0; */
+    margin: 0 auto;
+}
+
+/* .button {
+    color: black; 
+    border: none; 
+} */
+
+.switch-button{
+  background-color: transparent;
+  color: black;
+  border: none;
+  font-size: 16px; /* 화살표 텍스트 크기 */
+  padding: 5px 10px; /* 내부 여백 조정 */
+  cursor: pointer;
+}
+button:hover {
+  background-color: #e0e0e0;
+}
+  /* .arrow-left::before, .arrow-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: translate(-50%, -50%);
+  }
+  .arrow-left::before {
+    left: 10px;
+    transform: rotate(135deg);
+  }
+  .arrow-right::before {
+    right: 10px;
+    transform: rotate(-45deg);
+  }
+  .button:hover::before {
+    border-color: gray;
+} */

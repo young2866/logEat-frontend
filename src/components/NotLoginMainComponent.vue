@@ -11,11 +11,7 @@
         <div id="right-parent">
             <div class="profile-updates-box">
                 <div class="updates-title">최근 글을 작성한 팔로워</div>
-                <div class="switch-buttons">
-                    <div class="switch-left"></div>
-                    <div class="switch-right"></div>
-                    
-                </div>
+                
                 <div><LatestPostComponent></LatestPostComponent></div>
                 <!-- 추가적인 프로필 업데이트 내용 --> 
             </div> 
@@ -52,10 +48,19 @@ export default {
             isSearch: false,
 
             //중앙 -> 검색
-            searchResValue : ''
+            searchResValue : '',
+            isModalOpen: false,  //이거 추가한겨
         }
     },
     methods: {
+        // 이거 모달 스크롤 추가
+        openModal() {
+        this.isModalOpen = true;
+        },
+        closeModal() {
+            this.isModalOpen = false;
+        },
+        // 여기까지 
         handleSearch(res, issearch) {
             console.log("왼쪽창에서 메인창 부모로 실행로그 + 받은 데이터 확인!!!!");
             console.log(res);

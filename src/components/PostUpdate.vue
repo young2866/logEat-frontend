@@ -23,7 +23,7 @@
         <div class="post-buttons">
             <button class="post-back-button" @click="$emit('closeModal')">뒤로 가기</button>
             <div>
-                <button class="post-write-button" @click="CreatePost">작성완료</button>
+                <button class="post-write-button" @click="UpdatePost">작성완료</button>
             </div>
         </div>
     </div>
@@ -33,6 +33,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import Editor from 'ckeditor5-custom-build/build/ckeditor'
 import axiosInstance from '../axios/index.js';
 export default {
+    props: ['updatePost'],
     name: 'app',
     components: {
         // Use the <ckeditor> component in this view.
@@ -40,11 +41,12 @@ export default {
     },
     data() {
         return {
-            title: "",
-            category: "",
-            location: "",
+            title: this.updatePost.title,
+            category: this.updatePost.category,
+            location: this.updatePost.location,
             editor: Editor,
-            contents: "",
+            contents: this.updatePost.contents,
+            postId: this.updatePost.id,
             secretYn: "N",
             editorConfig: {
                 placeholder: "내용을 작성해 주세요!",
@@ -56,9 +58,9 @@ export default {
         };
     },
     methods: {
-        CreatePost() {
-            axiosInstance.post(
-                "/post/new",
+        UpdatePost() {
+            axiosInstance.patch(
+                "/post/" + this.postId + "/update",
                 {
                     title: this.title,
                     category: this.category,
@@ -71,11 +73,11 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-            ).then(response =>
-            console.log(response))
-            window.location.href =  "/";
+            ).then(response => {
+                 console.log(response);
+                 window.location.href =  "/";
+                 });
         },
-
     }
 }
 </script>

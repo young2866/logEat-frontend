@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from '../axios/index.js';
 
 export default {
     props: ['id'], // id prop 받기
@@ -84,9 +84,9 @@ export default {
     methods: {
         async postDetail() {
             try {
-                const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/post/${this.id}/detail`);
+                const response = await axiosInstance.get(`${process.env.VUE_APP_API_BASE_URL}/post/${this.id}/detail`);
                 this.postInfo = response.data;
-
+                // document.body.classList.add("noscroll");
             } catch (error) {
                 console.error("게시글 정보 가져오기 오류:", error);
                 // 오류 처리 (예: 오류 메시지 표시)
@@ -94,6 +94,7 @@ export default {
         },
         closeModal() {
             this.$emit('closePostDetailModal');
+            // document.body.classList.remove("noscroll");
             console.log("PostDetail컴포넌트 closeModal() 실행!!!")
         }
     }
@@ -113,4 +114,5 @@ export default {
   .close:hover {
     color: black; /* 닫기 버튼 호버 색상 */
   }
+  
 </style>

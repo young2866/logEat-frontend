@@ -12,11 +12,11 @@
       <div style="width: 48px; height: 48px; left: 78%; top: 33px; position: absolute; cursor: pointer;"
         @click="notiDropdown">
         <img style="width: 40px; height: 43px;" alt="notification" src="../assets/notificationIcon.png">
-        <div class="notification-dropdown" v-if="isNotiDropdownOpen || isLogin"
+        <div class="notification-dropdown" v-if="isNotiDropdownOpen"
           style="width: 200px; height: 300px; z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
           <div class="notification-box">
             <div v-for="(notification, index) in notificationList" :key="index">
-              <div class="content-info">
+              <div class="content-info" @click="deleteNotification(notification.id)">
                 <img src="../assets/logeat-default.png" alt="Default" class="notification-image">
                 <div class="content-title">{{ notification.message }}</div>
                   <!-- <div class="content-tag">{{ notification.senderName }}</div> -->
@@ -30,7 +30,7 @@
         <div v-if="isDropdownOpen || isLogin"
           style="z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">
           <button class="dropdown-white" @click="openMypageModal">내 정보</button>
-          <ModalMypageComponent v-if="isModalMypageOpen"></ModalMypageComponent>
+          <ModalMypageComponent v-if="isModalMypageOpen" />
           <button class="dropdown-white" @click="showMyPosts">내가 쓴 글</button>
           <ModalMypostComponent v-if="isModalMypostOpen"></ModalMypostComponent>
           <button class="dropdown-orange" @click="logout">로그아웃</button>
@@ -81,6 +81,7 @@ export default {
       isModalPostCreateOpen: false,
       isModalMypostOpen: false,
       isNotiDropdownOpen: false,
+      notificationId : null,
       notificationList: [],
     };
   },
@@ -88,6 +89,14 @@ export default {
     showMyPosts() {
     this.isModalMypostOpen = !this.isModalMypostOpen;
   },
+    deleteNotification(id) {
+      this.isNotiDropdownOpen = false;
+      this.notificationId = id;
+      axiosInstance.delete(
+        '/notification/' + id
+      )
+      window.location.href =  "/";
+    },
     async getNoitification() {
       axiosInstance.get(
         '/user/notifications'
@@ -134,8 +143,34 @@ export default {
     },
     openPostCreateModal() {
       this.isModalPostCreateOpen = !this.isModalPostCreateOpen;
-    }
+    },
+    closeModal() {
+      this.$emit('closeModal');
+    },
   },
+// 여기가 모달 열면 스크롤 막는 메소드
+  openLoginModal() {
+  this.isModalLoginOpen = true;
+  localStorage.setItem('isModalOpen', 'true'); // 모달이 열릴 때
+  this.preventBodyScroll(true); // 스크롤 방지 함수 호출
+},
+closeModal() {
+  this.isModalLoginOpen = false;
+  localStorage.removeItem('isModalOpen'); // 모달이 닫힐 때
+  this.preventBodyScroll(false); // 스크롤 방지 해제 함수 호출
+},
+preventBodyScroll(isPrevent) {
+  if (isPrevent) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+},
+// 여기 까지
+  
+
+
+
 };
 </script>
 
