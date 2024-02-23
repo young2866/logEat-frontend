@@ -228,7 +228,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <details> <summary><b>12. 좋아요를 가장 많이 받은 글 테스트</b></summary> 
     <div markdown="1"> 
         <img src="https://github.com/young2866/logEat-frontend/assets/122894395/412d0dc2-4c2a-476a-b207-364992e49062"/>
-
     </div>
 </details>
 
