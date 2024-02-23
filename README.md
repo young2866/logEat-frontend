@@ -7,27 +7,12 @@
     <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  </a>
-  <a>
-    <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
-  </a>
-  <a>
     <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
   </a>
   <a>
     <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D"/>
   </a>
   <br>
-  <a>
-    <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
-  </a>
-  <a>
-    <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white"/>
-  </a>
-  <a>
-    <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white"/>
-  </a>
 
 </p> 
 <br>
@@ -41,8 +26,7 @@
 
 ## 목차
 - [개요](#프로젝트-개요-및-설명)
-- [요구사항](#요구사항)
-- [API](#api)
+- [프로젝트 협업](#프로젝트-협업)
 - [테스트](#테스트-계획-및-결과-보고서)
 
 ---
@@ -114,31 +98,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <br/>
 <br/>
 </div> 
-</details>
-
-## 요구사항
-<details> <summary><b>요구사항 명세서</b></summary>   
-  <div markdown="1"> 
-    <a href="https://docs.google.com/spreadsheets/d/1MMpK2b7POQoquoizv-gYznXUA0YvhHVcbSbb9Tx0hB0/edit#gid=0">
-      <img src="https://github.com/young2866/logEat-frontend/assets/122894395/e9842994-60f3-49fd-8d61-ab12b98ded80"/>  
-    </a>
-  </div>
-</details>
-<br/>
-
-<details> <summary><b>개념/논리 모델링에 따른 ERD모델링 및 DB아키텍쳐</b></summary> 
-  <div markdown="1"> 
-    <br>
-    <a href="https://dbdiagram.io/d/65d74f545cd041277492edf0">
-    <img src="https://github.com/young2866/logEat-frontend/assets/125184448/a14b3c29-a0c0-4e27-b7f2-0ab7ce33ba4e"/>
-  </div>
-</details>
-
-## api
-
-<details> <summary><b>API 명세서</b></summary> 
-<div markdown="1"> 
-</div>
 </details>
 
 ## 테스트 계획 및 결과 보고서
