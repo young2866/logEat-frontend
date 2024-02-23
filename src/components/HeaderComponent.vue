@@ -9,7 +9,7 @@
     <div v-if="!isLogin"> <!-- 로그인 되고 나서-->
       <button class="write-button" @click="openPostCreateModal">글쓰기</button>
       <ModalPostCreate v-if="isModalPostCreateOpen"></ModalPostCreate>
-      <div style="width: 48px; height: 48px; left: 78%; top: 33px; position: absolute; cursor: pointer;"
+      <div style="width: 48px; height: 48px; left: 79%; top: 33px; position: absolute; cursor: pointer;"
         @click="notiDropdown">
         <img style="width: 40px; height: 43px;" alt="notification" src="../assets/notificationIcon.png">
         <div class="notification-dropdown" v-if="isNotiDropdownOpen"
@@ -17,15 +17,14 @@
           <div class="notification-box">
             <div v-for="(notification, index) in notificationList" :key="index">
               <div class="content-info" @click="deleteNotification(notification.id)">
-                <img src="../assets/logeat-default.png" alt="Default" class="notification-image">
-                <div class="content-title">{{ notification.message }}</div>
+                <div class="dropdown-white" style="text-align: center;"><div style="margin-top: 15px;">{{ notification.message }}</div></div>
                   <!-- <div class="content-tag">{{ notification.senderName }}</div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div style="width: 48px; height: 48px; left: 84%; top: 33px; position: absolute; cursor: pointer;">
+      <div style="width: 48px; height: 48px; left: 83%; top: 33px; position: absolute; cursor: pointer;">
         <img alt="?" src="../assets/Hamburger_LG.png" @click="toggleDropdown">
         <div v-if="isDropdownOpen || isLogin"
           style="z-index: 500; position: absolute; top: 56px; background: white; border: 1px solid #E8E8E8; border-radius: 8px; padding: 12px;">

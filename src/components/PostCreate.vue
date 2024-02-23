@@ -71,9 +71,10 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-            ).then(response =>
-            console.log(response))
-            window.location.href =  "/";
+            ).then(response =>{
+                console.log(response)
+                window.location.href = "/";
+            });
         },
 
     }
@@ -93,12 +94,12 @@ export default {
 .input-title {
     margin-top: 20px;
     margin-bottom: 15px;
-    
+
 }
 
 .input-category {
     margin-bottom: 15px;
-    
+
 }
 
 label {
