@@ -143,12 +143,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>4. 글 쓰기 테스트</b></summary> 
     <div markdown="1"> 
-        <details> <summary><b>7-1. 글 쓰기</b></summary> 
+        <details> <summary><b>4-1. 글 쓰기</b></summary> 
             <div markdown="1"> 
                 <img src="">
             </div>
         </details>
-        <details> <summary><b>7-1. 비밀글 쓰기</b></summary> 
+        <details> <summary><b>4-2. 비밀글 쓰기</b></summary> 
             <div markdown="1"> 
                 <img src="https://github.com/young2866/logEat-frontend/assets/122894395/e2492179-76c2-442f-97a6-781d6d9e018d">
             </div>
