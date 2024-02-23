@@ -211,12 +211,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     <div markdown="1"> 
         <details> <summary><b>10-1. 내가 쓴글 수정 테스트</b></summary> 
             <div markdown="1"> 
-                <img src=""/>
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/0d1193b4-008c-4d95-b1a2-b7a6a154fd90"/>
             </div>
         </details>
         <details> <summary><b>10-2. 내가 쓴글 삭제 테스트</b></summary> 
             <div markdown="1"> 
-                <img src=""/>
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/5951f213-81bc-47cb-8055-9e9377f80c03"/>
             </div>
         </details>
     </div>
