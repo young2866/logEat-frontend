@@ -2,7 +2,9 @@
   <div class="latest-posts">
     <div v-for="post in posts" :key="post.id" class="post">
       <div class="likes-content">
-        <img src="https://via.placeholder.com/32x32" alt="Product" class="content-image">
+        <img src="../assets/logeat-default.png" v-if="post.postImage === null || post.postImage === ''"
+        alt="Profile" width="40" height="40" class="post-profile" />
+      <img :src="post.postImage" v-else class="post-author-img" />
         <div class="content-info">
             <div class="content-title">{{ post.title }}</div>
             <div>
