@@ -3,19 +3,17 @@
         <div class="like-share-buttons">
             <div style="width: 64px; height: 150px; padding-left: 8px; padding-top: 9px; padding-bottom: 9px; background: #F8F9FA; border-radius: 32px; border: 1px #F1F3F5 solid; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
                 <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
-                  <div style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 1px; justify-content: center; align-items: center; display: flex">
-                  </div>
+                    <div style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 1px; justify-content: center; align-items: center; display: flex"></div>
                 </div>
                 <div style="align-self: stretch; padding-top: 8px; padding-bottom: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="color: #495057; font-size: 12px; font-family: Helvetica Neue; font-weight: 700; line-height: 12px; word-wrap: break-word">0</div>
+                    <div style="color: #495057; font-size: 12px; font-family: Helvetica Neue; font-weight: 700; line-height: 12px; word-wrap: break-word">0</div>
                 </div>
                 <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
                     <div style="align-self: stretch; height: 48px; width: 48px; padding: 3px; background: white; border-radius: 24px; border: 1px #DEE2E6 solid; justify-content: center; align-items: center; display: inline-flex">
-                        <div style="width: 20px; height: 20px; justify-content: center; align-items: center; display: flex">
+                        <div style="width: 20px; height: 20px; justify-content: center; align-items: center; display: flex"></div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
         </div>
         
         <div class="modal-content" @click.stop>
@@ -51,7 +49,7 @@
 
         <div class="content-box">
             <!-- 검색창에서 받아온 post -->
-            <div class="post-design" v-for="post in this.responseValue.content" :key="post.id" @click="openPostDetailModal(post.id)">
+            <div class="post-design" v-for="post in responseValue " :key="post.id" @click="openPostDetailModal(post.id)">
                 <img :src="post.thumbnailPath" v-if="post.thumbnailPath != '' " class="post-image" alt="Product Image" />
                 <img src="../assets/logeat-default.png" v-if="post.thumbnailPath === null  || post.thumbnailPath === '' " class="post-image" alt="Product Image" />
                 <div class="post-info" >
@@ -86,7 +84,7 @@ export default {
     data() {
         return {
             postList: [],
-            pageSize: 10,
+            pageSize: 100,
             currentPage: 0,
             isLastPage: false,
             isLoading: false,
@@ -119,10 +117,10 @@ export default {
                 this.currentPage++;
                 this.loadPosts();
             }
-            if(nearBottom && this.isSearch === true) {
-                this.searchCurrentPage++;
-                this.loadSearchUser();
-            }
+            // if(nearBottom && this.isSearch === true) {
+            //     this.searchCurrentPage++;
+            //     this.loadSearchUser();
+            // }
 
         },
         async loadPosts() {
@@ -146,6 +144,7 @@ export default {
                     this.isLastPage = true;
                 }
                 this.postList = [...this.postList, ...addPostList];
+      
 
             } catch (error) {
                 console.log(error)
@@ -153,7 +152,7 @@ export default {
             this.isLoading = false;
         },
         async loadSearchUser() {
-            console.log(" loadSearchUser() 실행!!!!!!!!! ");
+            console.log(" loadSearchUser() 실행!!!! ");
 
             /* 마지막페이지에서 페이지네이션 실행 X */
             if(this.responseValue.totalPages < this.searchCurrentPage) {

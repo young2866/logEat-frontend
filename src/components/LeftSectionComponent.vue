@@ -50,6 +50,7 @@ import axios from 'axios';
 // import { ref } from 'vue';
 import WeeklyLikeComponent from './WeeklyLikeComponent.vue';
 import MonthlyLikeComponent from './MonthlylikeComponent.vue';
+//import { faL } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -65,6 +66,7 @@ import MonthlyLikeComponent from './MonthlylikeComponent.vue';
 // };
 
 export default {
+    props:['searchResValue'],
     components:{
         WeeklyLikeComponent,
         MonthlyLikeComponent,
@@ -73,19 +75,55 @@ export default {
         return {
             week: true,
             month: true,
+            pageSize: 7,
+            currentPage: 0,
             isSearchActive: null,
             isLikeActive: null,
             searchValue: null,
-            responseData: '',
+            responseData: [],
             isSearch: false,
+            isLoading: false,
+            isInitialLoad: true,
         }
     },
     created() {
+
     },
     mounted() {
+        if(this.isInitialLoad) {
+            this.isInitialLoad = false;
+        }
         window.addEventListener("scroll", this.scrollPagination)
     },
+    // computed: {
+        
+    // },
     methods: {
+        scrollPagination() {
+            const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 1;
+            if (nearBottom && !this.isLastPage && !this.isLoading) {
+                this.currentPage++;
+                console.log("검색창 scrollPagination 실행!!!");
+                
+                this.isLoading = true;
+                if (this.isSearchActive === "user") {
+                    this.searchUser();
+                    console.log("검색창 scrollPagination searchUser 실행!!!");
+                    console.log(this.responseData);
+                    this.$emit('handleSearch', this.responseData, this.isSearch);
+                }else if (this.isSearchActive === "title") {
+                    this.searchTitle();
+                    console.log("검색창 scrollPagination searchTitle 실행!!!");
+                    console.log(this.responseData);
+                    this.$emit('handleSearch', this.responseData, this.isSearch);
+                }else if (this.isSearchActive === "category") {
+                    this.searchCategory();
+                    console.log("검색창 scrollPagination searchCategory 실행!!!");
+                    console.log(this.responseData);
+                    this.$emit('handleSearch', this.responseData, this.isSearch);
+                }
+            }
+        },
         toggleSearchActive(selection) {
             this.isSearchActive = selection;
         },
@@ -98,11 +136,18 @@ export default {
                 alert("검색할 내용을 입력해주세요.")
                 return;
             }
+
+            this.currentPage = 0;
+            this.responseData = [];
+            this.isLastPage = false;
             if (this.isSearchActive === "user") {
+                this.isLoading = true;
                 await this.searchUser();
             } else if (this.isSearchActive === "title") {
+                this.isLoading = true;
                 await this.searchTitle();
             } else if (this.isSearchActive === "category") {
+                this.isLoading = true;
                 await this.searchCategory();
             } else {
                 alert("분류를 선택해주세요.")
@@ -110,60 +155,108 @@ export default {
             }
 
             this.isSearch = true;
-            this.$emit('handleSearch', this.responseData.data, this.isSearch);
+            this.$emit('handleSearch', this.responseData, this.isSearch);
         },
 
         async searchUser() {
             console.log("searchUser()실행111");
             const url = `${process.env.VUE_APP_API_BASE_URL}/post/search/userName`;
+            console.log(this.currentPage);
             await axios.get(url, {
                 params: {
-                    userName: this.searchValue
+                    userName: this.searchValue,
+                    page: this.currentPage,
+                    size: this.pageSize,         
                 },
+                
             }).then((res) => {
-                this.responseData = res;
+                //this.responseData = res;
+                //this.responseData = res.data.content.map(post => ({ ...post}));
+
+                const addPostList = res.data.content.map(post => ({ ...post}))
+                if (addPostList.length < this.pageSize) {
+                    this.isLastPage = true;
+                }
+                console.log("searchUser()실행22222");
+                console.log(this.responseData);
+
+                this.responseData = [...this.responseData, ...addPostList];
+                console.log("searchUser()실행33333");
+                console.log(this.responseData);
             })
             .catch((error) => {
                 console.log(error);
             })
             .then(() => {
                 console.log('searchUser End!!');
+                
             });
+            this.isLoading = false;
         },
         async searchTitle() {
             console.log("searchTitle()실행111");
             const url = `${process.env.VUE_APP_API_BASE_URL}/post/search/title`;
             await axios.get(url, {
                 params: {
-                    titleKeyword: this.searchValue
+                    titleKeyword: this.searchValue,
+                    page: this.currentPage,
+                    size: this.pageSize,         
                 },
             }).then((res) => {
-                this.responseData = res;
+                //this.responseData = res;
+
+                const addPostList = res.data.content.map(post => ({ ...post}))
+                if (addPostList.length < this.pageSize) {
+                    this.isLastPage = true;
+                }
+                console.log("searchTitle()실행22222");
+                console.log(this.responseData);
+
+                this.responseData = [...this.responseData, ...addPostList];
+                console.log("searchTitle()실행33333");
+                console.log(this.responseData);
+
             }).catch((error) => {
                 console.log(error);
             }).then(() => {
                 console.log('searchTitle End!!');
             });
+            this.isLoading = false;
         },
         async searchCategory() {
             console.log("searchCategory()실행111 category");
             const url = `${process.env.VUE_APP_API_BASE_URL}/post/search/category`;
             await axios.get(url, {
                 params: {
-                    category: this.searchValue
+                    category: this.searchValue,
+                    page: this.currentPage,
+                    size: this.pageSize,         
                 },
             }).then((res) => {
-                this.responseData = res;
+                //this.responseData = res;
+
+                const addPostList = res.data.content.map(post => ({ ...post}))
+                if (addPostList.length < this.pageSize) {
+                    this.isLastPage = true;
+                }
+                console.log("searchTitle()실행22222");
+                console.log(this.responseData);
+
+                this.responseData = [...this.responseData, ...addPostList];
+                console.log("searchTitle()실행33333");
+                console.log(this.responseData);
+
+
             }).catch((error) => {
                 console.log(error);
             }).then(() => {
                 console.log('searchCategory End!!');
+                
             });
-        }
-}
+            this.isLoading = false;
+        },
 
-  
-
+    }
 }
 
 // onMounted(() => {
