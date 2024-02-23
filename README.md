@@ -35,7 +35,6 @@
 
 ## 목차
 - [개요](#프로젝트-개요-및-설명)
-- [프로젝트 협업](#프로젝트-협업)
 - [테스트](#테스트-계획-및-결과-보고서)
 
 ---
@@ -46,6 +45,14 @@
   - 저희는 동기분들의 점심 메뉴를 궁금해하기 때문에 해당 서비스를 구현하기로 했습니다.
   - 서로의 점심 메뉴를 해당 서비스를 통해 공유하여 궁금증을 해소할 수 있습니다.
 
+
+- <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
+
+|<a href="https://www.figma.com/file/hmv92aqIxNmIWvNF6dohHn/Figma-basics?type=design&node-id=1669-162202&mode=design&t=BwEeZoLwvMih4yc6-0"><img width="500" hegiht="200" src="https://github.com/young2866/logEat-frontend/assets/122894395/399bec8e-9eb4-420a-9ba3-4729233add80"/></a>|<a href="https://www.figma.com/file/hmv92aqIxNmIWvNF6dohHn/Figma-basics?type=design&node-id=1669-162202&mode=design&t=BwEeZoLwvMih4yc6-0"><img width="500" hegiht="200" src="https://github.com/young2866/logEat-frontend/assets/122894395/e47b08b1-3d84-4438-9b53-2868bc266b4d)"/></a>|
+|-----|-----|
+|로그인 디자인|메인 디자인|
+
+
 - 메인 페이지
 <a href="http://localhost:8081/main"><img src="https://github.com/young2866/logEat-frontend/assets/122894395/895e7c3b-0e09-4bcc-98fb-dacaedc9cb53"/></a>
 
@@ -54,22 +61,6 @@
   - 카테고리 탐색 🔍: 다양한 음식 카테고리를 탐색하세요. 채식부터 육식 인스턴스 까지, 동기분들의 다양한 음식을 찾아보세요.
   - 좋아요 및 팔로우 🧡: 좋아하는 게시물에 좋아요🧡를 누르고, 다른 동기분들을 팔로우하며 최신글을 바로 볼 수 있습니다!
 
-## 프로젝트 협업
-
-<details> <summary> FIGMA </summary> 
-<div markdown="1"> 
-<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
-
-|<a href="https://www.figma.com/file/hmv92aqIxNmIWvNF6dohHn/Figma-basics?type=design&node-id=1669-162202&mode=design&t=BwEeZoLwvMih4yc6-0"><img width="500" hegiht="200" src="https://github.com/young2866/logEat-frontend/assets/122894395/399bec8e-9eb4-420a-9ba3-4729233add80"/></a>|<a href="https://www.figma.com/file/hmv92aqIxNmIWvNF6dohHn/Figma-basics?type=design&node-id=1669-162202&mode=design&t=BwEeZoLwvMih4yc6-0"><img width="500" hegiht="200" src="https://github.com/young2866/logEat-frontend/assets/122894395/e47b08b1-3d84-4438-9b53-2868bc266b4d)"/></a>|
-|-----|-----|
-|로그인 디자인|메인 디자인|
-</div>
-</details>
-
-<details> <summary> 뭐 </summary> 
-<div markdown="1">
-</div>
-</details>
 
 ## 환경 설정
 
@@ -110,7 +101,136 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 테스트 계획 및 결과 보고서
 
-<details> <summary><b></b></summary> 
-<div markdown="1"> 
-</div>
+<details> <summary><b>1. 회원가입 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>1-1. 이메일 인증 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
 </details>
+
+<details> <summary><b>2. 로그인 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>2-1. 로그아웃 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+<details> <summary><b>3. 글 검색 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>3-1. 유저 검색 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+        <details> <summary><b>3-2. 제목 검색 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+        <details> <summary><b>1-1. 카테고리 검색 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+<details> <summary><b>4. 글 쓰기 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+    </div>
+</details>
+
+<details> <summary><b>5. 글 상세보기 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+    </div>
+</details>
+
+<details> <summary><b>6. 글 좋아요 및 좋아요 취소 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+    </div>
+</details>
+
+<details> <summary><b>7. 유저 팔로우 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+    </div>
+</details>
+
+<details> <summary><b>8. 팔로워의 최신글 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>8-1. 팔로워의 최신글 상세보기 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+<details> <summary><b>9. 마이페이지 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>9-1. 프로필사진 변경 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+        <details> <summary><b>9-2. 닉네임, 자기소개 변경 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+<details> <summary><b>10. 내가 쓴글 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>10-1. 내가 쓴글 수정 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+        <details> <summary><b>10-2. 내가 쓴글 삭제 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+<details> <summary><b>11. 팔로우 알림 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+    </div>
+</details>
+
+<details> <summary><b>12. 좋아요를 가장 많이 받은 글 테스트</b></summary> 
+    <div markdown="1"> 
+        여기에 사진 넣어주세요
+        <details> <summary><b>12-1. 지난 주간동안 좋아요를 가장 많이 받은 글 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+        <details> <summary><b>12-2. 지난 한달동안 좋아요를 가장 많이 받은 글 테스트</b></summary> 
+            <div markdown="1"> 
+                여기에 사진 넣어주세요
+            </div>
+        </details>
+    </div>
+</details>
+
+
