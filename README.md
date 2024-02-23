@@ -115,7 +115,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         여기에 사진 넣어주세요
         <details> <summary><b>2-1. 로그아웃 테스트</b></summary> 
             <div markdown="1"> 
-                여기에 사진 넣어주세요
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/5e06fee8-d261-41e0-97eb-875559a15513"/>
             </div>
         </details>
     </div>
@@ -144,25 +144,45 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>4. 글 쓰기 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <details> <summary><b>7-1. 글 쓰기</b></summary> 
+            <div markdown="1"> 
+                <img src="">
+            </div>
+        </details>
+        <details> <summary><b>7-1. 비밀글 쓰기</b></summary> 
+            <div markdown="1"> 
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/e2492179-76c2-442f-97a6-781d6d9e018d">
+            </div>
+        </details>
     </div>
 </details>
 
 <details> <summary><b>5. 글 상세보기 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <img src="https://github.com/young2866/logEat-frontend/assets/122894395/c913bd5f-3c28-4547-8610-5178aa4a19af"/>
     </div>
 </details>
 
 <details> <summary><b>6. 글 좋아요 및 좋아요 취소 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <img src="https://github.com/young2866/logEat-frontend/assets/122894395/9e0d3638-a609-435a-8f44-92ed70bcd15f">
     </div>
 </details>
 
 <details> <summary><b>7. 유저 팔로우 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <details> <summary><b>7-1. 팔로우</b></summary> 
+            <div markdown="1"> 
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/845d48f9-7863-44aa-b0b0-fe24125d67c1">
+            </div>
+        </details>
+    </div>
+    <div markdown="1"> 
+        <details> <summary><b>7-1. 팔로우 취소</b></summary> 
+            <div markdown="1"> 
+                <img src="https://github.com/young2866/logEat-frontend/assets/122894395/7a7ae7f4-2e90-412f-b079-92fccc907321">
+            </div>
+        </details>
     </div>
 </details>
 
@@ -179,17 +199,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>9. 마이페이지 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
-        <details> <summary><b>9-1. 프로필사진 변경 테스트</b></summary> 
-            <div markdown="1"> 
-                여기에 사진 넣어주세요
-            </div>
-        </details>
-        <details> <summary><b>9-2. 닉네임, 자기소개 변경 테스트</b></summary> 
-            <div markdown="1"> 
-                여기에 사진 넣어주세요
-            </div>
-        </details>
+        <img src="https://github.com/young2866/logEat-frontend/assets/122894395/c29739be-8bb6-4311-83e2-7ba45300b7be"/>
     </div>
 </details>
 
@@ -211,23 +221,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 <details> <summary><b>11. 팔로우 알림 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
+        <img src="https://github.com/young2866/logEat-frontend/assets/122894395/278e9fa3-e07b-47f2-a76b-22233fcab982"/>
     </div>
 </details>
 
 <details> <summary><b>12. 좋아요를 가장 많이 받은 글 테스트</b></summary> 
     <div markdown="1"> 
-        여기에 사진 넣어주세요
-        <details> <summary><b>12-1. 지난 주간동안 좋아요를 가장 많이 받은 글 테스트</b></summary> 
-            <div markdown="1"> 
-                여기에 사진 넣어주세요
-            </div>
-        </details>
-        <details> <summary><b>12-2. 지난 한달동안 좋아요를 가장 많이 받은 글 테스트</b></summary> 
-            <div markdown="1"> 
-                여기에 사진 넣어주세요
-            </div>
-        </details>
+        <img src="https://github.com/young2866/logEat-frontend/assets/122894395/412d0dc2-4c2a-476a-b207-364992e49062"/>
+
     </div>
 </details>
 
