@@ -115,7 +115,7 @@ export default {
         }
         this.isCheckingNickname = true;
         const response = await axios.get(
-          "${process.env.VUE_APP_API_BASE_URL}/checkNickname",
+          `${process.env.VUE_APP_API_BASE_URL}/checkNickname`,
           {
             params: {
               nickname: this.nickname,
@@ -148,7 +148,7 @@ export default {
         }
         this.isCheckingEmail = true;
         const response = await axios.get(
-           "${process.env.VUE_APP_API_BASE_URL}/checkEmail",
+           `${process.env.VUE_APP_API_BASE_URL}/checkEmail`,
           {
             params: {
               email: this.email,
@@ -178,7 +178,7 @@ export default {
     },
     async sendCode() {
       await axios.post(
-         "${process.env.VUE_APP_API_BASE_URL}/email/auth/", {},
+         `${process.env.VUE_APP_API_BASE_URL}/email/auth/`, {},
         {
           params: {
             email: this.email,
@@ -195,7 +195,7 @@ export default {
       }
       try {
         const response = await axios.post(
-           "${process.env.VUE_APP_API_BASE_URL}/user/new",data,
+           `${process.env.VUE_APP_API_BASE_URL}/user/new`,data,
           {
             headers: {
               "Content-Type": `multipart/form-data`,
@@ -224,7 +224,7 @@ export default {
           return;
         }
         const response = await axios.post(
-           "${process.env.VUE_APP_API_BASE_URL}/emails/auth/verifications", {},
+           `${process.env.VUE_APP_API_BASE_URL}/emails/auth/verifications`, {},
           {
             params: {
               email: this.email,
