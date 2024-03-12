@@ -14,10 +14,10 @@ jobs:
       with:
         node-version: '20'
     - name: npm install
-      working-directory: ./logEat-frontend
+      working-directory: ./
       run: npm install
     - name: npm run build
-      working-directory: ./logEat-frontend
+      working-directory: ./
       run: npm run build
     - name: setup aws cli
       uses: aws-actions/configure-aws-credentials@v2
