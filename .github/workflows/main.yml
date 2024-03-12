@@ -14,10 +14,10 @@ jobs:
       with:
         node-version: '20'
     - name: npm install
-      working-directory: ./logeat-frontend
+      working-directory: ./logEat-frontend
       run: npm install
     - name: npm run build
-      working-directory: ./logeat-frontend
+      working-directory: ./logEat-frontend
       run: npm run build
     - name: setup aws cli
       uses: aws-actions/configure-aws-credentials@v2
@@ -27,4 +27,4 @@ jobs:
         aws-region: "ap-northeast-2"
     - name: deploy to s3
       run: |
-        aws s3 cp ./logeat-frontend/dist s3://logeat-bucket/ --recursive
+        aws s3 cp ./logEat-frontend/dist s3://logeat-bucket/ --recursive
