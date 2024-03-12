@@ -12,7 +12,7 @@ jobs:
     - name: setup node.js
       uses: actions/setup-node@v2
       with:
-        node-version: ‘20’
+        node-version: '20'
     - name: npm install
       working-directory: ./logeat-frontend
       run: npm install
@@ -24,7 +24,7 @@ jobs:
       with:
         aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
         aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        aws-region: “ap-northeast-2”
+        aws-region: "ap-northeast-2"
     - name: deploy to s3
       run: |
         aws s3 cp ./logeat-frontend/dist s3://logeat-bucket/ --recursive
