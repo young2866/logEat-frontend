@@ -16,6 +16,9 @@ jobs:
     - name: npm install
       working-directory: ./
       run: npm install
+    - name: ckeditor add
+      working-directory: ./
+      run: npm add file:./ckeditor5
     - name: npm run build
       working-directory: ./
       run: npm run build
