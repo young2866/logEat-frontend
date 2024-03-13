@@ -96,7 +96,7 @@ export default {
     data() {
         return {
             postList: [],
-            pageSize: 100,
+            pageSize: 10,
             currentPage: 0,
             isLastPage: false,
             isLoading: false,
