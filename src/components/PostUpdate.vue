@@ -51,7 +51,7 @@ export default {
             editorConfig: {
                 placeholder: "내용을 작성해 주세요!",
                 ckfinder: {
-                    uploadUrl: "http://localhost:8080/post/image/upload",
+                    uploadUrl: `${process.env.VUE_APP_API_BASE_URL}/post/image/upload`,
                     withCredentials: true,
                 }
             }
