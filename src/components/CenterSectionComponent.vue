@@ -66,7 +66,7 @@
                     class="post-image" alt="Product Image" />
                 <div class="post-info">
                     <img src="../assets/Anonymous.png" v-if="post.profileImagePath === null" class="post-icon" alt="Icon" />
-                    <img src={{post.profileImagePath}} v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
+                    <img :src="post.profileImagePath" v-if="post.profileImagePath != null" class="post-icon" alt="Icon" />
                     <div class="post-author">{{ post.userNickname }}</div>
                 </div>
                 <div class="post-description">{{ post.title }}</div>
